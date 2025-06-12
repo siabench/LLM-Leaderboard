@@ -95,14 +95,14 @@ export default function Landing() {
                 <div className="text-gray-700 text-sm mb-2">
                   <div>
                     <strong className="text-indigo-600">
-                      {info.part1_title}:
+                      {info.part1_title}
                     </strong>
                     {"\n"}
                     {info.part1_description}
                   </div>
                   <div>
                     <strong className="text-indigo-600">
-                      {info.part1_title}:
+                      {info.part1_title}
                     </strong>
                     {"\n"}
                     {info.part2_description}
