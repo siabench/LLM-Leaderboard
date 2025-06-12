@@ -4,13 +4,13 @@ import Table from "./Table";
 import {
   getTaskOptions,
   getLevelOptions,
-  getLatestResults,
+  // getLatestResults,
   getDetailedResults,
   getLeaderboard,
 } from "../services/api";
 
 export default function Leaderboard() {
-  const [latest, setLatest] = useState([]);
+  // const [latest, setLatest] = useState([]);
   const [showInfo, setShowInfo] = useState(false);
   const [detailed, setDetailed] = useState([]);
   const [detailedCols, setDetailedCols] = useState([]);
@@ -68,15 +68,15 @@ export default function Leaderboard() {
       .catch(() => setFilterLoading(false));
   }, [filters]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getLatestResults(filters.task, filters.level)
-      .then((res) => {
-        setLatest(res.data);
-        setIsLoading(false);
-      })
-      .catch(() => setIsLoading(false));
-  }, [filters]);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   getLatestResults(filters.task, filters.level)
+  //     .then((res) => {
+  //       setLatest(res.data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch(() => setIsLoading(false));
+  // }, [filters]);
 
   useEffect(() => {
     setIsLoading(true);
