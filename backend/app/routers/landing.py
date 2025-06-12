@@ -8,8 +8,7 @@ def get_landing():
     return LandingInfo(
         title="SIA Bench",
         description=(
-            "Welcome to the SIA_Dataset repository!  "
-            "This dataset is designed for Security Incident Analysis (SIA) tasks, encompassing various cybersecurity investigation domains such as Network Forensics, Disk & Memory Forensics, Malware Analysis, and more."
+            "This benchmark is designed for Security Incident Analysis tasks, encompassing various cybersecurity investigation domains such as Memory Forensics, Malware Analysis, Network Forensics, and more. "
         ),
         images=[
             
@@ -19,9 +18,9 @@ def get_landing():
             "https://your-paper-link.example.com",
         ],
          announcement=(
-            "🔔 **What's New?**\n"
-            "New Model Evaluation Added: Claude-3.5!\n"
-            "Upcoming Reasoning Models: DeepSeek-R1 & OpenAI o3-mini\n\n"
-            "Stay updated as we continue expanding and refining our dataset and evaluation! ✨"
+            "🔔 **Key Components**\n"
+            "Part I: SIA Tasks - Simulates the in-depth investigation process of SIA tasks with 25 unique security scenarios containing 229 investigative questions in total\n"
+            "Part II: Alert Triage - Includes true and false positives for evaluating classification tasks with 35 alert scenarios and 35 questions in total \n\n"
+            "*Evaluation Note*: We evaluate different LLMs with our dataset using the [🤖 SIABench Agent]."
         ),
     )

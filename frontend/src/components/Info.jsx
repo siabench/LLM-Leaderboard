@@ -49,7 +49,6 @@ export default function Info() {
           </p>
         </div>
 
-        {/* Model integrations section - stays mostly the same */}
         <div className="bg-white rounded-xl shadow-md p-8 mb-8">
           <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center">
             <svg
@@ -122,7 +121,6 @@ export default function Info() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Upcoming models section - now using API data */}
           <div className="bg-white rounded-xl shadow-md p-8">
             <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center">
               <span className="text-2xl mr-2">🔮</span>

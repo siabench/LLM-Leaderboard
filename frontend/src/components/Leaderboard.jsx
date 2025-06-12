@@ -444,7 +444,7 @@ export default function Leaderboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md p-6 mb-12">
+        {/* <div className="bg-white rounded-xl shadow-md p-6 mb-12">
           <h3 className="text-xl font-bold mb-2">Latest Results</h3>
           <Table
             columns={leaderboardColumns}
@@ -453,7 +453,7 @@ export default function Leaderboard() {
             sortConfig={sortConfig}
             onSort={handleSort}
           />
-        </div>
+        </div> */}
       </div>
 
       <AnimatePresence>
