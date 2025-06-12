@@ -15,12 +15,18 @@ def get_landing():
         ],
         links=[
             "https://github.com/llmslayer/SIABench",
-            "https://your-paper-link.example.com",
         ],
-         announcement=(
-            "🔔 **Key Components**\n"
-            "Part I: SIA Tasks - Simulates the in-depth investigation process of SIA tasks with 25 unique security scenarios containing 229 investigative questions in total\n"
-            "Part II: Alert Triage - Includes true and false positives for evaluating classification tasks with 35 alert scenarios and 35 questions in total \n\n"
-            "*Evaluation Note*: We evaluate different LLMs with our dataset using the [🤖 SIABench Agent]."
+         announcement_title=
+            "Key Components:",
+            part1_title="Part I: SIA Tasks",
+            part2_title="Part II: Alert Triage",
+            part1_description=(
+            "- Simulates the in-depth investigation process of SIA tasks with 25 unique security scenarios containing 229 investigative questions in total."
+            ),
+            part2_description=(
+            "Part II: Alert Triage - Includes true and false positives for evaluating classification tasks with 35 alert scenarios and 35 questions in total."
+            ),
+        evaluation_note=(
+            "Evaluation Note: We evaluate different LLMs with our dataset using the [🤖 SIABench Agent]."
         ),
     )

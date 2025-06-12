@@ -67,7 +67,7 @@ export default function Landing() {
           </a>
 
           <a
-            href="https://github.com/your-repo/SIA_Dataset"
+            href={info.links[0]}
             target="_blank"
             rel="noopener noreferrer"
             className="group w-full sm:w-auto border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium py-3.5 px-8 rounded-lg shadow-sm transition-all duration-300 flex items-center justify-center gap-2"
@@ -90,25 +90,26 @@ export default function Landing() {
               <span className="text-2xl mt-0.5">🔔</span>
               <div className="text-left w-full">
                 <div className="font-semibold text-blue-800 mb-1 text-center">
-                  What's New?
+                  {info.announcement_title}
                 </div>
                 <div className="text-gray-700 text-sm mb-2">
                   <div>
                     <strong className="text-indigo-600">
-                      New Model Evaluation Added:
-                    </strong>{" "}
-                    Claude-3.5!
+                      {info.part1_title}:
+                    </strong>
+                    {"\n"}
+                    {info.part1_description}
                   </div>
                   <div>
                     <strong className="text-indigo-600">
-                      Upcoming Reasoning Models:
-                    </strong>{" "}
-                    DeepSeek-R1 &amp; OpenAI o3-mini
+                      {info.part1_title}:
+                    </strong>
+                    {"\n"}
+                    {info.part2_description}
                   </div>
                 </div>
                 <div className="text-gray-600 text-xs">
-                  Stay updated as we continue expanding and refining our dataset
-                  and evaluation! ✨
+                  {info.evaluation_note}
                 </div>
               </div>
             </div>
