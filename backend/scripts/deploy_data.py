@@ -19,7 +19,7 @@ SUPA_DB_PASS = os.getenv("SUPA_DB_PASS")
 SUPA_DB_HOST = os.getenv("SUPA_DB_HOST")
 SUPA_DB_PORT = os.getenv("SUPA_DB_PORT") or "5432"
 SUPA_DB_NAME = os.getenv("SUPA_DB_NAME")
-SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_URL = os.getenv("DATABASE_URL")
 if SUPABASE_URL:
     supabase_url = SUPABASE_URL
 else:
