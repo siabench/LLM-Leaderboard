@@ -1,5 +1,7 @@
 from app.database import conn
 from decimal import Decimal
+import psycopg2
+import os
 
 DISPLAYED_MODELS = [
     "Llama3.1-8B", "Llama3.1-70B", "Llama3.1-405B",
