@@ -94,19 +94,16 @@ export default function Landing() {
                 </div>
                 <div className="text-gray-700 text-sm mb-2">
                   <div>
-                    +{" "}
                     <strong className="text-indigo-600">
                       {info.part1_title}
                     </strong>
-                    + <p className="mt-1">{info.part1_description}</p>+{" "}
+                    <p className="mt-1">{info.part1_description}</p>
                   </div>
-                  +{" "}
                   <div className="mt-4">
-                    +{" "}
                     <strong className="text-indigo-600">
                       {info.part2_title}
                     </strong>
-                    + <p className="mt-1">{info.part2_description}</p>+{" "}
+                    <p className="mt-1">{info.part2_description}</p>
                   </div>
                 </div>
                 <div className="text-gray-600 text-xs">
