@@ -1,4 +1,3 @@
-from app.database import conn
 from decimal import Decimal
 import psycopg2
 import os
