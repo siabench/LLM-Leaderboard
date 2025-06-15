@@ -6,7 +6,12 @@ class LandingInfo(BaseModel):
     description: str
     images:      List[str]
     links:       List[str]
-    announcement: Optional[str] = None
+    announcement_title: str
+    part1_title: str
+    part2_title: str
+    part1_description: str
+    part2_description: str
+    evaluation_note: str
 
 class LeaderboardEntry(BaseModel):
     model_name: str
