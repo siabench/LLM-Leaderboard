@@ -87,7 +87,6 @@ export default function Landing() {
         <div className="w-full flex justify-center bg-transparent">
           <div className="max-w-2xl w-full mx-auto mb-8 mt-6 z-10 relative">
             <div className="bg-gradient-to-r from-blue-100 via-indigo-50 to-blue-100 rounded-lg p-4 shadow border border-blue-200 flex items-start gap-3">
-              <span className="text-2xl mt-0.5">🔔</span>
               <div className="text-left w-full">
                 <div className="font-semibold text-blue-800 mb-1 text-center">
                   {info.announcement_title}

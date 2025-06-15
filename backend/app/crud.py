@@ -191,6 +191,8 @@ FROM code_scenario_stats
 ORDER BY model_name, code;
 """
 
+def get_conn():
+    return psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
 
 def fetch_task_options():
     with conn.cursor() as cur:
@@ -199,7 +201,8 @@ def fetch_task_options():
 
 
 def fetch_level_options():
-    with conn.cursor() as cur:
+    with get_conn() as conn:
+      with conn.cursor() as cur:
         cur.execute("SELECT DISTINCT question_level FROM question_metadata")
         return [row[0] for row in cur.fetchall()]
 
@@ -210,7 +213,8 @@ def fetch_leaderboard(tasks=None, levels=None):
     l_param = levels if levels else None
     params = (t_param, t_param, l_param, l_param)
 
-    with conn.cursor() as cur:
+    with get_conn() as conn:
+      with conn.cursor() as cur:
         cur.execute(LEADERBOARD_SQL, params)
         rows = cur.fetchall()
 
@@ -237,7 +241,8 @@ def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
 
 def fetch_detailed_breakdown():
 
-    with conn.cursor() as cur:
+    with get_conn() as conn:
+      with conn.cursor() as cur:
         cur.execute(DETAILED_BREAKDOWN_SQL)
         rows = cur.fetchall()
 
