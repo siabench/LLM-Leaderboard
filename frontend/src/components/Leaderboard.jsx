@@ -49,6 +49,11 @@ export default function Leaderboard() {
     getLeaderboard(filters.task, filters.level)
       .then((res) => {
         setFilterData(res.data);
+        const withIndex = res.data.map((entry, idx) => ({
+          ...entry,
+          index: idx,
+        }));
+        setFilterData(withIndex);
         if (res.meta && res.meta.totalScenarios) {
           setTotalScenarios(res.meta.totalScenarios);
         } else if (res.totalScenarios) {
