@@ -33,7 +33,6 @@ export default function Info() {
       style={{ background: "none" }}
     >
       <div className="relative max-w-5xl mx-auto px-6 z-10 py-3">
-        {/* Your existing header stays the same */}
         <div className="text-center mb-4">
           <div className="inline-block mb-2 py-1 px-3 border-l-4 border-blue-500 bg-blue-50 rounded-r-md">
             <span className="text-sm font-medium tracking-wider uppercase text-blue-700">

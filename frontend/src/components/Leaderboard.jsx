@@ -116,13 +116,13 @@ export default function Leaderboard() {
       ),
     },
     {
-      header: "Overall Fully Solved",
+      header: "Overall Fully Solved Scenarios (FS)",
       accessor: "overall_fully_solved",
       sortable: true,
       cell: (value) => <span className="font-mono">{value}</span>,
     },
     {
-      header: "Overall Solving Percentage",
+      header: "Overall Partial Solving Percentage (PS)",
       accessor: "overall_solving_percentage",
       sortable: true,
       cell: (value) => (
@@ -138,13 +138,13 @@ export default function Leaderboard() {
       ),
     },
     {
-      header: "Filtered Fully Solved",
+      header: "Filtered Fully Solved Scenarios",
       accessor: "filtered_fully_solved",
       sortable: true,
       cell: (value) => <span className="font-mono">{value}</span>,
     },
     {
-      header: "Filtered Solving Percentage",
+      header: "Filtered Partial Solving Percentage",
       accessor: "filtered_solving_percentage",
       sortable: true,
       cell: (value) => (
@@ -227,9 +227,8 @@ export default function Leaderboard() {
             </button>
           </div>
           <p className="text-md text-gray-600 max-w-3xl mx-auto">
-            Compare how different models perform on our security incident
-            analysis tasks. Use filters to focus on specific tasks or difficulty
-            levels.
+            Performance comparison of different state-of-the-art (SOTA) models
+            in security incident analysis tasks.
           </p>
         </div>
 
