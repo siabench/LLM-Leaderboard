@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/LLM-Leaderboard/static/css/main.40361efb.css",
-    "main.js": "/LLM-Leaderboard/static/js/main.afa454dc.js",
+    "main.js": "/LLM-Leaderboard/static/js/main.4e89dab9.js",
     "index.html": "/LLM-Leaderboard/index.html",
     "main.40361efb.css.map": "/LLM-Leaderboard/static/css/main.40361efb.css.map",
-    "main.afa454dc.js.map": "/LLM-Leaderboard/static/js/main.afa454dc.js.map"
+    "main.4e89dab9.js.map": "/LLM-Leaderboard/static/js/main.4e89dab9.js.map"
   },
   "entrypoints": [
     "static/css/main.40361efb.css",
-    "static/js/main.afa454dc.js"
+    "static/js/main.4e89dab9.js"
   ]
 }
