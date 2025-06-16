@@ -294,83 +294,282 @@ export default function Leaderboard() {
         )}
 
         <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-          <button
-            className="text-blue-700  font-sm mb-2"
-            onClick={() => setShowFilters((x) => !x)}
-          >
-            {showFilters ? "Hide" : ""} Filters
-          </button>
-          {showFilters && (
-            <div className="flex flex-col md:flex-row gap-6 mb-6">
-              <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Task Type
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {taskOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => toggleFilter("task", option.value)}
-                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
-                        filters.task.includes(option.value)
-                          ? `bg-${option.color}-100 text-${option.color}-800 border-${option.color}-300 border`
-                          : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
-                      }`}
-                    >
-                      {option.value}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Difficulty Level
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {levelOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => toggleFilter("level", option.value)}
-                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
-                        filters.level.includes(option.value)
-                          ? `bg-${option.color}-100 text-${option.color}-800 border-${option.color}-300 border`
-                          : "bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200"
-                      }`}
-                    >
-                      {option.value}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                />
+              </svg>
+              <h3 className="font-medium text-lg text-gray-800">
+                Filter Results
+              </h3>
             </div>
+            <button
+              className={`px-4 py-2 rounded-md text-sm font-medium flex items-center shadow-sm ${
+                showFilters
+                  ? "bg-blue-100 text-blue-700 hover:bg-blue-200 border border-blue-200"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
+              } transition-colors`}
+              onClick={() => setShowFilters((prev) => !prev)}
+            >
+              {showFilters ? (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 mr-1.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 15l7-7 7 7"
+                    />
+                  </svg>
+                  Hide Filters
+                </>
+              ) : (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 mr-1.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  Show Filters
+                </>
+              )}
+            </button>
+          </div>
+
+          {showFilters && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 p-5 mb-5 shadow-sm"
+            >
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                        />
+                      </svg>
+                    </div>
+                    <label className="font-medium text-gray-700 text-lg">
+                      Task Type
+                    </label>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {taskOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => toggleFilter("task", option.value)}
+                        className={`px-3 py-2 rounded-full text-sm font-medium transition-all ${
+                          filters.task.includes(option.value)
+                            ? "bg-blue-500 text-white shadow-md transform scale-105"
+                            : "bg-white text-gray-700 border border-gray-300 hover:bg-blue-50 hover:border-blue-300"
+                        }`}
+                      >
+                        {filters.task.includes(option.value) && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-3.5 w-3.5 mr-1 inline"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        )}
+                        {option.value}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-indigo-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <label className="font-medium text-gray-700 text-lg">
+                      Difficulty Level
+                    </label>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {levelOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => toggleFilter("level", option.value)}
+                        className={`px-3 py-2 rounded-full text-sm font-medium transition-all ${
+                          filters.level.includes(option.value)
+                            ? "bg-indigo-500 text-white shadow-md transform scale-105"
+                            : "bg-white text-gray-700 border border-gray-300 hover:bg-indigo-50 hover:border-indigo-300"
+                        }`}
+                      >
+                        {filters.level.includes(option.value) && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-3.5 w-3.5 mr-1 inline"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        )}
+                        {option.value}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center mt-6 pt-4 border-t border-blue-200">
+                <div className="text-sm text-gray-600">
+                  <span className="font-medium text-blue-700">
+                    {filters.task.length + filters.level.length}
+                  </span>{" "}
+                  active{" "}
+                  {filters.task.length + filters.level.length === 1
+                    ? "filter"
+                    : "filters"}
+                </div>
+                {(filters.task.length > 0 || filters.level.length > 0) && (
+                  <button
+                    onClick={clearFilters}
+                    className="flex items-center text-sm bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-md transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 mr-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                    Clear all filters
+                  </button>
+                )}
+              </div>
+            </motion.div>
           )}
 
           {(filters.task.length > 0 || filters.level.length > 0) && (
-            <div className="flex justify-between items-center mb-4 p-2 bg-blue-50 rounded-md">
+            <div className="flex justify-between items-center mb-4 p-3 bg-blue-50 rounded-md border border-blue-100">
               <div className="flex flex-wrap gap-2">
+                <div className="text-sm text-gray-600 mr-2">
+                  Active filters:
+                </div>
                 {filters.task.map((task) => (
                   <span
                     key={task}
-                    className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                    className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded flex items-center"
                   >
-                    {task}
+                    <span className="mr-1">Task:</span> {task}
+                    <button
+                      onClick={() => toggleFilter("task", task)}
+                      className="ml-1 hover:text-blue-900"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
                   </span>
                 ))}
                 {filters.level.map((level) => (
                   <span
                     key={level}
-                    className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                    className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded flex items-center"
                   >
-                    {level}
+                    <span className="mr-1">Level:</span> {level}
+                    <button
+                      onClick={() => toggleFilter("level", level)}
+                      className="ml-1 hover:text-indigo-900"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
                   </span>
                 ))}
               </div>
-              <button
-                onClick={clearFilters}
-                className="text-sm text-gray-600 hover:text-gray-900"
-              >
-                Clear filters
-              </button>
             </div>
           )}
           <div className="overflow-hidden rounded-lg border border-gray-200">
