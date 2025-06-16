@@ -111,9 +111,15 @@ export default function Leaderboard() {
       header: "Model",
       accessor: "model_name",
       sortable: true,
-      cell: (value) => (
-        <span className="font-medium text-gray-900">{value}</span>
-      ),
+      cell: (value, row) => {
+        const medals = ["🥇", "🥈", "🥉"];
+        const medal = medals[row.index] || "";
+        return (
+          <span className="font-medium text-gray-900">
+            {medal} {value}
+          </span>
+        );
+      },
     },
     {
       header: "Overall Fully Solved Scenarios (FS)",
