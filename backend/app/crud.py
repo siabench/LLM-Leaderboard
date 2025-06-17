@@ -300,54 +300,54 @@ def fetch_model_integrations():
             "model_name": "Llama3.1-8B",
             "provider":   "Meta",
             "api":        "Fireworks API",
-            "api_url":    "https://fireworks.meta.com/docs"     
+            "api_url":    "https://fireworks.ai/models"     
         },
         {
             "model_name": "Llama3.1-70B",
             "provider":   "Meta",
             "api":        "Fireworks API",
-            "api_url":    "https://fireworks.meta.com/docs"
+            "api_url":    "https://fireworks.ai/models"
         },
         {
             "model_name": "Llama3.1-405B", 
             "provider": "Meta",     
             "api": "Fireworks API",
-            "api_url":    "https://fireworks.meta.com/docs"
+            "api_url":    "https://fireworks.ai/models"
         },
         {
             "model_name": "GPT-4.0",
             "provider":   "OpenAI",
             "api":        "OpenAI API",
-            "api_url":    "https://platform.openai.com/docs/models/gpt-4"
+            "api_url":    "https://platform.openai.com/docs/overview"
         },
         {
             "model_name": "GPT-4.0mini",
             "provider":   "OpenAI",
             "api":        "OpenAI API",
-            "api_url":    "https://platform.openai.com/docs/models/gpt-4"
+            "api_url":    "https://platform.openai.com/docs/overview"
         },
         {
             "model_name": "Gemini1.5-pro",
             "provider":   "Google",
             "api":        "Google Gemini API",
-            "api_url":    "https://developers.google.com/ai/guides/gemini"
+            "api_url":    "https://ai.google.dev/"
         },
         {
             "model_name": "DeepSeek-Reasoner",
             "provider":   "DeepSeek",
             "api":        "DeepSeek API",
-            "api_url":    "https://docs.deepseek.ai"
+            "api_url":    "https://fireworks.ai/models"
         },
         {
             "model_name": "OpenAI-o3-mini",
             "provider":   "OpenAI",
             "api":        "OpenAI API",
-            "api_url":    "https://platform.openai.com/docs/models"
+            "api_url":    "https://platform.openai.com/docs/overview"
         },
         {
             "model_name": "Claude-3.5",
             "provider":   "Anthropic",
             "api":        "Claude API",
-            "api_url":    "https://platform.anthropic.com/docs"
+            "api_url":    "https://docs.anthropic.com/en/docs/about-claude/models/all-models"
         },
     ]
