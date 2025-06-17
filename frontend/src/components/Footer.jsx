@@ -207,7 +207,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-gray-200">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500">
-            {footerData.links.map((link, index) => (
+            {/* {footerData.links.map((link, index) => (
               <a
                 key={index}
                 href={link.url}
@@ -215,7 +215,7 @@ export default function Footer() {
               >
                 {link.text}
               </a>
-            ))}
+            ))} */}
           </div>
         </div>
 
