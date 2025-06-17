@@ -108,6 +108,10 @@ WITH
   filtered_scenarios_ct AS (
     SELECT COUNT(DISTINCT scenario_name) AS total_filtered_scenarios
     FROM filtered_qs
+  ),
+  all_scenarios_ct AS (
+    SELECT COUNT(DISTINCT scenario_name) AS total_scenarios
+    FROM all_qs
   )
 SELECT
   m.model_name,
@@ -121,13 +125,15 @@ SELECT
     ROUND(CAST(100.0 * fss.filtered_solving_percentage AS numeric), 2),
     0
   ) AS filtered_solving_percentage,
-  fsct.total_filtered_scenarios
+  fsct.total_filtered_scenarios      AS total_filtered_scenarios,
+  asct.total_scenarios               AS total_scenarios
 FROM models m
 LEFT JOIN all_scenario_stats ass
   ON ass.model_name = m.model_name
 LEFT JOIN filtered_scenario_stats fss
   ON fss.model_name = m.model_name
 LEFT JOIN filtered_scenarios_ct fsct ON TRUE
+LEFT JOIN all_scenarios_ct       asct ON TRUE
 ORDER BY overall_solving_percentage DESC;
 """
 
@@ -228,7 +234,7 @@ def fetch_leaderboard(tasks=None, levels=None):
         rows = cur.fetchall()
 
     result = []
-    for model_name, overall_solved, overall_pct, filtered_solved, filtered_pct,total_filtered in rows:
+    for model_name, overall_solved, overall_pct, filtered_solved, filtered_pct,total_filtered,total_scenarios in rows:
         result.append({
             "model_name": model_name,
             "overall_fully_solved": to_int(overall_solved),
@@ -236,6 +242,7 @@ def fetch_leaderboard(tasks=None, levels=None):
             "filtered_fully_solved": to_int(filtered_solved),
             "filtered_solving_percentage": to_float(filtered_pct),
             "total_filtered_scenarios": to_int(total_filtered),
+            "total_scenarios": to_int(total_scenarios),
         })
     return result
 

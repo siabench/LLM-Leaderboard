@@ -53,18 +53,12 @@ export default function Leaderboard() {
           index: idx,
         }));
         setFilterData(withIndex);
-        if (res.meta && res.meta.totalScenarios) {
-          setTotalScenarios(res.meta.totalScenarios);
-        } else if (res.totalScenarios) {
-          setTotalScenarios(res.totalScenarios);
-        } else if (
-          res.data &&
-          res.data.length > 0 &&
-          res.data[0].total_scenarios
-        ) {
+        console.log("raw rows:", res.data);
+        console.log("mapped rows:", withIndex);
+        if (res.data.length > 0) {
           setTotalScenarios(res.data[0].total_scenarios);
         } else {
-          setTotalScenarios(42);
+          setTotalScenarios(0);
         }
 
         setFilterLoading(false);
@@ -155,11 +149,14 @@ export default function Leaderboard() {
       header: "Filtered Fully Solved Scenarios",
       accessor: "filtered_fully_solved",
       sortable: true,
-      cell: (value, row) => (
-        <span className="font-mono">
-          {value}/{row.original.total_filtered_scenarios}
-        </span>
-      ),
+      cell: (value, row) => {
+        const denom = row.total_filtered_scenarios ?? "—";
+        return (
+          <span className="font-mono">
+            {value}/{denom}
+          </span>
+        );
+      },
     },
     {
       header: "Filtered Partial Solving Percentage",
