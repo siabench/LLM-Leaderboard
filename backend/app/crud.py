@@ -248,10 +248,7 @@ def fetch_leaderboard(tasks=None, levels=None):
 
 
 def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
-    """
-    From the full leaderboard (optionally filtered by tasks/levels),
-    return only the entry for `latest_model`.
-    """
+
     all_entries = fetch_leaderboard(tasks, levels)
     return [entry for entry in all_entries if entry["model_name"] == latest_model]
 
@@ -284,14 +281,6 @@ def fetch_detailed_breakdown():
 
 
 def fetch_legend():
-    """
-    Build a legend list from CATEGORY_CODES and LEVEL_CODES.
-    Eg:
-    [
-      {"code": "NF", "meaning": "Network Forensics"},
-      ...
-    ]
-    """
     legend = []
     legend.append({"code": "FS", "meaning": "Fully solved scenarios"})
 
@@ -304,14 +293,9 @@ def fetch_legend():
     return legend
 
 
-def fetch_model_integrations():
-    """
-    Return a list of dicts describing how each displayed model is integrated.
-    """
+def fetch_model_integrations(): 
     return [
        
-       
-        
         {
             "model_name": "Llama3.1-8B",
             "provider":   "Meta",

@@ -44,6 +44,7 @@ class ModelIntegration(BaseModel):
     model_name: str
     provider: str
     api: str
+    api_url:   HttpUrl 
     
 class UpcomingModel(BaseModel):
     name: str
