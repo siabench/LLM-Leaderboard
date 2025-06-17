@@ -197,7 +197,8 @@ def get_conn():
     return psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
 
 def fetch_task_options():
-    with conn.cursor() as cur:
+    with get_conn() as conn:
+      with conn.cursor() as cur:
         cur.execute("SELECT DISTINCT task_category FROM question_metadata")
         return [row[0] for row in cur.fetchall()]
 
