@@ -25,7 +25,7 @@ def get_footer():
                 url=""
             )
         ],
-        ethics="All the selected scenarios in our dataset are chosen from platforms and websites that were publicly available and free to access at the time of selection. These problems are either retired or explicitly offered for free. The artifacts related to the chosen problems are downloaded solely for research purposes, and these are not distributed. The selected problems have publicly available write-ups or solutions, which are referenced in our dataset.",
+        ethics="https://github.com/llmslayer/SIABench/blob/main/Ethics.md",
         links=[
             FooterLink(text="Privacy Policy", url="#"),
             FooterLink(text="Terms of Service", url="#"),

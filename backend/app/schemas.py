@@ -1,5 +1,5 @@
 from typing import List, Optional, Dict
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 class LandingInfo(BaseModel):
     title:       str
@@ -67,6 +67,6 @@ class FooterSection(BaseModel):
 class FooterInfo(BaseModel):
     contact: FooterSection
     acknowledgments: List[FooterLink]
-    ethics: str
+    ethics: HttpUrl
     links: List[FooterLink]
     copyright: str

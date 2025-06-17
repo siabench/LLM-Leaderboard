@@ -193,7 +193,14 @@ export default function Footer() {
                   Ethics Statement
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm">{footerData.ethics}</p>
+              <a
+                href={footerData.ethics}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                View our Ethics policy
+              </a>
             </div>
           </div>
         )}
