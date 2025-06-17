@@ -309,13 +309,61 @@ def fetch_model_integrations():
     Return a list of dicts describing how each displayed model is integrated.
     """
     return [
-        {"model_name": "Llama3.1-8B",   "provider": "Meta",     "api": "Fireworks API"},
-        {"model_name": "Llama3.1-70B",  "provider": "Meta",     "api": "Fireworks API"},
-        {"model_name": "Llama3.1-405B", "provider": "Meta",     "api": "Fireworks API"},
-        {"model_name": "GPT-4.0",       "provider": "OpenAI",   "api": "OpenAI API"},
-        {"model_name": "GPT-4.0mini",   "provider": "OpenAI",   "api": "OpenAI API"},
-        {"model_name": "Gemini1.5-pro", "provider": "Google",   "api": "Google Gemini API"},
-        {"model_name": "DeepSeek-Reasoner", "provider": "DeepSeek",  "api": "DeepSeek API"},
-        {"model_name": "OpenAI-o3-mini",    "provider": "OpenAI",   "api": "OpenAI API"},
-        {"model_name": "Claude-3.5",    "provider": "Anthropic","api": "Claude API"},
+       
+       
+        
+        {
+            "model_name": "Llama3.1-8B",
+            "provider":   "Meta",
+            "api":        "Fireworks API",
+            "api_url":    "https://fireworks.meta.com/docs"     
+        },
+        {
+            "model_name": "Llama3.1-70B",
+            "provider":   "Meta",
+            "api":        "Fireworks API",
+            "api_url":    "https://fireworks.meta.com/docs"
+        },
+        {
+            "model_name": "Llama3.1-405B", 
+            "provider": "Meta",     
+            "api": "Fireworks API",
+            "api_url":    "https://fireworks.meta.com/docs"
+        },
+        {
+            "model_name": "GPT-4.0",
+            "provider":   "OpenAI",
+            "api":        "OpenAI API",
+            "api_url":    "https://platform.openai.com/docs/models/gpt-4"
+        },
+        {
+            "model_name": "GPT-4.0mini",
+            "provider":   "OpenAI",
+            "api":        "OpenAI API",
+            "api_url":    "https://platform.openai.com/docs/models/gpt-4"
+        },
+        {
+            "model_name": "Gemini1.5-pro",
+            "provider":   "Google",
+            "api":        "Google Gemini API",
+            "api_url":    "https://developers.google.com/ai/guides/gemini"
+        },
+        {
+            "model_name": "DeepSeek-Reasoner",
+            "provider":   "DeepSeek",
+            "api":        "DeepSeek API",
+            "api_url":    "https://docs.deepseek.ai"
+        },
+        {
+            "model_name": "OpenAI-o3-mini",
+            "provider":   "OpenAI",
+            "api":        "OpenAI API",
+            "api_url":    "https://platform.openai.com/docs/models"
+        },
+        {
+            "model_name": "Claude-3.5",
+            "provider":   "Anthropic",
+            "api":        "Claude API",
+            "api_url":    "https://platform.anthropic.com/docs"
+        },
     ]

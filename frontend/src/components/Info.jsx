@@ -14,7 +14,6 @@ export default function Info() {
   useEffect(() => {
     setIsLoading(true);
 
-    // Fetch both resources in parallel
     Promise.all([getModelIntegrations(), getInfoData()])
       .then(([integrations, info]) => {
         setRows(integrations.data);
@@ -109,7 +108,14 @@ export default function Info() {
                         {row.provider}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {row.api}
+                        <a
+                          href={row.api_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          {row.api}
+                        </a>
                       </td>
                     </tr>
                   ))}
@@ -126,11 +132,12 @@ export default function Info() {
               Upcoming Model Evaluations
             </h3>
             <p className="mb-4 text-gray-600">
-              We are actively working on integrating the latest advanced
+              {/* We are actively working on integrating the latest advanced
               reasoning models to evaluate the capabilities of recent LLMs in
-              automated SIA tasks, including:
+              automated SIA tasks, including: */}
+              More evaluation results are coming soon. Stay tuned!
             </p>
-            <ul className="space-y-3 mb-4">
+            {/* <ul className="space-y-3 mb-4">
               {isLoading ? (
                 <div className="flex justify-center py-4">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
@@ -184,7 +191,7 @@ export default function Info() {
                   </li>
                 ))
               )}
-            </ul>
+            </ul> */}
             <p className="italic text-gray-500 text-sm">
               Stay tuned for updates!
             </p>

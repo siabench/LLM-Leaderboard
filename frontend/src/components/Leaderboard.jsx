@@ -327,7 +327,6 @@ export default function Leaderboard() {
                   : "bg-blue-600 text-white hover:bg-blue-700"
               } transition-colors`}
               onClick={() => {
-                // Use this explicit approach to ensure state updates correctly
                 console.log("Current showFilters:", showFilters);
                 setShowFilters((prevState) => !prevState);
               }}
@@ -372,7 +371,6 @@ export default function Leaderboard() {
             </button>
           </div>
 
-          {/* Replace the CSS transition with direct conditional rendering for more reliable behavior */}
           {showFilters && (
             <div className="mb-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 p-5 shadow-sm">
               <div className="grid md:grid-cols-2 gap-6">
@@ -524,7 +522,6 @@ export default function Leaderboard() {
                 <div className="text-sm text-gray-600 mr-2">
                   Active filters:
                 </div>
-                {/* Fix the active filter icons to show an X instead of a checkmark for removal */}
                 {filters.task.map((task) => (
                   <span
                     key={task}
