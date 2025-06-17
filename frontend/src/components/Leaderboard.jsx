@@ -23,7 +23,7 @@ export default function Leaderboard() {
   const [filters, setFilters] = useState({ task: [], level: [] });
   const [filterLoading, setFilterLoading] = useState(true);
   const [sortConfig, setSortConfig] = useState({
-    key: "overall_percentage",
+    key: "overall_solving_percentage",
     direction: "desc",
   });
   const [totalScenarios, setTotalScenarios] = useState(0);
@@ -48,7 +48,6 @@ export default function Leaderboard() {
     setFilterLoading(true);
     getLeaderboard(filters.task, filters.level)
       .then((res) => {
-        setFilterData(res.data);
         const withIndex = res.data.map((entry, idx) => ({
           ...entry,
           index: idx,
@@ -320,7 +319,11 @@ export default function Leaderboard() {
                   ? "bg-blue-100 text-blue-700 hover:bg-blue-200 border border-blue-200"
                   : "bg-blue-600 text-white hover:bg-blue-700"
               } transition-colors`}
-              onClick={() => setShowFilters((prev) => !prev)}
+              onClick={() => {
+                // Use this explicit approach to ensure state updates correctly
+                console.log("Current showFilters:", showFilters);
+                setShowFilters((prevState) => !prevState);
+              }}
             >
               {showFilters ? (
                 <>
@@ -362,14 +365,9 @@ export default function Leaderboard() {
             </button>
           </div>
 
+          {/* Replace the CSS transition with direct conditional rendering for more reliable behavior */}
           {showFilters && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 p-5 mb-5 shadow-sm"
-            >
+            <div className="mb-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 p-5 shadow-sm">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <div className="flex items-center mb-2">
@@ -510,7 +508,7 @@ export default function Leaderboard() {
                   </button>
                 )}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {(filters.task.length > 0 || filters.level.length > 0) && (
@@ -519,6 +517,7 @@ export default function Leaderboard() {
                 <div className="text-sm text-gray-600 mr-2">
                   Active filters:
                 </div>
+                {/* Fix the active filter icons to show an X instead of a checkmark for removal */}
                 {filters.task.map((task) => (
                   <span
                     key={task}
