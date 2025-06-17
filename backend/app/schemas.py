@@ -19,6 +19,7 @@ class LeaderboardEntry(BaseModel):
     overall_solving_percentage: float
     filtered_fully_solved: int
     filtered_solving_percentage: float
+    total_filtered_scenarios: int
     
 class ModelResult(BaseModel):
     model_name: str

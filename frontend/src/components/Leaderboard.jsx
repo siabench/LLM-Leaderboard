@@ -129,7 +129,11 @@ export default function Leaderboard() {
       header: "Overall Fully Solved Scenarios (FS)",
       accessor: "overall_fully_solved",
       sortable: true,
-      cell: (value) => <span className="font-mono">{value}</span>,
+      cell: (value) => (
+        <span className="font-mono">
+          {value}/{totalScenarios}
+        </span>
+      ),
     },
     {
       header: "Overall Partial Solving Percentage (PS)",
@@ -151,7 +155,11 @@ export default function Leaderboard() {
       header: "Filtered Fully Solved Scenarios",
       accessor: "filtered_fully_solved",
       sortable: true,
-      cell: (value) => <span className="font-mono">{value}</span>,
+      cell: (value, row) => (
+        <span className="font-mono">
+          {value}/{row.original.total_filtered_scenarios}
+        </span>
+      ),
     },
     {
       header: "Filtered Partial Solving Percentage",
@@ -165,7 +173,7 @@ export default function Leaderboard() {
               style={{ width: `${value}%` }}
             ></div>
           </div>
-          <span className="font-medium">{value}%</span>
+          <span className="font-medium">{value}</span>
         </div>
       ),
     },

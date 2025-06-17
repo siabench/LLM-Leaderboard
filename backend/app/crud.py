@@ -104,6 +104,10 @@ WITH
       ) AS filtered_fully_solved
     FROM filtered_per_scenario
     GROUP BY model_name
+  ),
+  filtered_scenarios_ct AS (
+    SELECT COUNT(DISTINCT scenario_name) AS total_filtered_scenarios
+    FROM filtered_qs
   )
 SELECT
   m.model_name,
@@ -116,12 +120,14 @@ SELECT
   COALESCE(
     ROUND(CAST(100.0 * fss.filtered_solving_percentage AS numeric), 2),
     0
-  ) AS filtered_solving_percentage
+  ) AS filtered_solving_percentage,
+  fsct.total_filtered_scenarios
 FROM models m
 LEFT JOIN all_scenario_stats ass
   ON ass.model_name = m.model_name
 LEFT JOIN filtered_scenario_stats fss
   ON fss.model_name = m.model_name
+LEFT JOIN filtered_scenarios_ct fsct ON TRUE
 ORDER BY overall_solving_percentage DESC;
 """
 
@@ -222,13 +228,14 @@ def fetch_leaderboard(tasks=None, levels=None):
         rows = cur.fetchall()
 
     result = []
-    for model_name, overall_solved, overall_pct, filtered_solved, filtered_pct in rows:
+    for model_name, overall_solved, overall_pct, filtered_solved, filtered_pct,total_filtered in rows:
         result.append({
             "model_name": model_name,
             "overall_fully_solved": to_int(overall_solved),
             "overall_solving_percentage": to_float(overall_pct),
             "filtered_fully_solved": to_int(filtered_solved),
             "filtered_solving_percentage": to_float(filtered_pct),
+            "total_filtered_scenarios": to_int(total_filtered),
         })
     return result
 
