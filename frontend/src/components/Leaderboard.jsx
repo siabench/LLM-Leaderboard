@@ -27,7 +27,7 @@ export default function Leaderboard() {
     direction: "desc",
   });
   const [totalScenarios, setTotalScenarios] = useState(0);
-
+  const [filteredScenarios, setFilteredScenarios] = useState(0);
   useEffect(() => {
     Promise.all([getTaskOptions(), getLevelOptions()]).then(
       ([tasksRes, levelsRes]) => {
@@ -57,8 +57,10 @@ export default function Leaderboard() {
         console.log("mapped rows:", withIndex);
         if (res.data.length > 0) {
           setTotalScenarios(res.data[0].total_scenarios);
+          setFilteredScenarios(res.data[0].total_filtered_scenarios);
         } else {
           setTotalScenarios(0);
+          setFilteredScenarios(0);
         }
 
         setFilterLoading(false);
@@ -609,6 +611,16 @@ export default function Leaderboard() {
                   ? " (Filtered results may use a subset of scenarios based on selected criteria)"
                   : ""}
               </span>
+              <div className="flex flex-col md:flex-row md:items-center gap-1">
+                <span>
+                  Total scenarios: <strong>{totalScenarios}</strong>
+                </span>
+                {(filters.task.length > 0 || filters.level.length > 0) && (
+                  <span className="md:ml-4">
+                    Filtered scenarios: <strong>{filteredScenarios}</strong>
+                  </span>
+                )}
+              </div>
             </div>
           </div>
           <div className="mt-2">
