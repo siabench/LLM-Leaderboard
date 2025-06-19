@@ -2,6 +2,7 @@ import React from "react";
 
 import Landing from "./components/Landing";
 import Leaderboard from "./components/Leaderboard";
+import AlertTriagingLeaderboard from "./components/AlertTriagingLeaderboard";
 import Footer from "./components/Footer";
 import Info from "./components/Info";
 import MotionBackground from "./components/MotionBackground";
@@ -19,6 +20,11 @@ export default function App() {
         <section className="snap-start min-h-screen w-screen flex justify-center items-center bg-gray-50">
           <div className="w-full max-w-5xl h-full overflow-y-auto">
             <Leaderboard />
+          </div>
+        </section>
+        <section className="snap-start min-h-screen w-screen flex justify-center items-center bg-gray-50">
+          <div className="w-full max-w-5xl h-full overflow-y-auto">
+            <AlertTriagingLeaderboard />
           </div>
         </section>
         <section className="snap-start min-h-screen w-screen flex justify-center items-center bg-white">
