@@ -811,14 +811,14 @@ export default function Leaderboard() {
                           <div className="font-medium text-sm text-gray-700 mb-2">
                             Results Format
                           </div>
-                          <div className="bg-gray-50 p-2 rounded text-xs">
+                          <div className="bg-gray-50 p-1.5 rounded text-xs">
                             <div className="flex items-center">
-                              <code className="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-mono">
+                              <code className="bg-blue-100 text-blue-800 px-1 py-0.5 rounded font-mono ">
                                 X/Y (Z%)
                               </code>
-                              <span className="ml-2">
-                                = X passed tests out of Y total (Z% success
-                                rate)
+                              <span className="ml-9">
+                                = X fully passed scenarios out of Y scenarios
+                                (Z% Partial Solving Percentage)
                               </span>
                             </div>
                           </div>
@@ -841,9 +841,8 @@ export default function Leaderboard() {
                           />
                         </svg>
                         <p>
-                          Each column represents a different task category or
-                          difficulty level. Results show how many tests were
-                          passed out of the total.
+                          Each column represents a different task category and
+                          difficulty level.
                         </p>
                       </div>
                     </div>

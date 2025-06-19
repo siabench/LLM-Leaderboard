@@ -292,6 +292,9 @@ def fetch_legend():
 
     return legend
 
+def fetch_alert_leaderboard(tasks=None, levels=None):
+    return fetch_leaderboard(tasks, levels)
+
 
 def fetch_model_integrations(): 
     return [
