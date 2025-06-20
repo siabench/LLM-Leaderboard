@@ -1,0 +1,75 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/reveal/",
+        "scenario_name": "Reveal",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@AbdelAlimKhaled/reveal-blue-team-lab-ddf9ce8e73bb"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "As a forensic investigator at a financial institution, you’ve been alerted to suspicious activity on a workstation that has access to sensitive financial information. Believing a breach may have occurred, you’ve been provided with a memory dump from the affected system. Your job is to examine the memory for evidence of compromise, identify the source of the anomaly, and evaluate the extent of the issue in order to contain the incident effectively.",
+        "task_category": "Memory Forensics",
+        "complexity": "Medium",
+        "files_available": "capture.dmp",
+        "tools_available": [
+          "Volatility 3.0",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "cd",
+          "md5sum",
+          "exiftool",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, volatility if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you if there is any process running on the system that exhibits suspicious behavior. If so, what is the name of the process?",
+            "answer": "powershell.exe",
+            "adversarial_tactic": "Execution: Malicious processes often execute unauthorized commands or tools."
+          },
+          {
+            "question": "2. If you can find the suspicious process, can you identify the parent process ID (PPID) of the identified suspicious process from the memory dump. If so, What is the PPID?",
+            "answer": "4120",
+            "adversarial_tactic": "Execution: Understanding process hierarchies reveals how attackers initiated malicious activities."
+          },
+          {
+            "question": "3. Can you find if there is evidence of malware presence in the memory dump? If so, what is the name of the file used by the malware to execute the second-stage payload?",
+            "answer": "3435.dll",
+            "adversarial_tactic": "Execution: Malicious files are often used to deliver second-stage payloads."
+          },
+          {
+            "question": "4. Can you Identify if there is any shared directories accessed on a remote server by the suspicious process. If so, what is the name of the shared directory?",
+            "answer": "davwwwroot",
+            "adversarial_tactic": "Lateral Movement: Accessing shared directories on remote systems indicates potential lateral movement."
+          },
+          {
+            "question": "5. Can you identify any username under which the suspicious process is running. If so, what is the username?",
+            "answer": "Elon",
+            "adversarial_tactic": "Privilege Escalation: Understanding compromised accounts helps assess attacker privileges."
+          }
+        ]
+      }
+    }
+  ]
+}

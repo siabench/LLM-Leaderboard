@@ -1,0 +1,68 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/obfuscated/",
+        "scenario_name": "Obfuscated",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/Obfuscated"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "As a SOC analyst, you might come across alerts from the organization's Endpoint Detection and Response (EDR) system flagging suspicious behavior on a user’s device. In one case, a user reported receiving a DOC file via email from an unfamiliar sender. To verify its safety, the user submitted the document for further analysis.",
+        "task_category": "Malware Analysis",
+        "complexity": "Medium",
+        "tools_available": [
+          "oledump",
+          "olevba",
+          "grep",
+          "find",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python3"
+        ],
+        "files_available": "sample",
+        "instructions": "\nYou are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, oledump or olevba if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. what is the SHA256 hash value of the DOC file?",
+            "answer": "ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. Do you think the document contains any macros? If so, provide the number of the lowest one",
+            "answer": "8",
+            "adversarial_tactic": "Execution: Identifying macros in documents is crucial for understanding how the document executes code, which can lead to malicious actions. This is a common tactic used by malware to execute payloads without user consent."
+          },
+          {
+            "question": "3. Can you find any obfuscated code in the document? if so, Can you identify if there is any key used to decrypt the obfuscated code? If so, what is the key?",
+            "answer": "EzZETcSXyKAdF_e5I2i1",
+            "adversarial_tactic": "Defense Evasion: Obfuscation is a common technique used by malware to evade detection by security tools. Identifying obfuscated code and its decryption key is crucial for understanding the malware's behavior and potential impact on the system."
+          },
+          {
+            "question": "4. Can you identify if there are any files dropped by the malware? If so, what is the name of the file?",
+            "answer": "maintools.js",
+            "adversarial_tactic": "Execution: Identifying dropped files is essential for understanding the malware's impact on the system and its potential to execute further malicious actions. This helps in assessing the scope of the attack and planning remediation steps."
+          },
+          {
+            "question": "5. Can you find any obfuscated scripts in the document? If so, what is the name of the scripting language used in the obfuscated code?",
+            "answer": "JavaScript",
+            "adversarial_tactic": "Execution: Identifying the scripting language used helps determine the execution context, required interpreters, and potential system implications, which is crucial for both detection and remediation."
+          }
+        ]
+      }
+    }
+  ]
+}

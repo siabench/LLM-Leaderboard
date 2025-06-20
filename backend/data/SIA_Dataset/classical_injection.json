@@ -1,0 +1,75 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://blueteamlabs.online/home/challenge/reverse-engineering-a-classic-injection-9791a9b784",
+        "scenario_name": "Btlo_Classical_Injection",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@ERBATMAN/blue-teams-labs-online-reverse-engineering-a-classic-injection-f77b8101fa4b"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "This task aims to place you in the role of a blue team security analyst, where you'll analyze a de-compiled code of malicious exe file and answer the following questions.",
+        "task_category": "Malware Analysis",
+        "complexity": "Easy",
+        "tools_available": [
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl",
+          "xxd"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "files_available": "code.c",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Upon execution, can you identify if the malware delays its behavior by putting itself to sleep? If so, can you analyze the code to identify any sleep time of the malware?",
+            "answer": "3 minutes.",
+            "adversarial_tactic": "Defense Evasion: Delaying execution can help malware avoid detection by security tools or analysts."
+          },
+          {
+            "question": "2. Can you identify if the malware prompts the user for a password before continuing its execution? If so, can you analyze the code to identify the password?",
+            "answer": "'btlo'.",
+            "adversarial_tactic": "Execution: The malware is executing code on the system and requires a password to progress or perform malicious actions"
+          },
+          {
+            "question": "3. Can you identify if there is any shellcode section present in the malware? If so, what is the size of the shellcode?",
+            "answer": "473 bytes.",
+            "adversarial_tactic": "Execution: Shellcode is a primary executable payload, and analyzing its size relates to understanding its operational payload."
+          },
+          {
+            "question": "4. Can you identify if the malware injects shellcode into another process? If so, can you analyze the code to identify the API call used for this process injection?",
+            "answer": "'CreateRemoteThread'.",
+            "adversarial_tactic": "Defense Evasion: Process injection can help malware avoid detection by running malicious code within legitimate processes."
+          },
+          {
+            "question": "5. Can you identify if the malware interact with any specific process during its execution? If so, what is the name of the victim process?",
+            "answer": "'nslookup.exe'.",
+            "adversarial_tactic": "Privilege Escalation: Interacting with specific processes can indicate attempts to elevate privileges or perform malicious actions within a targeted process."
+          }
+        ]
+      }
+    }
+  ]
+}

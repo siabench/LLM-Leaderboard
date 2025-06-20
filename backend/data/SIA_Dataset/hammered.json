@@ -1,0 +1,104 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/hammered/",
+        "scenario_name": "Hammered",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://forensicskween.com/ctf/cyberdefenders/hammered/"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "This challenge immerses you in virtual environments and puzzling log files. As a SOC Analyst, your task is to investigate the logs from a potentially compromised server to determine what occurred with the webserver honeypot.",
+        "task_category": "Memory Forensics",
+        "complexity": "Medium",
+        "tools_available": [
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "scenario",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.(Add instructions related to usage of python scripts if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify if the attacker gain access to the system? if so, what service was used to gain access to the system? ",
+            "answer": "ssh",
+            "adversarial_tactic": "Initial Access: Identifying the service used for initial compromise is crucial for understanding the attack vector and improving defenses against similar entry points."
+          },
+          {
+            "question": "2. Can you identify the operating system version of the targeted system? If so, what is the name of the operating system?",
+            "answer": "4.2.4-1ubuntu3",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. If the attacker gained access to the system, can you identify the name of the account that was compromised? If so, what is the name?",
+            "answer": "root",
+            "adversarial_tactic": "Credential Access: Identifying compromised accounts is essential for understanding the scope of access obtained by attackers and the potential impact on system security."
+          },
+          {
+            "question": "4. Can you identify the number of attacker got access to the system? If so, what is the number?",
+            "answer": "6",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "5. Can you identify if any requests were sent to the apache server? if so, how many requests were sent?",
+            "answer": "365",
+            "adversarial_tactic": "Command and Control: Monitoring web request volume can indicate the presence of Command and Control (C2) activity, where attackers use web servers to communicate with compromised systems or exfiltrate data."
+          },
+          {
+            "question": "6. Can you identify if any rules were added to the firewall? If so, how many rules were added?",
+            "answer": "6",
+            "adversarial_tactic": "Defense Evasion: Adding firewall rules can be a tactic to evade detection by blocking security monitoring tools or preventing alerts from being triggered, allowing attackers to maintain access without raising suspicion."
+          },
+          {
+            "question": "7. Can you identify if there is a scanning tool downloaded files in the target system? if so, what is the tool?",
+            "answer": "nmap",
+            "adversarial_tactic": "Discovery: Scanning tools like nmap are often used by attackers to gather information about the target system, including open ports, services running, and potential vulnerabilities that can be exploited for further access or lateral movement."
+          },
+          {
+            "question": "8. Can you identify if there was any login from IP with 219.150.161.20? If so, what was the timestamp of the login?",
+            "answer": "04/19/2010 05:56:05 AM ",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "9. Can you identify any warning messages related to database security? If so, what is the most critical warning message?",
+            "answer": "mysql.user contains 2 root accounts without password!",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "10. Can you identify if any new accounts have been created on the system? If so, can you provide the name or names of the new accounts?",
+            "answer": "wind3str0y",
+            "adversarial_tactic": "Persistence: Creating new user accounts is a common technique used by attackers to establish persistent access to compromised systems, especially if the initial access vector is detected and blocked."
+          },
+          {
+            "question": "11. Can you identify if there was any proxy used in the system to run the scans? If so, what is the name of the proxy?",
+            "answer": "pxyscand/2.1",
+            "adversarial_tactic": "Discovery: Using a proxy for scans can help attackers gather information about the target system while obfuscating their true source, making it harder for defenders to trace the origin of the attack."
+          }
+        ]
+      }
+    }
+  ]
+}

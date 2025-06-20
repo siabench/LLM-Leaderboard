@@ -1,0 +1,81 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/ramnit/",
+        "scenario_name": "Ramnit",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@chaoskist/cyberdefenders-write-up-ramnit-76f916240892"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "Suspicious activity was flagged by our intrusion detection system on a workstation, suggesting a potential malware infection. A memory dump from the affected machine has been captured for further investigation. Your objective is to examine the dump, track the malware's behavior, and document the critical findings.",
+        "task_category": "Memory Forensics",
+        "complexity": "Easy",
+        "files_available": "memory.dmp",
+        "tools_available": [
+          "Volatility 3.0",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "exiftool",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "instructions": "\nYou are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install the tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, volatility if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify any running process that might exhibit suspicious behavior? If so, provide the name of such a process.",
+            "answer": "'ChromeSetup.exe'.",
+            "adversarial_tactic": "Execution: Identifying suspicious processes aligns with Execution since it reveals processes that may be actively executing malicious actions within the system."
+          },
+          {
+            "question": "2. If there is any suspicious process identified, can you determine the exact file path of the executable associated with it? If so, what is the file path?",
+            "answer": "'C:\\Users\\alex\\Downloads\\ChromeSetup.exe'.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. If there is any suspicious process identified, can you identify if the suspicious process attempted any network connections? If so, what IP address did it try to connect to? ",
+            "answer": "58.64.204.181.",
+            "adversarial_tactic": "Command and Control (C2): Network connections from a suspicious process are indicative of Command and Control (C2), as malware often reaches out to an external server to receive commands or exfiltrate data."
+          },
+          {
+            "question": "4. To determine the geographical location associated with the IP address the suspicious process tried to connect to, which city is linked to the IP address? ",
+            "answer": "Hong Kong.",
+            "adversarial_tactic": "Command and Control: Geolocating IP addresses helps identify the physical location of potential attackers."
+          },
+          {
+            "question": "5. Can you find any evidence of suspicious executable in the memory dump? If so, what is the SHA1 hash of the suspiciuos executable? ",
+            "answer": "280c9d36039f9432433893dee6126d72b9112ad2.",
+            "adversarial_tactic": "Execution: Identifying suspicious processes aligns with Execution since it reveals processes that may be actively executing malicious actions within the system."
+          },
+          {
+            "question": "6. If you can find any evidence of suspicious executable, can you determine the compilation timestamp of the suspicious executable identified? If so, what is the compilation timestamp?",
+            "answer": "2019-12-01 08:36:04.",
+            "adversarial_tactic": "Execution: Identifying the compilation timestamp of a suspicious executable can provide insights into the malware's development timeline."
+          }
+        ]
+      }
+    }
+  ]
+}

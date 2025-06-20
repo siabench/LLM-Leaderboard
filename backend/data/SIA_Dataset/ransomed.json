@@ -1,0 +1,113 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://blueteamlabs.online/home/challenge/malware-analysis-abc123",
+        "scenario_name": "Ransomed",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://0xapi.blogspot.com/2022/01/ransomed-ctf-solution.html"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "A company's cybersecurity team was alerted to unusual memory behavior on a workstation. The security system detected an unidentified executable with high entropy, hinting at obfuscation or packing. Deeper analysis showed that the malware allocated memory at runtime, injected shellcode, and triggered it using indirect jumps—indicating an unpacking mechanism. Your assignment is to study the malware sample through both static and dynamic analysis. Inspect the PE file structure, entropy metrics, and memory usage to understand how it unpacks, locates API functions, and delivers its payload.",
+        "task_category": "Malware Analysis",
+        "complexity": "Hard",
+        "tools_available": [
+          "strings",
+          "grep",
+          "ent",
+          "md5sum",
+          "objdump",
+          "r2",
+          "awk",
+          "sed",
+          "find",
+          "file",
+          "cut",
+          "uniq",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "python"
+        ],
+        "files_available": "challenge.exe",
+        "instructions": "\nYou are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, objdump, r2 if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. What is the MD5 hash of the file challenge.exe?",
+            "answer": "a2f33095ef25b4d5b061eb53a7fe6548",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. What is the entropy of the executable challenge.exe?",
+            "answer": "7.677",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. How many sections are present in the executable challenge.exe?",
+            "answer": "4",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "4. What is the entropy of the .text section in the executable challenge.exe?",
+            "answer": "7.844",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "5. is there any technique used to obfuscate strings in the executable challenge.exe? If so, what is the name of the technique?",
+            "answer": "stack strings",
+            "adversarial_tactic": "Defense Evasion: String obfuscation is often used to hide malicious functionality or indicators."
+          },
+          {
+            "question": "6. Is there any API that used malware allocated memory to write shellcode? If so, what is the API?",
+            "answer": "VirtualAlloc",
+            "adversarial_tactic": "Execution: Understanding memory allocation functions helps trace shellcode execution paths."
+          },
+          {
+            "question": "7. Is there any memory protection technique used for allocated memory? If so, what is the protection?",
+            "answer": "ERW",
+            "adversarial_tactic": "Defense Evasion: RWX permissions are often used by malware to execute dynamically written shellcode."
+          },
+          {
+            "question": "8. Can you find if there is any assembly instruction used to transfer the execution flow to the shellcode? If so, what is the instruction?",
+            "answer": "jmp dword ptr ss:[ebp-4]",
+            "adversarial_tactic": "Execution: Analyzing control flow instructions helps understand how malware executes payloads."
+          },
+          {
+            "question": "9. How many functions does the malware resolve from kernel32 in the executable challenge.exe?",
+            "answer": "16",
+            "adversarial_tactic": "Execution: Identifying resolved functions reveals the APIs leveraged for malicious operations."
+          },
+          {
+            "question": "10. Can you find if the malware obfuscate any strings after calling RegisterClassExA? if so, what is the first string?",
+            "answer": "saodkfnosa9uin",
+            "adversarial_tactic": "Defense Evasion: Revealing de-obfuscated strings aids in understanding the malwares runtime behavior."
+          },
+          {
+            "question": "11. What is the value of dwCreationFlags used by the malware in challenge.exe when calling CreateProcessA?",
+            "answer": "0x08000004",
+            "adversarial_tactic": "Execution: Understanding process creation flags helps identify stealth techniques used by malware."
+          },
+          {
+            "question": "12. Is there any process injection technique used by the malware in challenge.exe? If so, what is the technique?",
+            "answer": "process hollowing",
+            "adversarial_tactic": "Defense Evasion: Process injection techniques help malware evade detection by running malicious code within legitimate processes."
+          },
+          {
+            "question": "13. Is there any API used to write the payload into the target process? If so, what is the API?",
+            "answer": "WriteProcessMemory",
+            "adversarial_tactic": "Execution: API analysis reveals methods used to inject and execute malicious code."
+          }
+        ]
+      }
+    }
+  ]
+}

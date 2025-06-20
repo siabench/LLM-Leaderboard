@@ -1,0 +1,82 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://blueteamlabs.online/home/challenge/malware-analysis-ransomware-script-4263fe6ecf",
+        "scenario_name": "BTLO_Ransomware_Script",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@ERBATMAN/blue-team-labs-malware-analysis-ransomware-script-6d5ecb2a2496"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "A recent ransomware attack compromised one of our web servers. Fortunately, a restore point created shortly before the encryption allowed us to recover the system. Among the restored files was a suspicious script that appears to have not been executed yet.",
+        "task_category": "Malware Analysis",
+        "complexity": "Easy",
+        "files_available": [
+          "script.txt"
+        ],
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "curl",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "tr",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify any IP address that appears repeatedly and may seem to be suspiciuos? If so, what is the IP address?",
+            "answer": "185.141.25.168",
+            "adversarial_tactic": "Command and Control (C2): Repeated IP addresses may indicate an external server used for command and control communication."
+          },
+          {
+            "question": "2. In script.txt, can you identify if any package management commands used to retrieve or install tools? If the script attempts to delete any logs afterward, and if so, what command is used?",
+            "answer": "rm -rf /var/log/yum*",
+            "adversarial_tactic": "Defense Evasion: Deleting logs suggests an attempt to cover tracks, while package management may point to tool acquisition by adversaries."
+          },
+          {
+            "question": "3. Can you find any message written to /etc/motd for any contact information provided by the attacker. If any email address is included, provide it here.",
+            "answer": "nationalsiense@protonmail.com",
+            "adversarial_tactic": "Impact: Contact information in the message can be used by attackers to negotiate ransom payments or communicate with victims."
+          },
+          {
+            "question": "4. Can you identify if there an unusual file extension used when files are encrypted? If so, what is it?",
+            "answer": "☢",
+            "adversarial_tactic": "Impact: Unique file extensions are typically added to encrypted files as part of ransomware's impact on the system."
+          },
+          {
+            "question": "5. Can you identify any function names related to encryption in the script? If so, provide the function names.",
+            "answer": "encrypt_ssh, encrypt_grep_files, encrypt_home, encrypt_root, encrypt_db",
+            "adversarial_tactic": "Impact: Identifying encryption functions can help understand the ransomware's behavior and its impact on the system."
+          },
+          {
+            "question": "6. Can you identify if the script includes any URLs used to check or communicate with an external server for a file. If so, what is the URL?",
+            "answer": "http://185.141.25.168/check_attack/0.txt",
+            "adversarial_tactic": "Command and Control (C2): External URLs in scripts can signify a command and control server used to communicate with compromised machines."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://blueteamlabs.online/home/challenge/log-analysis-compromised-wordpress-ce000f5b59",
+        "scenario_name": "Compromised_Wordpress",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@azriq/btlo-log-analysis-compromised-wordpress-challenge-85b4bf7b14e2"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "A compromise has been detected on one of our WordPress websites. It is currently suspected that a vulnerable plugin enabled remote code execution, granting the attacker access to the server’s operating system. As an analyst, your responsibility is to review the logs and uncover indicators confirming this breach.",
+        "task_category": "Miscellaneous",
+        "complexity": "Easy",
+        "files_available": [
+          "capture.log"
+        ],
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "curl",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "tr",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify any suspicious login activity to the WordPress admin panel? If so, provide the URI of the login attempt",
+            "answer": "/wp-login.php?itsec-hb-token=adminlogin",
+            "adversarial_tactic": "Credential Access: Identifying suspicious login attempts helps understand how attackers may have gained the credentials to access the system."
+          },
+          {
+            "question": "2. Can you identify any external tools or software that the attacker may have used on the server? If so, list any tool names found in the log data.",
+            "answer": "wpscan sqlmap",
+            "adversarial_tactic": "Reconnaisance: Identifying tools used by the attacker helps understand how they gathered information about the target and potential vulnerabilities."
+          },
+          {
+            "question": "3. Can you identify any plugins that were used to gain access to the server? If so, provide the plugin name and version.",
+            "answer": "simple file list 4.2.2",
+            "adversarial_tactic": "Initial Access: Identifying the plugin that led to the compromise helps understand the initial attack vector and potential vulnerabilities."
+          },
+          {
+            "question": "4. Can you identify any files uploaded by the attacker? If so, provide the filename.",
+            "answer": "fr34k.php",
+            "adversarial_tactic": "Execution: Identifying uploaded scripts helps understand the attackers actions and potential goals."
+          },
+          {
+            "question": "5. Can you identify the access attempts to the uploaded script file? If so, provide the final HTTP response code returned when the file was accessed last in the log.",
+            "answer": "404",
+            "adversarial_tactic": "Execution: Understanding the response code helps determine if the attackers actions were successful or if the file was detected and blocked."
+          }
+        ]
+      }
+    }
+  ]
+}

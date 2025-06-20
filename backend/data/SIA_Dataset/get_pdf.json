@@ -1,0 +1,93 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/getpdf/",
+        "scenario_name": "Get_PDF",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/GetPDF"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "An unsuspecting user browses the web and clicks on a seemingly harmless link, leading them to a compromised web page. Without warning, the page redirects the browser to a malicious PDF file. As the PDF opens in the browsers Adobe Acrobat Reader plug-in, an unpatched vulnerability in the software is silently exploited. The attackers malware is then downloaded and installed onto the users machine, all without their knowledge. The cyber defense team has captured the network traffic during this incident. Your task is to analyze the provided pcap file and extract relevant information to understand the attack.",
+        "task_category": "Network Forensics",
+        "complexity": "Medium",
+        "tools_available": [
+          "tshark",
+          "pdf-parser",
+          "pdfid",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "capture.pcap",
+        "directory": "(directory_of_the_files)",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "questions": [
+          {
+            "question": "1. How many unique URL paths are involved in the network traffic of the captured pcap file?",
+            "answer": "6 URL paths",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. Is there any JavaScript code found in the captured network traffic? If so, what is the URL where this JavaScript is found?",
+            "answer": "'http://blog.honeynet.org.my/forensic_challenge/'.",
+            "adversarial_tactic": "Execution: JavaScript code in network traffic may execute code upon loading in the browser, aligning with Execution via web-based scripts that execute malicious functions."
+          },
+          {
+            "question": "3. Does the JavaScript code found in the pcap file contain any hidden entities like URL? If so, what is the URL? ",
+            "answer": "'http://blog.honeynet.org.my/forensic_challenge/getpdf.php'.",
+            "adversarial_tactic": "Execution: Hidden URLs in JavaScript can be used to download additional payloads or redirect users to malicious sites"
+          },
+          {
+            "question": "4. Is there a PDF file present in the network traffic? If so, what is the MD5 hash of the PDF file?",
+            "answer": "'659cf4c6baa87b082227540047538c2a'.",
+            "adversarial_tactic": "Initial Access: Malicious PDFs are often used to deliver malware to get an initial foothold on a system."
+          },
+          {
+            "question": "5. Can you analyze the PDF file and determine the number of objects present within the file?",
+            "answer": "19",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "6. Are there any filtering schemes used for the object streams in the PDF file? If so, how many filtering schemes are present?",
+            "answer": "4",
+            "adversarial_tactic": "Defense Evasion: Attackers often use filtered streams to obfuscate content, hence inspecting filtering schemes supports Defense Evasion by detecting potential obfuscation techniques."
+          },
+          {
+            "question": "7. Does the PDF file contain any object streams with any code snippets that seem to be suspicious? If so, what is the number of the object stream containing the code?",
+            "answer": "'5'",
+            "adversarial_tactic": "Execution: Locating JavaScript in PDFs ties to Execution as embedded scripts in PDF objects can be used to deliver payloads when the file is opened in a PDF reader."
+          },
+          {
+            "question": "8. Analyze the content of the PDF file and determine if it contains any exploit. If so, what is the URL of the malicious executable that the shellcode associated with the exploit drop?",
+            "answer": "'http://blog.honeynet.org.my/forensic_challenge/the_real_malware.exe'.",
+            "adversarial_tactic": "Execution: The shellcode could be dropping and executing a malicious executable."
+          }
+        ]
+      }
+    }
+  ]
+}

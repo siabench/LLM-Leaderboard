@@ -1,0 +1,100 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/nukethebrowser/",
+        "scenario_name": "Nuke_The_Browser",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://forensicskween.com/ctf/cyberdefenders/nukethebrowser/"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "A PCAP file has been captured containing network trace data, which includes evidence of an attack. The IP address of the victim has been anonymized to conceal the true location. As a SOC analyst, analyze the artifacts provided and answer the associated questions.",
+        "task_category": "Network Forensics",
+        "complexity": "Hard",
+        "tools_available": [
+          "tshark",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "uniq",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Multiple systems were targeted. Provide the IP address of the highest one.",
+            "answer": "10.0.5.15",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. Analyze the traffic protocols in the pcap file. What protocol seems to be the attack was carried out over?",
+            "answer": "HTTP",
+            "adversarial_tactic": "Command and Control: Analyzing protocol usage helps reveal Command and Control tactics, as protocols like HTTP are often used for ongoing control and communication with compromised hosts."
+          },
+          {
+            "question": "3. Can you find if there is any evidence of delivering any malicious executable? If so, what is the responsible URL?",
+            "answer": "http://sploitme.com.cn/fg/load.php",
+            "adversarial_tactic": "Initial Access: Recognizing the URL serving malicious executables indicates Initial Access tactics, as it shows how attackers deliver payloads to compromise systems."
+          },
+          {
+            "question": "4. Review HTTP response data in the pcap file. What is the packet number where a redirect occurs to a localized version of Googles French homepage, suggesting geo-based targeting?",
+            "answer": "299",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "5. Can you identify if there is any Content Management System (CMS) used to generate the page 'shop.honeynet.sg/catalog/'? If so, what is the CMS?",
+            "answer": "osCommerce Online Merchant",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "6. Can you identify if there is any evidence of indication that 'show.php' will avoid infecting the same host twice? If so, which packet number indicates this?",
+            "answer": "366",
+            "adversarial_tactic": "Defense Evasion: Logic to avoid infecting the same host twice indicates Defense Evasion, as the code is designed to minimize detection by reducing suspicious activity on known hosts"
+          },
+          {
+            "question": "7. Can you identify any obfuscated script at 'shop.honeynet.sg/catalog'? If so, can you deobfuscate to find the value of the 'click' parameter?",
+            "answer": "84c090bd86",
+            "adversarial_tactic": "Defense Evasion: Deobfuscation analysis supports Defense Evasion by exposing how the script avoids detection (e.g., hiding its purpose or functionality within encoded content)."
+          },
+          {
+            "question": "8.Can you identify any obfuscated script at 'rapidshare.com.eyu32.ru/login.php'? If you can find any, can you deobfuscate to find the value of the 'click' parameter?",
+            "answer": "3feb5a6b2f",
+            "adversarial_tactic": "Defense Evasion: Similar to question 9, this deobfuscation of JavaScript aligns with Defense Evasion as it reveals obfuscation strategies to hide malicious actions within scripts."
+          },
+          {
+            "question": "9. Can you find any evidence of any executable file that seems to be suspicious? If so, can you examine the metadata in the executable to determine the version of 'mingw-gcc' used to compile the malware?",
+            "answer": "3.4.5",
+            "adversarial_tactic": "Execution: Identifying the compiler version (e.g., mingw-gcc 3.4.5) is relevant to Execution, as it helps understand the malwares origin and potential development environment."
+          },
+          {
+            "question": "10. Is there any evidence of a shellcode in the pcap file inside 'urlmon.dll'? If so, can you find any function that seems to be used to download files from the internet to the compromised host? If you can find any, what is the name of the function?",
+            "answer": "URLDownloadToFile",
+            "adversarial_tactic": "Execution: Recognizing API functions like URLDownloadToFile connects to Execution, as it shows how the shellcode initiates file download operations on the victim's machine."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/insider/",
+        "scenario_name": "Insider",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/Insider"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "After an employee started working at the organization, they began engaging in illegal activities internally. You have been hired as a Security Operations Center (SOC) analyst to initiate an investigation into the incident.A disk image of the employee's computer, which runs a Linux operating system, has been obtained. Your task is to analyze the disk image and answer the associated questions.",
+        "task_category": "Memory Forensics",
+        "complexity": "Easy",
+        "tools_available": [
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python"
+        ],
+        "files_available": [
+          "sample.ad1",
+          "sample.ad1.txt"
+        ],
+        "instructions": "\nYou are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install the tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts and volatility if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify the Linux distribution used on employee's machine? If so, what is the name of the Linux distribution?",
+            "answer": "kali",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. Can you find any file named 'access.log' in the disk image? If so, what is the MD5 hash of this file?",
+            "answer": "d41d8cd98f00b204e9800998ecf8427e",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. Can you identify if any credential dumping tools were used on employee's machine? If so, what is the name of the tool?",
+            "answer": "mimikatz_trunk.zip",
+            "adversarial_tactic": "Credential Access: Identifying credential dumping tools is crucial for understanding how attackers may have obtained sensitive information such as passwords or authentication tokens."
+          },
+          {
+            "question": "4. Can you identify if any super-secret files were created on employee's machine? If so, what is the path of the file?",
+            "answer": "/root/Desktop/SuperSecretFile.txt",
+            "adversarial_tactic": "Collection: Creating or Storing super-secret files can indicate an attempt to collect sensitive information or data exfiltration."
+          },
+          {
+            "question": "5. Can you identify if there was any program used by didyouthinkwedmakeiteasy.jpg during execution? If so, what is the name of the program?",
+            "answer": "binwalk",
+            "adversarial_tactic": "Defense Evasion: Using tools like binwalk can help attackers analyze and manipulate files to evade detection by security systems."
+          },
+          {
+            "question": "6. Can you identify if there was any checklist created on employee's machine? If so, what is the third goal from the checklist the employee created?",
+            "answer": "Profit",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "7. Can you identify if apache was running on employee's machine? If so, how many times was it running?",
+            "answer": "0",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "8. Can you identify if the employees machine was used to attack other machines? If so, what is the name of the file that provides evidence of this?",
+            "answer": "irZLAohL.jpeg",
+            "adversarial_tactic": "Lateral Movement: Identifying files related to attacks on other machines can indicate lateral movement within a network, where an attacker attempts to compromise additional systems after gaining access to one."
+          },
+          {
+            "question": "9. Can you identify if the employee was taunting a fellow computer expert? If so, can you identify the name of the person she was taunting?",
+            "answer": "Young",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "10. Can you identify if any user tried to access the root account? If so, what is the name of the user?",
+            "answer": "postgres",
+            "adversarial_tactic": "Credential Access: Attempting to access the root account is a common tactic used by attackers to gain elevated privileges and control over the system."
+          },
+          {
+            "question": "11. Can you identify the last active directory in the filesystem before the disk image was created? If so, what is the absolute path of the directory?",
+            "answer": "/root/Documents/myfirsthack/",
+            "adversarial_tactic": ""
+          }
+        ]
+      }
+    }
+  ]
+}

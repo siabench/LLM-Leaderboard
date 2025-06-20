@@ -1,0 +1,123 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/teamspy/",
+        "scenario_name": "Team_Spy",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://forensicskween.com/ctf/cyberdefenders/teamspy/"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "An employee noticed strange behavior on their workstation after interacting with a suspicious email that included a document attachment. The incident response team acquired memory dumps from the potentially compromised machines for deeper investigation. As a SOC analyst, your task is to analyze the dumps and support the IR team in determining what occurred.",
+        "task_category": "Memory Forensics",
+        "complexity": "Hard",
+        "files_available": [
+          "ecorpoffice/win7ecorpoffice.vmem",
+          "ecorpwin7/win7.vmem"
+        ],
+        "tools_available": [
+          "Volatility3",
+          "Volatility2",
+          "grep",
+          "find",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python3",
+          "strings",
+          "olevba"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, volatility if needed). (Extra info: The profile for win7ecorpoffice memory dump is 'Win7SP1x64'.)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. In the memory dump 'ecorpoffice/win7ecorpoffice.vmem', Can you identify if there is any process ID (PID) associated with a file that exhibits suspicious behavior? If so, what is the PID?",
+            "answer": "1364",
+            "adversarial_tactic": "Execution: Identifying the suspicious PID points to active execution, where a potentially malicious process is already running."
+          },
+          {
+            "question": "2. In the 'ecorpoffice/win7ecorpoffice.vmem' memory dump, can you find any indicators of any command-and-control (C2) server communication? If so, what is the IP address of this C2 server?",
+            "answer": "54.174.131.235",
+            "adversarial_tactic": "Command and Control: Detecting external IPs used by malware is crucial for uncovering Command and Control (C2) channels used to manage the malware."
+          },
+          {
+            "question": "3. Within the 'ecorpoffice/win7ecorpoffice.vmem' file, can you identify any team viewer abused by the suspicious file? If so, what is the version of TeamViewer used?",
+            "answer": "Team Viewer 0.2.2.2",
+            "adversarial_tactic": "Initial Access: Identifying the TeamViewer version exploited by attackers relates to Initial Access, where attackers leverage remote access tools to gain entry."
+          },
+          {
+            "question": "4. Within the 'ecorpoffice/win7ecorpoffice.vmem' memory dump, can you find any stored passwords used by the suspicious file related to remote access? If so, what is the password associated with remote access activities?",
+            "answer": "P59fS93m",
+            "adversarial_tactic": "Credential Access: Stored passwords used to establish unauthorized access fall under Credential Access, where attackers aim to collect or use stolen credentials."
+          },
+          {
+            "question": "5. Within the 'ecorpoffice/win7ecorpoffice.vmem' memory dump, can you find any email addresses associated with any phishing activity. If so, what is the sender's email address linked to this activity?",
+            "answer": "karenmiles@t-online.de",
+            "adversarial_tactic": "Initial Access: The email address of the phishing email sender provides insight into the Initial Access tactic, where email phishing is used to establish a foothold in the network."
+          },
+          {
+            "question": "6. Within the 'ecorpoffice/win7ecorpoffice.vmem', can you identify any suspicious document? If so, what is the MD5 hash of a suspicious document found in the memory dump?",
+            "answer": "c2dbf24a0dc7276a71dd0824647535c9",
+            "adversarial_tactic": "Initial Access: A malicious document used in a phishing campaign aligns with Initial Access, where malicious files exploit vulnerabilities to gain initial access."
+          },
+          {
+            "question": "7. Within the 'ecorpoffice/win7ecorpoffice.vmem', can you identify if any ransomware was demanded through a cryptocurrency wallet? If so, what is the wallet address associated with this incident?",
+            "answer": "25UMDkGKBe484WSj5Qd8DhK6xkMUzQFydY",
+            "adversarial_tactic": "Impact: The presence of a cryptocurrency wallet linked to ransom demands relates to Impact, where ransomware or extortion attacks cause operational or financial disruption."
+          },
+          {
+            "question": "8. In the 'ecorpoffice/win7ecorpoffice.vmem' file, can you locate if any system identifier was given by the suspicious file for remote access activities. If so, what identifier is associated with this activity?",
+            "answer": "528 812 561",
+            "adversarial_tactic": "Persistence: The system identifier for remote access likely provides the attacker with Persistence, enabling repeated access to the compromised system."
+          },
+          {
+            "question": "9. Within the 'ecorpoffice/win7ecorpoffice.vmem', can you identify any signs of recent external connections through remote access tool? If so, what IP address is associated with the latest remote access connection?",
+            "answer": "31.6.13.155",
+            "adversarial_tactic": "Command and Control: Identifying IPs associated with remote connections indicates Command and Control (C2) tactics, where attackers establish channels to control compromised systems."
+          },
+          {
+            "question": "10. Within the memory dump 'ecorpoffice/win7ecorpoffice.vmem', analyze scripts or functions embedded in a suspicious document. What function name appears to return the command string executed on the system?",
+            "answer": "UsoJar",
+            "adversarial_tactic": "Execution: This question targets script-based Execution tactics, where embedded commands execute malicious actions within the compromised environment."
+          },
+          {
+            "question": "11. In the memory dump 'ecorpwin7/win7.vmem', can you identify if there is any document seems to be suspicious? If so, what is the name of the suspicious document?",
+            "answer": "Important_ECORP_Lawsuit_Washington_Leak.rtf",
+            "adversarial_tactic": "Initial Access: Malicious documents associated with compromise entry points fit Initial Access tactics, where attackers often use documents to establish a foothold."
+          },
+          {
+            "question": "12. Within the 'ecorpwin7/win7.vmem', can you identify is there any password used for compressing files related to exfiltration? If so, what is the password used for this purpose?",
+            "answer": "password1234",
+            "adversarial_tactic": "Exfiltration: The password for compressed files used in data exfiltration aligns with Exfiltration tactics, where data is covertly transferred from the environment."
+          },
+          {
+            "question": "13. In the memory dump 'ecorpwin7/win7.vmem', can you identify if there is any indicator of a command-and-control (C2) server? If so, what is the IP address associated with this C2 server?",
+            "answer": "52.90.110.169",
+            "adversarial_tactic": "Command and Control: External C2 server connections are central to Command and Control (C2) tactics, where attackers remotely manage and execute commands on infected machines."
+          },
+          {
+            "question": "14. Within the 'ecorpwin7/win7.vmem', can you find any email addresses associated with any phishing activity. If so, what is the sender's email address linked to this activity?",
+            "answer": "lloydchung@allsafecybersec.com",
+            "adversarial_tactic": "Initial Access: Email addresses associated with phishing attempts to gain access indicate Initial Access through social engineering and email-based attack vectors."
+          },
+          {
+            "question": "15. Search 'ecorpwin7/win7.vmem', can you identify if there is any package that the attacker staged to infect the E Coin Servers? If so, what is the name of the package?",
+            "answer": "linuxav.deb",
+            "adversarial_tactic": "Impact: Malicious packages on E Coin Servers relate to Impact tactics, where attackers disrupt operations or services through malware installation."
+          }
+        ]
+      }
+    }
+  ]
+}

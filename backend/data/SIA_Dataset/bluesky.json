@@ -1,0 +1,110 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/bluesky-ransomware/",
+        "scenario_name": "BlueSky",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://h05am10.gitbook.io/h05am10/write-ups/cyberdefenders/network-forensics/bluesky-ransomware"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "A major corporation responsible for vital data and services across multiple industries has disclosed a serious cybersecurity event. Their network was recently affected by a suspected ransomware assault. Critical files have been locked, leading to disruptions and concerns over possible data breaches. Initial indicators suggest the attack was carried out by an advanced threat actor. Your role is to examine the available evidence, identify the attackers' techniques, evaluate the breach's scope, and assist in mitigating the threat to restore the network's integrity.",
+        "task_category": "Network Forensics",
+        "complexity": "Medium",
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "grep",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Is there any evidence of port scanning in the network traffic? If so, what is the IP address responsible for the scanning activity?",
+            "answer": "87.96.21.84",
+            "adversarial_tactic": "Reconnaissance: Port scanning is part of the initial reconnaissance phase to identify open ports and services."
+          },
+          {
+            "question": "2. Is there any user account targeted for unauthorized access in the capture file? If so, what is the targeted account username?",
+            "answer": "sa",
+            "adversarial_tactic": "Initial Access: Adversaries may obtain and abuse credentials of existing accounts to gain unauthorized access."
+          },
+          {
+            "question": "3. Did the attacker succeed in gaining access. If so, can you provide the correct password discovered by the attacker?",
+            "answer": "cyb3rd3f3nd3r$",
+            "adversarial_tactic": "Initial Access: Adversaries may obtain and abuse credentials of existing accounts to gain unauthorized access."
+          },
+          {
+            "question": "4. Attackers often change some settings to facilitate lateral movement within a network. Do you think if there is any change, if so, what setting did the attacker enable to control the target host further and execute further commands?",
+            "answer": "xp_cmdshell",
+            "adversarial_tactic": "Lateral Movement: Enabling specific settings facilitates unauthorized control over the network."
+          },
+          {
+            "question": "5. Process injection is often used by attackers to escalate privileges within a system. Is there any process the attacker injected the C2 into to gain administrative privileges?",
+            "answer": "winlogon.exe",
+            "adversarial_tactic": "Privilege Escalation: Injecting into processes is used to escalate privileges and maintain persistence."
+          },
+          {
+            "question": "6. Is there any record of a file being downloaded by the attacker? If so, what is the URL of the downloaded file?",
+            "answer": "http://87.96.21.84/checking.ps1",
+            "adversarial_tactic": "Execution: Downloading malicious scripts is part of executing a payload."
+          },
+          {
+            "question": "7.  Is there any specific group or security identifier (SID) that is checked by the malicious script to confirm user privileges? If so, what is the SID?",
+            "answer": "S-1-5-32-544",
+            "adversarial_tactic": "Discovery: Checking SIDs helps attackers identify privileged accounts for further exploitation."
+          },
+          {
+            "question": "8. Is there any indication of registry modifications by the attacker? If so, what are the registry keys used by the attacker to disable Windows Defender functionalities?",
+            "answer": "DisableAntiSpyware, DisableRoutinelyTakingAction, DisableRealtimeMonitoring, SubmitSamplesConsent, SpynetReporting",
+            "adversarial_tactic": "Defense Evasion: Disabling Windows Defender weakens the system's defenses."
+          },
+          {
+            "question": "9. Is there any evidence of second file downloaded by the attacker? If so, what is the URL?",
+            "answer": "http://87.96.21.84/del.ps1",
+            "adversarial_tactic": "Execution: Downloading script files is part of executing secondary payloads."
+          },
+          {
+            "question": "10. Is there any evidence of scheduled tasks created by the attacker? If so, what is the name of the scheduled task to maintain persistence on the system?",
+            "answer": "Microsoft/Windows/MUI/LPupdate",
+            "adversarial_tactic": "Persistence: Scheduled tasks help attackers maintain access to the system."
+          },
+          {
+            "question": "11. Is there any evidence of credential dumping by the attacker? If so, is there any invoked script used by the attacker for dumping credentials?",
+            "answer": "invoke-powerdump.ps1",
+            "adversarial_tactic": "Credential Access: Dumping credentials is essential for further exploitation."
+          },
+          {
+            "question": "12. Is there any saved file containing the dumped credentials? If so, what is the name of the file?",
+            "answer": "hashes.txt",
+            "adversarial_tactic": "Credential Access: Saved credentials are critical for adversary exploitation."
+          },
+          {
+            "question": "13. Is there a file that contains a list of discovered hosts on the network? If so, what is the name of the file?",
+            "answer": "extracted_hosts.txt",
+            "adversarial_tactic": "Discovery: Listing discovered hosts helps attackers identify potential targets."
+          }
+        ]
+      }
+    }
+  ]
+}

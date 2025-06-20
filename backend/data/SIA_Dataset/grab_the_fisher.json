@@ -1,0 +1,110 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/grabthephisher/",
+        "scenario_name": "Grab_the_Fisher",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://forensicskween.com/ctf/cyberdefenders/grabthephisher/"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "Multiple users of a decentralized finance (DeFi) platform have reported suspicious fund withdrawals without their consent. An in-depth forensic analysis traced the issue to a phishing website that closely resembled the legitimate PancakeSwap exchange and deceived victims into revealing their wallet seed phrases. The phishing infrastructure was hosted on a hijacked server, with stolen credentials being transmitted through a Telegram bot. Your mission is to carry out threat intelligence analysis of the phishing infrastructure, uncover indicators of compromise (IoCs), and investigate the attacker’s digital activity, including Telegram IDs and online aliases, to better understand their tactics, techniques, and procedures (TTPs).",
+        "task_category": "Miscellaneous",
+        "complexity": "Easy",
+        "directory": "(directory_of_the_files)",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.(Add instructions related to usage of python scripts if needed). ",
+        "files_available": "scenario",
+        "tools_available": [
+          "html2text",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "questions": [
+          {
+            "question": "1. Is there a specific wallet used for asking the seed phrase? If so, which wallet is it?",
+            "answer": "MetaMask",
+            "adversarial_tactic": "Initial Access: Recognizing the wallet service helps understand the phishing kit s target and potential victims, aligning with Initial Access tactics."
+          },
+          {
+            "question": "2. Is there a file that contains the code for phishing kit? If so, name the file.",
+            "answer": "scenario/metamask/metamask.php or metamask.php",
+            "adversarial_tactic": "Initial access: Identifying the main operational file helps understand the phishing kits functionality and potential entry points for victims, aligning with Initial Access tactics."
+          },
+          {
+            "question": "3. Can you determine the primary programming language used in writing the phishing kit? If so, what is the language?",
+            "answer": "PHP",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "4. Does the phishing kit use any external services to gather information about the victims machine? If so, what is the name of the service?",
+            "answer": "Spyex Geo",
+            "adversarial_tactic": "Exfiltration: External services like Spyex Geo are used to gather additional information about the victim, aligning with Exfiltration tactics."
+          },
+          {
+            "question": "5. Can you determine if the phishing kit has a specific number of seed phrases it collected already? If so, what is the number?",
+            "answer": "3",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "6. If you can collect the seed phrases, what is the most recent wallet seed phrase collected? ",
+            "answer": "father also recycle embody balance concert mechanic believe owner pair muffin hockey",
+            "adversarial_tactic": "Credential Access: Retrieving specific seed phrases links to Credential Access since these credentials are necessary for wallet control and exploitation by the attacker."
+          },
+          {
+            "question": "7. Does the phishing kit include any functionality for credential dumping? If so, what communication medium is used for this purpose?",
+            "answer": "Telegram",
+            "adversarial_tactic": "Exfiltration: Determining if Telegram or similar channels are used for data exfiltration aligns with Exfiltration, as the phishing kit sends stolen information to remote channels."
+          },
+          {
+            "question": "8. Can you identify the token used for communication medium in the phishing kit? if so, what is the token?",
+            "answer": "5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10",
+            "adversarial_tactic": "Exfiltration: Identifying the Telegram token shows how data is exfiltrated, providing insight into the attackers chosen medium for moving stolen information externally."
+          },
+          {
+            "question": "9. Can you identify any chat ID associated with the phishers channel in the phishing kit? If so, what is the chat ID?",
+            "answer": "5442785564",
+            "adversarial_tactic": "Exfiltration: Finding the chat ID aligns with Exfiltration tactics, as it allows tracing where data is sent and understanding exfiltration routes."
+          },
+          {
+            "question": "10. Are there any references to other individuals or entities who may be involved in developing or distributing this phishing kit? If so, identify them.",
+            "answer": "j1j1b1s@m3r0",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "11. Based on the available information from the phishing kits communication medium (e.g., tokens, chat IDs), identify the full name of the individual managing the communication channel?",
+            "answer": "Marcus Aurelius",
+            "adversarial_tactic": "Command and Control: Associating a name with the communication channel helps identify the individual behind the phishing kit and their potential role in the operation."
+          },
+          {
+            "question": "12. Based on the available information from the phishing kits Telegram communication (e.g., tokens, chat IDs), determine the username of the individual managing the phishing kits Telegram channel?",
+            "answer": "pumpkinboii",
+            "adversarial_tactic": "Command and Control (C2): Establishing the username of the Telegram channel manager ties into Command and Control, helping link attacker infrastructure to a specific operator."
+          }
+        ]
+      }
+    }
+  ]
+}

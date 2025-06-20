@@ -1,0 +1,73 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/maldoc101/",
+        "scenario_name": "Maldoc_101",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/MalDoc101"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "This task aims to demonstrate how critical indicators of compromise (IOCs) can be quickly uncovered by examining artifacts. As a blue team analyst, your responsibility is to conduct static analysis on the provided files and answer the related questions.",
+        "task_category": "Malware Analysis",
+        "complexity": "Medium",
+        "files_available": "sample.bin",
+        "tools_available": [
+          "oledump",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python"
+        ],
+        "instructions": "\nYou are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install the tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts or oledump if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify if there are macros present in the document, identify the highest-numbered stream that contains a macro.",
+            "answer": "16.",
+            "adversarial_tactic": "Execution: Understanding the presence of macros helps identify potential malicious code execution within the document."
+          },
+          {
+            "question": "2. Can you find any event that is used to begin the execution of the macros? If so, what is the event?",
+            "answer": "Document_Open.",
+            "adversarial_tactic": "Execution: Recognizing 'Document_Open' as the trigger event indicates the method of Execution in this case, using macros to initiate further actions."
+          },
+          {
+            "question": "3. Among the streams in the document, can you identify if there is any stream that contains any obfuscated base64 encoded string. If so, can you provide the stream number?",
+            "answer": "stream 34.",
+            "adversarial_tactic": "Defense Evasion: Finding encoded strings within streams often points to Defense Evasion, as attackers frequently use encoding to conceal malicious payloads or instructions."
+          },
+          {
+            "question": "4. Do you find any padded string used for the obfuscated base64 string? If so, what value is used for padding or obfuscating?",
+            "answer": "'2342772g3&*gs7712ffvs626fq'.",
+            "adversarial_tactic": "Defense Evasion: Examining obfuscation techniques (such as padding in encoded strings) fits Defense Evasion since attackers obfuscate content to avoid detection."
+          },
+          {
+            "question": "5. Do you think if there is any program executed by the obfuscated base64 encoded string? If so, what is the program executed?",
+            "answer": "'powershell'.",
+            "adversarial_tactic": "Defense Evasion: Recognizing PowerShell execution from obfuscated strings indicates an attempt to evade detection by using legitimate tools for malicious purposes."
+          }
+        ]
+      }
+    }
+  ]
+}

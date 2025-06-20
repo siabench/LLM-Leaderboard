@@ -1,0 +1,90 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://blueteamlabs.online/home/challenge/phishing-analysis-2-a1091574b8",
+        "scenario_name": "Btlo_Phishing_Email",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@josephkarug/phishing-analysis-2-blue-team-lab-walkthrough-1ceca3f590d7"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "This task aims to test your phishing investigation abilities by triaging artifacts and collecting key details about a recent phishing campaign. As a blue team analyst, your role is to analyze the provided evidence and answer the associated questions.",
+        "task_category": "Miscellaneous",
+        "complexity": "Easy",
+        "tools_available": [
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "exiftool",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "email.eml",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. What is the sender's email address?",
+            "answer": "amazon@zyevantoby.cn",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. Who was the intended recipient of the email?",
+            "answer": "saintington73@outlook.com",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. What is the subject line mentioned in the email?",
+            "answer": "'Your Account has been locked'",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "4. Can you identify if any company being impersonated in the email? If so, provide the name of the company.",
+            "answer": "Amazon",
+            "adversarial_tactic": "Initial Access: By imitating a legitimate company, the attacker attempts to gain the recipient's trust and initial access."
+          },
+          {
+            "question": "5. What is the date and time the email was sent?",
+            "answer": "Wed, 14 Jul 2021 01:40:32 +0900",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "6. Upon examining the email content in a text editor, can you identify if any encoding scheme has been used. If so, what is the encoding scheme?",
+            "answer": "'base64'",
+            "adversarial_tactic": "Defense Evasion: Encoding schemes such as Base64 can conceal content and avoid detection, aligning with Defense Evasion tactics to bypass standard text inspection."
+          },
+          {
+            "question": "7. Can you identify if there is any URL embedded within the email body to retrieve external content, such as images or logos? If so, what is the URL?",
+            "answer": "'https://images.squarespace-cdn.com/content/52e2b6d3e4b06446e8bf13ed/1500584238342-OX2L298XVSKF8AO6I3SV/amazon-logo?format=750w&amp;content-type=image%2Fpng'",
+            "adversarial_tactic": "Command and Control: Embedded URLs can be used to track user interactions or download malicious content, aligning with Command and Control tactics."
+          },
+          {
+            "question": "8. Can you identify any URLs related to social media profiles within the email content? If so, extract and analyze the associated username.",
+            "answer": "'amir.boyka.7'",
+            "adversarial_tactic": ""
+          }
+        ]
+      }
+    }
+  ]
+}

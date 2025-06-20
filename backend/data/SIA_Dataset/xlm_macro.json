@@ -1,0 +1,115 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/xlm-macros/",
+        "scenario_name": "XLM_Macro",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/XLM_Macros"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "This task aims to place you in the role of a blue team security analyst, where you'll analyze two documents leveraging Excel 4.0 macros designed to evade analysis and download the next stage of the attack.",
+        "task_category": "Malware Analysis",
+        "complexity": "Medium",
+        "files_available": [
+          "sample1.bin",
+          "sample2.bin"
+        ],
+        "tools_available": [
+          "oledump",
+          "olevba",
+          "xlmdeobfuscator",
+          "msoffcrypto-tool",
+          "msoffcrypto-crack.py",
+          "plugin_biff.py",
+          "grep",
+          "find",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, oledump, olevba, xlmdeobfuscator, msoffcrypto-tool, msoffcrypto-crack, plugin_biff.py if needed)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. From sample1.bin, can you identify if there is any protection mechanism applied to the document? If so, what is the password used to protect the document?",
+            "answer": "VelvetSweatshop",
+            "adversarial_tactic": "Defense Evasion: Attackers often use password protection to evade detection and complicate analysis by restricting access to document contents."
+          },
+          {
+            "question": "2. From sample1.bin, can you identify any hidden sheets  in sample1.bin? If so, what is the name of the sheet that starts with the letter 'S'?",
+            "answer": "SOCWNEScLLxkLhtJp",
+            "adversarial_tactic": "Defense Evasion: Hidden sheets and workbook elements conceal malicious code or indicators, helping evade security tools and analysts."
+          },
+          {
+            "question": "3. From sample1.bin, can you identify any URLs embedded within the document used for downloading the next stage of the attack? If so, what is the domain name used for communication?",
+            "answer": "rilaer.com",
+            "adversarial_tactic": "Command and Control: URLs for secondary payloads are often embedded for command and control communication, enabling attackers to download additional components."
+          },
+          {
+            "question": "4. From sample1.bin, can you identify any file that appears to be downloaded or referenced as suspicious executables? If so, what is the name of the file? ",
+            "answer": "ixcxmzcvqui.exe",
+            "adversarial_tactic": "Execution: Executable references in macros indicate potential malware that will be executed upon download, contributing to the Execution tactic."
+          },
+          {
+            "question": "5. From sample2.bin, can you identify if there are any hidden sheets in the document? If so, what is the name of the sheet?",
+            "answer": "CSHykdYHvi",
+            "adversarial_tactic": "Defense Evasion: Very hidden sheets help attackers obfuscate malicious content and evade automated analysis."
+          },
+          {
+            "question": "6. From sample2.bin, can you identify any instances of registry command usage, particularly noting any registry key accessed by the document? If so, what registry key is it checking?",
+            "answer": "VBAWarnings",
+            "adversarial_tactic": "Persistence: Modifying registry keys related to security can either evade defenses or persistently disable protection mechanisms."
+          },
+          {
+            "question": "7. From sample2.bin, can you identify any registry checks performed? If so, what is the value being accessed indicating a virtual or sandboxed environment?",
+            "answer": "0x1",
+            "adversarial_tactic": "Defense Evasion: Anti-virtualization checks help malware detect and evade analysis environments, allowing it to remain undetected during analysis."
+          },
+          {
+            "question": "8. In sample2.bin, can you identify any specific macro functions employed for anti-analysis? If so, what is the function used?",
+            "answer": "GET.WORKSPACE",
+            "adversarial_tactic": "Defense Evasion: Anti-analysis functions retrieve system information that helps malware determine if its in an analysis environment, facilitating evasion."
+          },
+          {
+            "question": "9. In sample2.bin, can you identify any if there are any environment checks performed? If so, what is the value being used to compare the environment?",
+            "answer": "Windows",
+            "adversarial_tactic": "Defense Evasion: Environment checks enable the malware to evade detection by distinguishing between analysis and target environments."
+          },
+          {
+            "question": "10. In sample2.bin, can you identify if there are any payloads downloaded? If so, what is the type of payload being downloaded?",
+            "answer": "DLL",
+            "adversarial_tactic": "Execution: Downloaded payloads are often executed to deliver malicious functionality, contributing to the Execution tactic."
+          },
+          {
+            "question": "11. In sample2.bin, can you identify any URLs or domains linked to the payload download? If so, what is the URL or domain?",
+            "answer": "ethelenecrace.xyz",
+            "adversarial_tactic": "Command and Control: Environment checks enable the malware to evade detection by distinguishing between analysis and target environments."
+          },
+          {
+            "question": "12. In sample2.bin, can you identify the filenames used for saving downloaded payloads? If so, what is the filename?",
+            "answer": "bmjn5ef.html",
+            "adversarial_tactic": "Execution: Filenames of downloaded payloads indicate potential malware components that are saved and executed."
+          },
+          {
+            "question": "13. In sample2.bin, can you identify any processes or executables invoked to execute payload? If so, what is the executable name?",
+            "answer": "rundll32.exe",
+            "adversarial_tactic": "Execution: Executable invocation for malware execution falls under the Execution tactic as it runs malicious code."
+          }
+        ]
+      }
+    }
+  ]
+}

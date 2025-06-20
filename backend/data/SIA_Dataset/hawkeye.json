@@ -1,0 +1,156 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/hawkeye/",
+        "scenario_name": "Hawkeye",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/HawkEye"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "An employee in the accounting department of your organization received an email containing an invoice with an embedded download link. Following the email’s opening, unusual network activity was detected. As a SOC analyst, your task is to examine the network logs and investigate any potential data exfiltration attempts.",
+        "task_category": "Network Forensics",
+        "complexity": "Medium",
+        "tools_available": [
+          "tshark",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "You are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts if needed).\n",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Analyze the network traffic capture file to determine how many packets are present in the entire capture.",
+            "answer": "4003",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. What is the timestamp of the first packet captured in the pcap file?",
+            "answer": "April 10, 2019 at 16:37:07 EDT or 2019-04-10 20:37:07 UTC.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. Based on the pcap file, determine the total duration of the network capture.",
+            "answer": "The duration of the capture is 01:03:41.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "4. Investigate the pcap file and identify the most active computer at the link level.",
+            "answer": "00:08:02:1c:47:ae.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "5. The organization works with private addressing and netmask /24. How many computers in the organization are involved in the capture? ",
+            "answer": "3",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "6. Determine the the name of the most active computer at the network level.",
+            "answer": "Beijing-5cd1-PC.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "7. What is the IP of the organization's DNS server based on the network traffic?",
+            "answer": "10.4.10.4.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "8. If there any domain queried in packet 204 by one of the computers in the network, if so, what is the domain?",
+            "answer": "proforma-invoices.com.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "9. Resolve the found domain queried to its corresponding IP address using data from the pcap file.",
+            "answer": "217.182.138.150.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "10. Based on network traffic, identify the operating system of the victim's machine.",
+            "answer": "Windows NT 6.1.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "11. Is there any suspicious file downloaded by the victim's computer during the network capture? If so, determine the name of the file.",
+            "answer": "tkraw_Protected99.exe.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "12. If any suspicious file is found, determine the MD5 hash of the file.",
+            "answer": "71826ba081e303866ce2a2534491a2f7.",
+            "adversarial_tactic": "Execution: Identifying files such as executables and their hashes can help in understanding the executed potential malware involved in the attack."
+          },
+          {
+            "question": "13. Can you identify if there is any software that runs the web server hosting the suspicious file downloaded by the victim's computer? If so, can you provide the name of the software?",
+            "answer": "LiteSpeed.",
+            "adversarial_tactic": "Initial Access: Understanding the server software can help from where the malicious file was downloaded and how the attacker gained initial access to the victim's machine."
+          },
+          {
+            "question": "14. What is the public IP address of the victim's computer observed in the network capture?",
+            "answer": "173.66.146.112.",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "15. Is there any evidence that data is stolen from the victim's computer?",
+            "answer": "Yes, data is exfiltrated from the victim's computer.",
+            "adversarial_tactic": "Exfiltration: This question directly seeks to verify data theft, which is central to the Exfiltration tactic. Evidence of data leaving the network is a primary indicator of an adversary achieving their objective."
+          },
+          {
+            "question": "16. If there is any evidence of stolen data, identify the country from which the stolen data is sent.",
+            "answer": "United States",
+            "adversarial_tactic": "Command and Control: Identifying the location of the email server can determine the adversary's location or the location of the compromised server used for exfiltration.",
+            "Task Cateogory": "OSINT"
+          },
+          {
+            "question": "17. If there is any evidence of stolen data, can you find any software that runs the email server to which the stolen data is sent? If so, what is the name of the software?",
+            "answer": "Exim 4.91.",
+            "adversarial_tactic": "Exfiltration: Understanding the email server software can help in identifying the exfiltration method used by the attacker and the potential vulnerabilities exploited."
+          },
+          {
+            "question": "18. If there is any evidence of stolen data, can you identify the destination email address to which the stolen data is sent from the victim's computer. ",
+            "answer": "sales.del@macwinlogistics.in.",
+            "adversarial_tactic": "Exfiltration: Identifying the destination address is crucial to understand where the stolen data is sent, aligning with the Exfiltration tactic where the attacker moves data out of the network."
+          },
+          {
+            "question": "19. Can you identify if there is any password used by the suspicious file to send the stolen data. If there is, what is the password?",
+            "answer": "Sales@23.",
+            "adversarial_tactic": "Exfiltration: Identifying the password used for exfiltration is crucial for understanding the adversary's techniques and the exfiltration process."
+          },
+          {
+            "question": "20. Based on your analysis, which malware variant was responsible for exfiltrating the stolen data?",
+            "answer": "Reborn v9.",
+            "adversarial_tactic": "Exfiltration: Identifying the malware variant is crucial for understanding the adversary's techniques and the exfiltration process."
+          },
+          {
+            "question": "21. Analyze the network traffic to extract if there you can find Bank of America login credentials (username and password) involved in the data exfiltration attempt. If you find, provide the credentials.",
+            "answer": "Troman.mcguire:P@ssw0rd$.",
+            "adversarial_tactic": "Credential Access: Finding login credentials exfiltrated during the attack highlights credential-harvesting goals, directly aligning with the Credential Access tactic where the attacker seeks to steal sensitive information."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/psexec-hunt/",
+        "scenario_name": "Ps_Exec",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://github.com/Panagiotis-INS/Cyber-Defenders/tree/main/PsExec%20Hunt"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "An alert from the Intrusion Detection System (IDS) reported unusual lateral movement activity involving PsExec, suggesting possible unauthorized access and movement within the network. As a SOC Analyst, your role is to analyze the supplied PCAP file to track the attacker’s actions. Determine how they initially accessed the network, which systems were targeted, the scope of the intrusion, and key indicators that reveal their methods and intentions within the compromised environment.",
+        "task_category": "Network Forensics",
+        "complexity": "Medium",
+        "tools_available": [
+          "tshark",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "uniq",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois",
+          "curl"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "You are solving this problem in a Kali Linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. Can you identify any suspicious IP address that is responsible for the initial access? if so, what is the IP address?",
+            "answer": "10.0.0.130",
+            "adversarial_tactic": "Initial Access: Identifying the source IP reveals how the attacker first made contact with the victim system."
+          },
+          {
+            "question": "2. Can you identify the machine's hostname to which the suspicious activity happened? If so, what is the hostname?",
+            "answer": "SALES-PC",
+            "adversarial_tactic": "Initial Access: Recognizing the initial malicious file helps trace how the attacker delivered the payload."
+          },
+          {
+            "question": "3. Do you think there was any authentication step used by any suspicious user? If so, what was the username utilized?",
+            "answer": "ssales",
+            "adversarial_tactic": "Credential Access: Identifying the username used during the attack helps understand how the attacker authenticated to the system."
+          },
+          {
+            "question": "4. Can you identify any service executable that has been set up on the target by any suspicious user? If so, what is it?",
+            "answer": "PSEXESVC",
+            "adversarial_tactic": "Execution: Understanding how the file behaves post-delivery informs the detection of execution paths."
+          },
+          {
+            "question": "5. Can you identify any network share that might be used by PsExec to install any service on the target machine? If so, what is it?",
+            "answer": "ADMIN$",
+            "adversarial_tactic": "Persistence: Dropped files often help attackers maintain access or escalate privileges."
+          },
+          {
+            "question": "6. Can you identify any network share that was used by PsExec for communication purposes? If so, what is it?",
+            "answer": "IPC$",
+            "adversarial_tactic": "Persistence: The MD5 hash provides a unique identifier that helps track this malware variant across systems."
+          },
+          {
+            "question": "7. Can you identify if there was any second machine targeted? If so, what is the hostname of that machine?",
+            "answer": "MARKETING-PC",
+            "adversarial_tactic": "Persistence: The MD5 hash provides a unique identifier that helps track this malware variant across systems."
+          }
+        ]
+      }
+    }
+  ]
+}

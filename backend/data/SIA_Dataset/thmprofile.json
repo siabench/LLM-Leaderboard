@@ -1,0 +1,79 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://tryhackme.com/r/room/profilesroom",
+        "scenario_name": "THM_Profile",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://medium.com/@lukwagoasuman236/tryhackme-profiles-write-up-60202db52210"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "The incident response team has notified you of unusual behavior on a Linux-based database server. A memory dump was captured from the system and handed over for examination. The team is unsure about the exact nature of the issue, and your task is to analyze the dump to detect any signs of compromise or malicious activity.",
+        "task_category": "Memory Forensics",
+        "complexity": "Medium",
+        "tools_available": [
+          "Volatility (2.6.1)",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "uniq",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois"
+        ],
+        "files_available": "linux.mem",
+        "instructions": "You are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, volatility if needed).(Extra info: The profile for win7ecorpoffice memory dump is 'Linuxubuntu20_04x64'.)",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. From the memory dump, can you identify if any user credentials are exposed. If so, what is the exposed password?",
+            "answer": "Ftrccw45PHyq",
+            "adversarial_tactic": "Credential Access: Exposed credentials can be used by attackers to gain unauthorized access to systems."
+          },
+          {
+            "question": "2. Can you identify if any database file was accessed? If so, what is the timestamp of the access?",
+            "answer": "2023-11-07 03:49:45",
+            "adversarial_tactic": "Credential Access: Access to critical database files could signal an attempt to extract user information."
+          },
+          {
+            "question": "3. Can you identify if there are any files that seems to be suspicious? If so, what is the md5 hash of the file?",
+            "answer": "0511ccaad402d6d13ce801e1e9136ba2",
+            "adversarial_tactic": "Execution: For identifying files potentially used to execute malicious processes."
+          },
+          {
+            "question": "4. Can you identify any network-related activity related to any potential malicious actor? If so, what is the IP address and port number of the malicious actor?",
+            "answer": "10.0.2.72:1337",
+            "adversarial_tactic": "Command and Control: Identifying network connections to malicious IP addresses can help identify command-and-control servers used by attackers to control compromised systems."
+          },
+          {
+            "question": "5. Can you identify if there is any evidence of scheduled tasks or cron jobs in the memory dump? If so, what is the full path of the cron job file and its inode number?",
+            "answer": "The full path of the cronjob file is /var/spool/cron/crontabs/root and its inode number is 131127",
+            "adversarial_tactic": "Persistence: Cron jobs can be used by attackers to ensure their malicious code runs at regular intervals, maintaining persistence."
+          },
+          {
+            "question": "6. If there is any evidence of cron jobs, can you identify the contents of the cron job file? If so, what command is being executed by the cron job?",
+            "answer": "* * * * * cp /opt/.bashrc/root/.bashrc",
+            "adversarial_tactic": "Persistence: The cron job may be designed to ensure continuous execution of malicious commands or scripts."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "source": "https://cyberdefenders.org/blueteam-ctf-challenges/ulysses/",
+        "scenario_name": "Ulysses",
+        "last_accessed": "June 04, 2025",
+        "writeup": "https://forensicskween.com/ctf/cyberdefenders/ulysses/"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "A research server triggered alerts due to unusual behavior following numerous failed login attempts. Analysts confirmed signs of a brute-force attack, suspicious outbound traffic, and potential persistence techniques. Hard disk dumps and memory snapshots of the machine are provided in order to solve the challenge.",
+        "task_category": "Memory Forensics",
+        "complexity": "Medium",
+        "files_available": [
+          "sample.sda1.img",
+          "sample.kcore.img",
+          "sample.memdump.img"
+        ],
+        "tools_available": [
+          "Volatility (2.6.1)",
+          "grep",
+          "awk",
+          "sed",
+          "find",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "tr",
+          "base64",
+          "find",
+          "cd",
+          "md5sum",
+          "python",
+          "whois"
+        ],
+        "instructions": "You are solving this problem in a kali linux terminal. You can use any tool as you want.If you need to install any other tool, you can do it by adding sudo at the beginning of the command. (Add instructions related to usage of python scripts, volatility if needed). (Extra info: The profile for win7ecorpoffice memory dump is 'LinuxDebian5_26x86'. and The sample.sda1.img is mounted to (path) directory.",
+        "directory": "(directory_of_the_files)",
+        "questions": [
+          {
+            "question": "1. What operating system is running on the server?",
+            "answer": "Debian GNU/Linux 5.0",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "2. What is the ip address of the server?",
+            "answer": "192.168.56.102",
+            "adversarial_tactic": ""
+          },
+          {
+            "question": "3. Can you verify if there any suspicious authentication attempts? If so, what user account shows signs of suspicious activity?",
+            "answer": "ulysses",
+            "adversarial_tactic": "Credential Access: Monitoring failed login attempts may indicate password guessing or brute-forcing attacks targeting specific accounts."
+          },
+          {
+            "question": "4. If there was suspicious authentication attempts, how many failed login attempts were recorded for the suspicious activity? ",
+            "answer": "32",
+            "adversarial_tactic": "Credential Access: Monitoring failed login attempts may indicate password guessing or brute-forcing attacks targeting specific accounts."
+          },
+          {
+            "question": "5. Can you identify if there are any IP addresses that have been interacting with the server recently and that seems to be suspicious?",
+            "answer": "192.168.56.1, 192.168.56.101",
+            "adversarial_tactic": "Command and Control: Identifying suspicious IP addresses can help trace potential Command and Control (C2) servers or attacker-controlled systems."
+          },
+          {
+            "question": "6. Can you identify if there are any active network communication processes running on the system that might be suspicious? If so, what is the name of the service and its process ID?",
+            "answer": "nc service with PID 2169",
+            "adversarial_tactic": "Command and Control: Active network communication processes can indicate Command and Control (C2) activity, where attackers maintain control over compromised systems."
+          },
+          {
+            "question": "7. Can you identify if there are any services that might have been exploited to gain access to the system? If so, what is the name of the service?",
+            "answer": "Exim4",
+            "adversarial_tactic": "Initial Access: Exploiting services is a common Initial Access tactic, where attackers leverage vulnerabilities to gain a foothold in the target system."
+          },
+          {
+            "question": "8. Can you identify if any new file been downloaded or created on the server recently? If so, what is the name of the file?",
+            "answer": "rk.tar",
+            "adversarial_tactic": "Execution: Downloading files is a common tactic for delivering payloads or additional tools to the target system."
+          },
+          {
+            "question": "9. Can you identify if there were any ports involved in network traffic that seem associated with data exfiltration? If so, what is the port number of the highest one? ",
+            "answer": "8888",
+            "adversarial_tactic": "Exfiltration: Identifying ports associated with data exfiltration can help trace the methods attackers use to steal data from the target system."
+          },
+          {
+            "question": "10. Can you identify, if there has been any attempt to modify firewall settings? If so, find if any port was blocked or manipulated.",
+            "answer": "45295",
+            "adversarial_tactic": "Defense Evasion: Modifying firewall settings is a Defense Evasion tactic, where attackers attempt to bypass security controls to maintain access or exfiltrate data."
+          }
+        ]
+      }
+    }
+  ]
+}
