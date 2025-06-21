@@ -205,6 +205,102 @@ FROM code_scenario_stats
 ORDER BY model_name, code;
 """
 
+AT_LEADERBOARD_SQL = """
+WITH
+  all_qs AS (
+    SELECT AT_question_id, AT_scenario_name
+      FROM AT_metadata
+  ),
+  filtered_qs AS (
+    SELECT AT_question_id, AT_scenario_name
+      FROM AT_metadata
+     WHERE (%s::text[] IS NULL OR AT_task_category = ANY(%s))
+       AND (%s::text[] IS NULL OR AT_question_level  = ANY(%s))
+  ),
+  all_per_scenario AS (
+    SELECT m.model_name
+         , aq.AT_scenario_name    AS scenario_name
+         , COUNT(aq.AT_question_id) AS num_questions
+         , COUNT(mm.AT_metrics_id) FILTER (WHERE mm.AT_response = 'pass') AS num_passed
+      FROM all_qs aq
+ CROSS JOIN models m
+ LEFT JOIN AT_model_metrics mm
+        ON mm.AT_question_id = aq.AT_question_id
+       AND mm.model_id       = m.model_id
+  GROUP BY m.model_name, aq.AT_scenario_name
+  ),
+  all_scenario_stats AS (
+    SELECT
+      model_name,
+      AVG(
+        CASE WHEN num_questions > 0
+             THEN num_passed::float/num_questions
+             ELSE 0
+        END
+      ) AS overall_solving_percentage,
+      SUM(
+        CASE WHEN num_questions>0 AND num_passed=num_questions
+             THEN 1
+             ELSE 0
+        END
+      ) AS overall_fully_solved
+    FROM all_per_scenario
+    GROUP BY model_name
+  ),
+  filtered_per_scenario AS (
+    SELECT m.model_name
+         , fq.AT_scenario_name AS scenario_name
+         , COUNT(fq.AT_question_id) AS num_questions
+         , COUNT(mm.AT_metrics_id) FILTER (WHERE mm.AT_response='pass') AS num_passed
+      FROM filtered_qs fq
+ CROSS JOIN models m
+ LEFT JOIN AT_model_metrics mm
+        ON mm.AT_question_id = fq.AT_question_id
+       AND mm.model_id       = m.model_id
+    GROUP BY m.model_name, fq.AT_scenario_name
+  ),
+  filtered_scenario_stats AS (
+    SELECT
+      model_name,
+      AVG(
+        CASE WHEN num_questions>0
+             THEN num_passed::float/num_questions
+             ELSE 0
+        END
+      ) AS filtered_solving_percentage,
+      SUM(
+        CASE WHEN num_questions>0 AND num_passed=num_questions
+             THEN 1
+             ELSE 0
+        END
+      ) AS filtered_fully_solved
+    FROM filtered_per_scenario
+    GROUP BY model_name
+  ),
+  filtered_scenarios_ct AS (
+    SELECT COUNT(DISTINCT AT_scenario_name) AS total_filtered_scenarios
+      FROM filtered_qs
+  ),
+  all_scenarios_ct AS (
+    SELECT COUNT(DISTINCT AT_scenario_name) AS total_scenarios
+      FROM all_qs
+  )
+SELECT
+  m.model_name,
+  COALESCE(ass.overall_fully_solved,0)              AS overall_fully_solved,
+  COALESCE(ROUND(100.0*ass.overall_solving_percentage,2),0) AS overall_solving_percentage,
+  COALESCE(fss.filtered_fully_solved,0)             AS filtered_fully_solved,
+  COALESCE(ROUND(100.0*fss.filtered_solving_percentage,2),0) AS filtered_solving_percentage,
+  fsct.total_filtered_scenarios,
+  asct.total_scenarios
+FROM models m
+LEFT JOIN all_scenario_stats    ass ON ass.model_name    = m.model_name
+LEFT JOIN filtered_scenario_stats fss ON fss.model_name   = m.model_name
+LEFT JOIN filtered_scenarios_ct fsct ON TRUE
+LEFT JOIN all_scenarios_ct       asct ON TRUE
+ORDER BY overall_solving_percentage DESC;
+"""
+
 def get_conn():
     return psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
 
@@ -293,7 +389,26 @@ def fetch_legend():
     return legend
 
 def fetch_alert_leaderboard(tasks=None, levels=None):
-    return fetch_leaderboard(tasks, levels)
+    params = (
+        tasks, tasks,
+        levels, levels
+    )
+    with get_conn() as conn, conn.cursor() as cur:
+        cur.execute(AT_LEADERBOARD_SQL, params)
+        rows = cur.fetchall()
+
+    result = []
+    for mn, fs, fp, ffs, fpp, tf, tt in rows:
+        result.append({
+            "model_name": mn,
+            "overall_fully_solved":    to_int(fs),
+            "overall_solving_percentage": to_float(fp),
+            "filtered_fully_solved":   to_int(ffs),
+            "filtered_solving_percentage": to_float(fpp),
+            "total_filtered_scenarios": to_int(tf),
+            "total_scenarios":         to_int(tt),
+        })
+    return result
 
 
 def fetch_model_integrations(): 

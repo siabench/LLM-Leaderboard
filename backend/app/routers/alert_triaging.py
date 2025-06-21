@@ -1,6 +1,6 @@
 from typing import List, Optional
 from fastapi import APIRouter, Query, HTTPException
-from app.crud import fetch_alert_leaderboard  # you’ll write this
+from app.crud import fetch_alert_leaderboard  
 from app.schemas import LeaderboardEntry
 
 router = APIRouter(prefix="/alert-triaging")

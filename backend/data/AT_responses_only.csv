@@ -1,0 +1,36 @@
+_orig_idx,AT_question_number,AT_scenario_name,AT_question_level,AT_task_category,DeepSeek-Reasoner
+0,s1.1 (fp),fp,Easy,Network Forensics,fail
+1,s1.2,fp,Easy,Network Forensics,pass
+2,s1.3,fp,Easy,Network Forensics,pass
+3,s1.4,fp,Easy,Network Forensics,pass
+4,s1.5,fp,Easy,Network Forensics,pass
+5,s1.6,fp,Easy,Network Forensics,pass
+6,s1.7,fp,Easy,Network Forensics,pass
+7,s1.8,fp,Easy,Network Forensics,pass
+8,s1.9,fp,Easy,Network Forensics,fail
+9,s1.10,fp,Easy,Network Forensics,pass
+10,s1.11,fp,Easy,Network Forensics,pass
+11,s1.12,fp,Easy,Network Forensics,pass
+12,s1.13,fp,Easy,Network Forensics,pass
+13,s1.14,fp,Easy,Network Forensics,pass
+14,s1.15,fp,Easy,Network Forensics,pass
+15,s1.16,fp,Easy,Network Forensics,pass
+16,s1.17,fp,Easy,Network Forensics,pass
+17,s1.18,fp,Easy,Network Forensics,pass
+18,s1.19,fp,Easy,Network Forensics,pass
+19,s1.20,fp,Easy,Network Forensics,pass
+20,s1.21,fp,Easy,Network Forensics,pass
+21,s1.22,fp,Easy,Network Forensics,pass
+22,s1.23,fp,Easy,Network Forensics,pass
+23,s1.24,fp,Easy,Network Forensics,pass
+24,s1.25,fp,Easy,Network Forensics,baki
+25,s1.26,fp,Easy,Network Forensics,fail
+26,s1.27,fp,Easy,Network Forensics,pass
+27,s1.28,fp,Easy,Network Forensics,pass
+28,s1.29,fp,Easy,Network Forensics,pass
+29,s1.30,fp,Easy,Network Forensics,pass
+31,s2.1(tp),tp,Easy,Network Forensics,pass
+32,s2.2,tp,Easy,Network Forensics,pass
+33,s2.3,tp,Easy,Network Forensics,pass
+34,s2.4,tp,Easy,Network Forensics,pass
+35,s2.5,tp,Easy,Network Forensics,fail
