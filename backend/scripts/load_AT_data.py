@@ -31,10 +31,10 @@ df_raw = pd.read_csv(LOCAL_PATH, header=[0,1], dtype=str, keep_default_na=False)
 
 # 3) Map the four meta columns by their second‐level header
 wanted = {
-    "Question":        "AT_question_number",
-    "Scenario_name":   "AT_scenario_name",
-    "Question_Level":  "AT_question_level",
-    "Task_Category":   "AT_task_category",
+    "Question":        "at_question_number",
+    "Scenario_name":   "at_scenario_name",
+    "Question_Level":  "at_question_level",
+    "Task_Category":   "at_task_category",
 }
 meta_cols = {
     wanted[L1]: (L0, L1)
@@ -53,35 +53,35 @@ model_cols = {
 rows = []
 for idx, row in df_raw.iterrows():
     meta = { key: row[col] for key, col in meta_cols.items() }
-    if not meta["AT_question_number"].strip():
+    if not meta["at_question_number"].strip():
         continue
     for model_name, col in model_cols.items():
         resp = row[col].strip()
         if resp:
             rows.append({ **meta,
                           "model_name": model_name,
-                          "AT_response": resp,
+                          "at_response": resp,
                           "_orig_idx": idx })
 df_long = pd.DataFrame(rows)
 
 # 6) Clean & dedupe
-df_long = df_long.replace("", np.nan).dropna(subset=["AT_response"]).drop_duplicates()
+df_long = df_long.replace("", np.nan).dropna(subset=["at_response"]).drop_duplicates()
 
 # 7) Pivot to wide & save cleaned CSV
 wide = df_long.pivot_table(
     index=["_orig_idx"] + list(meta_cols.keys()),
     columns="model_name",
-    values="AT_response",
+    values="at_response",
     aggfunc="first"
 ).reset_index()
 wide.to_csv(CLEANED_PATH, index=False)
 
 # 8) Insert unique metadata into AT_metadata
 meta_df = wide[list(meta_cols.keys())].drop_duplicates().reset_index(drop=True)
-meta_df.to_sql("AT_metadata", engine, if_exists="append", index=False)
+meta_df.to_sql("at_metadata", engine, if_exists="append", index=False)
 
 # 9) Reload AT_metadata to get AT_question_id
-meta_db = pd.read_sql('SELECT * FROM "AT_metadata"', engine)
+meta_db = pd.read_sql('SELECT * FROM "at_metadata"', engine)
 
 # 10) Load all models, then filter in Python
 models_db = pd.read_sql("SELECT * FROM models", engine)
@@ -92,15 +92,15 @@ long2 = wide.melt(
     id_vars=list(meta_cols.keys()),
     value_vars=list(model_cols.keys()),
     var_name="model_name",
-    value_name="AT_response"
-).dropna(subset=["AT_response"])
+    value_name="at_response"
+).dropna(subset=["at_response"])
 
 # 12) Map to foreign keys
 long2 = long2.merge(meta_db,    on=list(meta_cols.keys()), how="left")
 long2 = long2.merge(models_db, on="model_name",            how="left")
 
 # 13) Insert into AT_models_metrics
-metrics = long2[["AT_question_id", "model_id", "AT_response"]]
-metrics.to_sql("AT_model_metrics", engine, if_exists="append", index=False)
+metrics = long2[["at_question_id", "model_id", "at_response"]]
+metrics.to_sql("at_model_metrics", engine, if_exists="append", index=False)
 
-print(f"Loaded {meta_df.shape[0]} AT_metadata rows and {metrics.shape[0]} AT_model_metrics rows.")
+print(f"Loaded {meta_df.shape[0]} at_metadata rows and {metrics.shape[0]} at_model_metrics rows.")
