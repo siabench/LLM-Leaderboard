@@ -208,24 +208,24 @@ ORDER BY model_name, code;
 AT_LEADERBOARD_SQL = """
 WITH
   all_qs AS (
-    SELECT AT_question_id, AT_scenario_name
-      FROM "AT_metadata"
+    SELECT at_question_id, at_scenario_name
+      FROM at_metadata
   ),
   filtered_qs AS (
-    SELECT AT_question_id, AT_scenario_name
-      FROM "AT_metadata"
-     WHERE (%s::text[] IS NULL OR AT_task_category = ANY(%s))
-       AND (%s::text[] IS NULL OR AT_question_level  = ANY(%s))
+    SELECT at_question_id, at_scenario_name
+      FROM at_metadata
+     WHERE (%s::text[] IS NULL OR at_task_category = ANY(%s))
+       AND (%s::text[] IS NULL OR at_question_level  = ANY(%s))
   ),
   all_per_scenario AS (
     SELECT m.model_name
          , aq.AT_scenario_name    AS scenario_name
-         , COUNT(aq.AT_question_id) AS num_questions
-         , COUNT(mm.AT_metrics_id) FILTER (WHERE mm.AT_response = 'pass') AS num_passed
+         , COUNT(aq.at_question_id) AS num_questions
+         , COUNT(mm.at_metrics_id) FILTER (WHERE mm.at_response = 'pass') AS num_passed
       FROM all_qs aq
  CROSS JOIN models m
- LEFT JOIN "AT_model_metrics" mm
-        ON mm.AT_question_id = aq.AT_question_id
+ LEFT JOIN at_model_metrics mm
+        ON mm.at_question_id = aq.at_question_id
        AND mm.model_id       = m.model_id
   GROUP BY m.model_name, aq.AT_scenario_name
   ),
@@ -250,14 +250,14 @@ WITH
   filtered_per_scenario AS (
     SELECT m.model_name
          , fq.AT_scenario_name AS scenario_name
-         , COUNT(fq.AT_question_id) AS num_questions
-         , COUNT(mm.AT_metrics_id) FILTER (WHERE mm.AT_response='pass') AS num_passed
+         , COUNT(fq.at_question_id) AS num_questions
+         , COUNT(mm.at_metrics_id) FILTER (WHERE mm.at_response='pass') AS num_passed
       FROM filtered_qs fq
  CROSS JOIN models m
- LEFT JOIN "AT_model_metrics" mm
-        ON mm.AT_question_id = fq.AT_question_id
+ LEFT JOIN at_model_metrics mm
+        ON mm.at_question_id = fq.at_question_id
        AND mm.model_id       = m.model_id
-    GROUP BY m.model_name, fq.AT_scenario_name
+    GROUP BY m.model_name, fq.at_scenario_name
   ),
   filtered_scenario_stats AS (
     SELECT
@@ -278,11 +278,11 @@ WITH
     GROUP BY model_name
   ),
   filtered_scenarios_ct AS (
-    SELECT COUNT(DISTINCT AT_scenario_name) AS total_filtered_scenarios
+    SELECT COUNT(DISTINCT at_scenario_name) AS total_filtered_scenarios
       FROM filtered_qs
   ),
   all_scenarios_ct AS (
-    SELECT COUNT(DISTINCT AT_scenario_name) AS total_scenarios
+    SELECT COUNT(DISTINCT at_scenario_name) AS total_scenarios
       FROM all_qs
   )
 SELECT
@@ -397,15 +397,15 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
         rows = cur.fetchall()
 
     result = []
-    for mn, fs, fp, ffs, fpp, tf, tt in rows:
+    for model_name, overall_solved, overall_pct, filtered_solved, filtered_pct,total_filtered,total_scenarios in rows:
         result.append({
-            "model_name": mn,
-            "overall_fully_solved":    to_int(fs),
-            "overall_solving_percentage": to_float(fp),
-            "filtered_fully_solved":   to_int(ffs),
-            "filtered_solving_percentage": to_float(fpp),
-            "total_filtered_scenarios": to_int(tf),
-            "total_scenarios":         to_int(tt),
+            "model_name": model_name,
+            "overall_fully_solved":    to_int(overall_solved),
+            "overall_solving_percentage": to_float(overall_pct),
+            "filtered_fully_solved":   to_int(filtered_solved),
+            "filtered_solving_percentage": to_float(filtered_pct),
+            "total_filtered_scenarios": to_int(total_filtered),
+            "total_scenarios":         to_int(total_scenarios),
         })
     return result
 
