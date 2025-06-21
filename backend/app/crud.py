@@ -393,7 +393,8 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
         tasks, tasks,
         levels, levels
     )
-    with get_conn() as conn, conn.cursor() as cur:
+    with get_conn() as conn:
+      with conn.cursor() as cur:
         cur.execute(AT_LEADERBOARD_SQL, params)
         rows = cur.fetchall()
 
