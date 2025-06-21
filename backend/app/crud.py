@@ -209,11 +209,11 @@ AT_LEADERBOARD_SQL = """
 WITH
   all_qs AS (
     SELECT AT_question_id, AT_scenario_name
-      FROM AT_metadata
+      FROM "AT_metadata"
   ),
   filtered_qs AS (
     SELECT AT_question_id, AT_scenario_name
-      FROM AT_metadata
+      FROM "AT_metadata"
      WHERE (%s::text[] IS NULL OR AT_task_category = ANY(%s))
        AND (%s::text[] IS NULL OR AT_question_level  = ANY(%s))
   ),
@@ -254,7 +254,7 @@ WITH
          , COUNT(mm.AT_metrics_id) FILTER (WHERE mm.AT_response='pass') AS num_passed
       FROM filtered_qs fq
  CROSS JOIN models m
- LEFT JOIN AT_model_metrics mm
+ LEFT JOIN "AT_model_metrics" mm
         ON mm.AT_question_id = fq.AT_question_id
        AND mm.model_id       = m.model_id
     GROUP BY m.model_name, fq.AT_scenario_name

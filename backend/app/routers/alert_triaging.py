@@ -17,4 +17,5 @@ def get_alert_leaderboard(
     try:
         return fetch_alert_leaderboard(tasks, levels)
     except Exception as e:
+        traceback.print_exc()  
         raise HTTPException(status_code=500, detail=str(e))
