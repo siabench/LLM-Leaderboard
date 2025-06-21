@@ -288,9 +288,9 @@ WITH
 SELECT
   m.model_name,
   COALESCE(ass.overall_fully_solved,0)              AS overall_fully_solved,
-  COALESCE(ROUND(100.0*ass.overall_solving_percentage,2),0) AS overall_solving_percentage,
+  COALESCE(ROUND(CAST(100.0*ass.overall_solving_percentage AS numeric),2),0) AS overall_solving_percentage,
   COALESCE(fss.filtered_fully_solved,0)             AS filtered_fully_solved,
-  COALESCE(ROUND(100.0*fss.filtered_solving_percentage,2),0) AS filtered_solving_percentage,
+  COALESCE(ROUND(CAST(100.0*fss.filtered_solving_percentage AS numeric),2),0) AS filtered_solving_percentage,
   fsct.total_filtered_scenarios,
   asct.total_scenarios
 FROM models m
