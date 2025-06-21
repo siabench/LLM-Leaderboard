@@ -319,7 +319,6 @@ def fetch_level_options():
 
 
 def fetch_leaderboard(tasks=None, levels=None):
-   
     t_param = tasks if tasks else None
     l_param = levels if levels else None
     params = (t_param, t_param, l_param, l_param)
@@ -375,7 +374,6 @@ def fetch_detailed_breakdown():
             })
     return result
 
-
 def fetch_legend():
     legend = []
     legend.append({"code": "FS", "meaning": "Fully solved scenarios"})
@@ -389,10 +387,10 @@ def fetch_legend():
     return legend
 
 def fetch_alert_leaderboard(tasks=None, levels=None):
-    params = (
-        tasks, tasks,
-        levels, levels
-    )
+    t_param = tasks if tasks else None
+    l_param = levels if levels else None
+    params = (t_param, t_param, l_param, l_param)
+    
     with get_conn() as conn:
       with conn.cursor() as cur:
         cur.execute(AT_LEADERBOARD_SQL, params)

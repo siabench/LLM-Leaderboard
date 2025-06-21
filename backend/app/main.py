@@ -9,6 +9,7 @@ from app.routers.info import router as info_router
 
 app = FastAPI(
     title="SIA Leaderboard API",
+    debug=True, 
 )
 
 app.add_middleware(
