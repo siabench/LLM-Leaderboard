@@ -1,7 +1,7 @@
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Query, Path
 from app.crud import (fetch_task_options, fetch_level_options, fetch_leaderboard, fetch_latest, fetch_detailed_breakdown, fetch_legend, fetch_model_integrations,fetch_passed_questions)
-from app.schemas import LeaderboardEntry, ModelResult, DetailedBreakdown, LegendEntry, ModelIntegration
+from app.schemas import LeaderboardEntry, ModelResult, DetailedBreakdown, LegendEntry, ModelIntegration,ModelDetail
 
 router = APIRouter(prefix="/leaderboard")
 
@@ -49,16 +49,10 @@ def get_legend():
 def get_integrations():
     return fetch_model_integrations()
     
-@router.get("/model-details/{model_name}", response_model=list[dict])
-def get_model_passed_questions(model_name: str = Path(...)):
+@router.get("/model-details/{model_name}", response_model=list[ModelDetail])
+def get_model_passed_questions(model_name: str):
     try:
         return fetch_passed_questions(model_name)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/model-details/{model_name}", response_model=list[dict])
-def get_model_passed_questions(model_name: str = Path(...)):
-    try:
-        return fetch_passed_questions(model_name)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))

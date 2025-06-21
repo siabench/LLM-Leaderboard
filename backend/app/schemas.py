@@ -30,6 +30,11 @@ class ModelResult(BaseModel):
     filtered_solving_percentage: float
     total_filtered_scenarios: int
     total_scenarios: int
+    
+class ModelDetail(BaseModel):
+    question: str
+    correct_answer: str
+    adversarial_tactic: Optional[str] = None
 
 class DetailedBreakdown(BaseModel):
     model_name: str
