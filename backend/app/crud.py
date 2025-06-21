@@ -341,6 +341,30 @@ def fetch_leaderboard(tasks=None, levels=None):
         })
     return result
 
+def fetch_passed_questions(model_name):
+    query = """
+        SELECT q.question_id, q.scenario_name, q.question, q.answer, q.adversarial_tactic
+        FROM question_metadata q
+        JOIN model_metrics m ON m.question_id = q.question_id
+        JOIN models mod ON mod.model_id = m.model_id
+        WHERE m.model_name = %s AND m.response = 'pass'
+        ORDER BY q.scenario_name, q.question_id;
+    """
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query, (model_name,))
+            rows = cur.fetchall()
+    results = []
+    for row in rows:
+        results.append({
+            "question_id": row[0],
+            "scenario_name": row[1],
+            "question": row[2],
+            "answer": row[3],
+            "adversarial_tactic": row[4]
+        })
+    return results
+
 
 def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
 

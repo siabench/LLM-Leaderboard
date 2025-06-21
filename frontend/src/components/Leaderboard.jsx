@@ -7,6 +7,7 @@ import {
   // getLatestResults,
   getDetailedResults,
   getLeaderboard,
+  getModelPassedQuestions,
 } from "../services/api";
 
 export default function Leaderboard() {
@@ -28,6 +29,22 @@ export default function Leaderboard() {
   });
   const [totalScenarios, setTotalScenarios] = useState(0);
   const [filteredScenarios, setFilteredScenarios] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState([]);
+  const [selectedModel, setSelectedModel] = useState("");
+  const [modalLoading, setModalLoading] = useState(false);
+
+  const handleRowClick = (row) => {
+    setSelectedModel(row.model_name);
+    setModalLoading(true);
+    setShowModal(true);
+    getModelPassedQuestions(row.model_name)
+      .then((res) => {
+        setModalData(res.data);
+        setModalLoading(false);
+      })
+      .catch(() => setModalData([]));
+  };
   useEffect(() => {
     Promise.all([getTaskOptions(), getLevelOptions()]).then(
       ([tasksRes, levelsRes]) => {
@@ -115,7 +132,11 @@ export default function Leaderboard() {
         const medals = ["🥇", "🥈", "🥉"];
         const medal = medals[row.index] || "";
         return (
-          <span className="font-medium text-gray-900">
+          <span
+            className="font-medium text-gray-900 cursor-pointer hover:text-blue-700"
+            onClick={() => handleRowClick(row)}
+            title="View passed questions"
+          >
             {medal} {value}
           </span>
         );
@@ -575,6 +596,75 @@ export default function Leaderboard() {
           />
         </div> */}
       </div>
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+          onClick={() => setShowModal(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="bg-white rounded-xl shadow-lg p-8 w-full max-w-3xl relative overflow-auto"
+            style={{ maxHeight: "90vh" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-4 text-gray-400 hover:text-gray-700 text-2xl"
+              onClick={() => setShowModal(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <h3 className="text-lg font-bold mb-4">
+              Passed Questions for{" "}
+              <span className="text-blue-600">{selectedModel}</span>
+            </h3>
+            {modalLoading ? (
+              <div className="text-center p-8 text-gray-500">Loading...</div>
+            ) : modalData.length === 0 ? (
+              <div className="text-center p-8 text-gray-400">
+                No passed questions.
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-left text-sm">
+                  <thead>
+                    <tr>
+                      <th className="py-2 px-4 border-b font-bold">Scenario</th>
+                      <th className="py-2 px-4 border-b font-bold">Question</th>
+                      <th className="py-2 px-4 border-b font-bold">
+                        Correct Answer
+                      </th>
+                      <th className="py-2 px-4 border-b font-bold">
+                        Adversarial Tactic
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {modalData.map((q, idx) => (
+                      <tr key={idx}>
+                        <td className="py-2 px-4 border-b">
+                          {q.scenario_name}
+                        </td>
+                        <td className="py-2 px-4 border-b">
+                          {q.question_text}
+                        </td>
+                        <td className="py-2 px-4 border-b">
+                          {q.correct_answer}
+                        </td>
+                        <td className="py-2 px-4 border-b">
+                          {q.adversarial_tactic || "—"}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </motion.div>
+        </div>
+      )}
 
       <AnimatePresence>
         {showFull && (
