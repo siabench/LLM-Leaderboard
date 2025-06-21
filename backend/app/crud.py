@@ -224,7 +224,7 @@ WITH
          , COUNT(mm.AT_metrics_id) FILTER (WHERE mm.AT_response = 'pass') AS num_passed
       FROM all_qs aq
  CROSS JOIN models m
- LEFT JOIN AT_model_metrics mm
+ LEFT JOIN "AT_model_metrics" mm
         ON mm.AT_question_id = aq.AT_question_id
        AND mm.model_id       = m.model_id
   GROUP BY m.model_name, aq.AT_scenario_name
