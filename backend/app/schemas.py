@@ -32,8 +32,9 @@ class ModelResult(BaseModel):
     total_scenarios: int
     
 class ModelDetail(BaseModel):
+    scenario_name: str
     question: str
-    correct_answer: str
+    answer: str
     adversarial_tactic: Optional[str] = None
 
 class DetailedBreakdown(BaseModel):

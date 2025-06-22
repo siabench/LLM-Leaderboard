@@ -357,7 +357,6 @@ def fetch_passed_questions(model_name):
     results = []
     for row in rows:
         results.append({
-            "question_id": row[0],
             "scenario_name": row[1],
             "question": row[2],
             "answer": row[3],
