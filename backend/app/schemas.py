@@ -33,8 +33,8 @@ class ModelResult(BaseModel):
     
 class ModelDetail(BaseModel):
     scenario_name: str
-    question: str
-    answer: str
+    question_text: str
+    correct_answer: str
     adversarial_tactic: Optional[str] = None
 
 class DetailedBreakdown(BaseModel):

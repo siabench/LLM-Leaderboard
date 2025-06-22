@@ -358,8 +358,8 @@ def fetch_passed_questions(model_name):
     for row in rows:
         results.append({
             "scenario_name": row[1],
-            "question": row[2],
-            "answer": row[3],
+            "question_text": row[2],
+            "correct_answer": row[3],
             "adversarial_tactic": row[4]
         })
     return results
