@@ -293,7 +293,11 @@ SELECT
   COALESCE(ROUND(CAST(100.0*fss.filtered_solving_percentage AS numeric),2),0) AS filtered_solving_percentage,
   fsct.total_filtered_scenarios,
   asct.total_scenarios
-FROM models m
+FROM (
+  SELECT DISTINCT m.model_id, m.model_name
+  FROM models m
+  JOIN at_model_metrics mm ON mm.model_id = m.model_id
+) m
 LEFT JOIN all_scenario_stats    ass ON ass.model_name    = m.model_name
 LEFT JOIN filtered_scenario_stats fss ON fss.model_name   = m.model_name
 LEFT JOIN filtered_scenarios_ct fsct ON TRUE
