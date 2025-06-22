@@ -347,7 +347,7 @@ def fetch_passed_questions(model_name):
         FROM question_metadata q
         JOIN model_metrics m ON m.question_id = q.question_id
         JOIN models mod ON mod.model_id = m.model_id
-        WHERE m.model_name = %s AND m.response = 'pass'
+        WHERE mod.model_name = %s AND m.response = 'pass'
         ORDER BY q.scenario_name, q.question_id;
     """
     with get_conn() as conn:

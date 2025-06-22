@@ -49,7 +49,7 @@ def get_legend():
 def get_integrations():
     return fetch_model_integrations()
     
-@router.get("/model-details/{model_name}", response_model=list[ModelDetail])
+@router.get("/model-details/{model_name}", response_model=List[ModelDetail])
 def get_model_passed_questions(model_name: str):
     try:
         return fetch_passed_questions(model_name)
