@@ -362,6 +362,7 @@ def fetch_passed_questions(model_name):
             "correct_answer": row[3],
             "adversarial_tactic": row[4]
         })
+    print("PASSED QUESTIONS:", results) 
     return results
 
 
