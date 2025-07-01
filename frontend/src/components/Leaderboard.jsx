@@ -168,35 +168,39 @@ export default function Leaderboard() {
         </div>
       ),
     },
-    {
-      header: "Filtered Fully Solved Scenarios",
-      accessor: "filtered_fully_solved",
-      sortable: true,
-      cell: (value, row) => {
-        const denom = row.total_filtered_scenarios ?? "—";
-        return (
-          <span className="font-mono">
-            {value}/{denom}
-          </span>
-        );
-      },
-    },
-    {
-      header: "Filtered Partial Solving Percentage",
-      accessor: "filtered_solving_percentage",
-      sortable: true,
-      cell: (value) => (
-        <div className="flex items-center">
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mr-2">
-            <div
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2.5 rounded-full"
-              style={{ width: `${value}%` }}
-            ></div>
-          </div>
-          <span className="font-medium">{value}</span>
-        </div>
-      ),
-    },
+    ...(filters.task.length > 0 || filters.level.length > 0
+      ? [
+          {
+            header: "Filtered Fully Solved Scenarios",
+            accessor: "filtered_fully_solved",
+            sortable: true,
+            cell: (value, row) => {
+              const denom = row.total_filtered_scenarios ?? "—";
+              return (
+                <span className="font-mono">
+                  {value}/{denom}
+                </span>
+              );
+            },
+          },
+          {
+            header: "Filtered Partial Solving Percentage",
+            accessor: "filtered_solving_percentage",
+            sortable: true,
+            cell: (value) => (
+              <div className="flex items-center">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 mr-2">
+                  <div
+                    className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2.5 rounded-full"
+                    style={{ width: `${value}%` }}
+                  ></div>
+                </div>
+                <span className="font-medium">{value}%</span>
+              </div>
+            ),
+          },
+        ]
+      : []),
   ];
 
   const handleSort = (key) => {
