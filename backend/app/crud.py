@@ -375,6 +375,14 @@ def fetch_legend():
     return legend
 
 def fetch_alert_leaderboard(tasks=None, levels=None):
+    t_param = tasks if tasks else None
+    l_param = levels if levels else None
+    params = (t_param, t_param, l_param, l_param)
+
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute(AT_LEADERBOARD_SQL, params)
+            rows = cur.fetchall() 
     result = []
     for row in rows:
       (
@@ -389,7 +397,6 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
         "tp": f"{tp_passed}/{tp_total} {tp_pct}%",
         "fp": f"{fp_passed}/{fp_total} {fp_pct}%",
         "accuracy": f"{accuracy}%",
-        # optionally add raw numbers for sorting if needed
         "accuracy_sort": accuracy,
     })
 
