@@ -1,0 +1,46 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "scenario": "fp",
+        "scenario_name": "if1"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "The soc team got an alert from the IDS. The alert is: 07/07-08:04:51.819436 [**] [1:1201:13] \"INDICATOR-COMPROMISE 403 Forbidden\" [**] [Classification: Attempted Information Leak] [Priority: 2] {TCP} 23.15.4.9:80 -> 192.168.10.14:49536",
+        "alert": "07/07-08:04:51.819436 [**] [1:1201:13] \"INDICATOR-COMPROMISE 403 Forbidden\" [**] [Classification: Attempted Information Leak] [Priority: 2] {TCP} 23.15.4.9:80 -> 192.168.10.14:49536",
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "grep",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "\nYou are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_file)",
+        "questions": [
+          {
+            "question": "Analyze the provided PCAP file and determine if the generated alert is a false positive or true positive.",
+            "answer": "false positive"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "scenario": "fp",
+        "scenario_name": "fs1"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "The soc team got an alert from the IDS. The alert is: 07/07-08:00:50.818009 [**] [122:1:1] \"(port_scan) TCP portscan\" [**] [Priority: 3] {TCP} 192.168.10.3:88 -> 192.168.10.5:49175",
+        "alert": "07/07-08:00:50.818009 [**] [122:1:1] \"(port_scan) TCP portscan\" [**] [Priority: 3] {TCP} 192.168.10.3:88 -> 192.168.10.5:49175",
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "grep",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "\nYou are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_file)",
+        "questions": [
+          {
+            "question": "Analyze the provided PCAP file and determine if the generated alert is a false positive or true positive.",
+            "answer": "false positive"
+          }
+        ]
+      }
+    }
+  ]
+}

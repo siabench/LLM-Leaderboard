@@ -32,10 +32,12 @@ df_raw = pd.read_csv(LOCAL_PATH, header=[0,1], dtype=str, keep_default_na=False)
 # 3) Map the four meta columns by their second‐level header
 wanted = {
     "Question":        "at_question_number",
-    "Scenario_name":   "at_scenario_name",
+    "Scenario_category":   "at_scenario_category",
+    "Scenario_name":      "at_scenario_name",
     "Question_Level":  "at_question_level",
     "Task_Category":   "at_task_category",
 }
+
 meta_cols = {
     wanted[L1]: (L0, L1)
     for (L0, L1) in df_raw.columns

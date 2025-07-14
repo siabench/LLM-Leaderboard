@@ -1,0 +1,46 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "scenario": "fp",
+        "scenario_name": "monday_pri_2_6"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "The soc team got an alert from the IDS. The alert is: 07/03-08:47:50.612239 [**] [1:1010:21] \"SERVER-IIS encoding access\" [**] [Classification: Access to a potentially vulnerable web application] [Priority: 2] {TCP} 192.168.10.9:63310 -> 68.67.178.111:80",
+        "alert": "07/03-08:47:50.612239 [**] [1:1010:21] \"SERVER-IIS encoding access\" [**] [Classification: Access to a potentially vulnerable web application] [Priority: 2] {TCP} 192.168.10.9:63310 -> 68.67.178.111:80",
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "grep",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "\nYou are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_file)",
+        "questions": [
+          {
+            "question": "Analyze the provided PCAP file and determine if the generated alert is a false positive or true positive.",
+            "answer": "false positive"
+          }
+        ]
+      }
+    }
+  ]
+}

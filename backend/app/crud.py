@@ -208,101 +208,61 @@ ORDER BY model_name, code;
 AT_LEADERBOARD_SQL = """
 WITH
   all_qs AS (
-    SELECT at_question_id, at_scenario_name
-      FROM at_metadata
+    SELECT at_question_id, at_scenario_name, at_scenario_category
+    FROM at_metadata
   ),
-  filtered_qs AS (
-    SELECT at_question_id, at_scenario_name
-      FROM at_metadata
-     WHERE (%s::text[] IS NULL OR at_task_category = ANY(%s))
-       AND (%s::text[] IS NULL OR at_question_level  = ANY(%s))
+  model_metrics AS (
+    SELECT m.model_name, mm.at_question_id, mm.at_response
+    FROM at_model_metrics mm
+    JOIN models m ON mm.model_id = m.model_id
   ),
-  all_per_scenario AS (
-    SELECT m.model_name
-         , aq.AT_scenario_name    AS scenario_name
-         , COUNT(aq.at_question_id) AS num_questions
-         , COUNT(mm.at_metrics_id) FILTER (WHERE mm.at_response = 'pass') AS num_passed
-      FROM all_qs aq
- CROSS JOIN models m
- LEFT JOIN at_model_metrics mm
-        ON mm.at_question_id = aq.at_question_id
-       AND mm.model_id       = m.model_id
-  GROUP BY m.model_name, aq.AT_scenario_name
+  scenario_stats AS (
+    SELECT
+      mm.model_name,
+      aq.at_scenario_category,
+      aq.at_scenario_name,
+      COUNT(*) AS total_qs,
+      COUNT(*) FILTER (WHERE mm.at_response = 'pass') AS passed_qs
+    FROM all_qs aq
+    LEFT JOIN model_metrics mm ON mm.at_question_id = aq.at_question_id
+    GROUP BY mm.model_name, aq.at_scenario_category, aq.at_scenario_name
   ),
-  all_scenario_stats AS (
+  scenario_agg AS (
     SELECT
       model_name,
-      AVG(
-        CASE WHEN num_questions > 0
-             THEN num_passed::float/num_questions
-             ELSE 0
-        END
-      ) AS overall_solving_percentage,
-      SUM(
-        CASE WHEN num_questions>0 AND num_passed=num_questions
-             THEN 1
-             ELSE 0
-        END
-      ) AS overall_fully_solved
-    FROM all_per_scenario
-    GROUP BY model_name
+      at_scenario_category,
+      COUNT(*) AS total_scenarios,
+      COUNT(*) FILTER (WHERE total_qs = passed_qs) AS fully_solved_scenarios,
+      ROUND(AVG(CASE WHEN total_qs > 0 THEN passed_qs::float / total_qs ELSE 0 END) * 100, 2) AS partial_solving_percentage
+    FROM scenario_stats
+    GROUP BY model_name, at_scenario_category
   ),
-  filtered_per_scenario AS (
-    SELECT m.model_name
-         , fq.AT_scenario_name AS scenario_name
-         , COUNT(fq.at_question_id) AS num_questions
-         , COUNT(mm.at_metrics_id) FILTER (WHERE mm.at_response='pass') AS num_passed
-      FROM filtered_qs fq
- CROSS JOIN models m
- LEFT JOIN at_model_metrics mm
-        ON mm.at_question_id = fq.at_question_id
-       AND mm.model_id       = m.model_id
-    GROUP BY m.model_name, fq.at_scenario_name
-  ),
-  filtered_scenario_stats AS (
+  final_summary AS (
     SELECT
-      model_name,
-      AVG(
-        CASE WHEN num_questions>0
-             THEN num_passed::float/num_questions
-             ELSE 0
-        END
-      ) AS filtered_solving_percentage,
-      SUM(
-        CASE WHEN num_questions>0 AND num_passed=num_questions
-             THEN 1
-             ELSE 0
-        END
-      ) AS filtered_fully_solved
-    FROM filtered_per_scenario
-    GROUP BY model_name
-  ),
-  filtered_scenarios_ct AS (
-    SELECT COUNT(DISTINCT at_scenario_name) AS total_filtered_scenarios
-      FROM filtered_qs
-  ),
-  all_scenarios_ct AS (
-    SELECT COUNT(DISTINCT at_scenario_name) AS total_scenarios
-      FROM all_qs
+      m.model_name,
+      COALESCE(tp.fully_solved_scenarios, 0) AS tp_passed,
+      COALESCE(tp.total_scenarios, 0) AS tp_total,
+      COALESCE(tp.partial_solving_percentage, 0) AS tp_pct,
+      COALESCE(fp.fully_solved_scenarios, 0) AS fp_passed,
+      COALESCE(fp.total_scenarios, 0) AS fp_total,
+      COALESCE(fp.partial_solving_percentage, 0) AS fp_pct
+    FROM (
+      SELECT DISTINCT model_name FROM scenario_agg
+    ) m
+    LEFT JOIN scenario_agg tp ON tp.model_name = m.model_name AND tp.at_scenario_category = 'tp'
+    LEFT JOIN scenario_agg fp ON fp.model_name = m.model_name AND fp.at_scenario_category = 'fp'
   )
 SELECT
-  m.model_name,
-  COALESCE(ass.overall_fully_solved,0)              AS overall_fully_solved,
-  COALESCE(ROUND(CAST(100.0*ass.overall_solving_percentage AS numeric),2),0) AS overall_solving_percentage,
-  COALESCE(fss.filtered_fully_solved,0)             AS filtered_fully_solved,
-  COALESCE(ROUND(CAST(100.0*fss.filtered_solving_percentage AS numeric),2),0) AS filtered_solving_percentage,
-  fsct.total_filtered_scenarios,
-  asct.total_scenarios
-FROM (
-  SELECT DISTINCT m.model_id, m.model_name
-  FROM models m
-  JOIN at_model_metrics mm ON mm.model_id = m.model_id
-) m
-LEFT JOIN all_scenario_stats    ass ON ass.model_name    = m.model_name
-LEFT JOIN filtered_scenario_stats fss ON fss.model_name   = m.model_name
-LEFT JOIN filtered_scenarios_ct fsct ON TRUE
-LEFT JOIN all_scenarios_ct       asct ON TRUE
-ORDER BY overall_solving_percentage DESC;
+  *,
+  ROUND(
+    (
+      (tp_pct * tp_total + fp_pct * fp_total) /
+      NULLIF((tp_total + fp_total), 0)
+    ), 2
+  ) AS accuracy
+FROM final_summary
+ORDER BY accuracy DESC;
+
 """
 
 def get_conn():
@@ -415,27 +375,23 @@ def fetch_legend():
     return legend
 
 def fetch_alert_leaderboard(tasks=None, levels=None):
-    t_param = tasks if tasks else None
-    l_param = levels if levels else None
-    params = (t_param, t_param, l_param, l_param)
-    
-    with get_conn() as conn:
-      with conn.cursor() as cur:
-        cur.execute(AT_LEADERBOARD_SQL, params)
-        rows = cur.fetchall()
-
     result = []
-    for model_name, overall_solved, overall_pct, filtered_solved, filtered_pct,total_filtered,total_scenarios in rows:
-        result.append({
-            "model_name": model_name,
-            "overall_fully_solved":    to_int(overall_solved),
-            "overall_solving_percentage": to_float(overall_pct),
-            "filtered_fully_solved":   to_int(filtered_solved),
-            "filtered_solving_percentage": to_float(filtered_pct),
-            "total_filtered_scenarios": to_int(total_filtered),
-            "total_scenarios":         to_int(total_scenarios),
-        })
-    return result
+    for row in rows:
+      (
+        model_name,
+        tp_passed, tp_total, tp_pct,
+        fp_passed, fp_total, fp_pct,
+        accuracy,
+    ) = row
+
+    result.append({
+        "model_name": model_name,
+        "tp": f"{tp_passed}/{tp_total} {tp_pct}%",
+        "fp": f"{fp_passed}/{fp_total} {fp_pct}%",
+        "accuracy": f"{accuracy}%",
+        # optionally add raw numbers for sorting if needed
+        "accuracy_sort": accuracy,
+    })
 
 
 def fetch_model_integrations(): 

@@ -1,0 +1,46 @@
+{
+  "scenarios": [
+    {
+      "metadata": {
+        "scenario": "tp",
+        "scenario_name": "sh1"
+      }
+    },
+    {
+      "sia_components": {
+        "scenario": "The soc team got an alert from the IDS. The alert is: 07/04-14:07:21.893671 [**] [1:1325:14] \"INDICATOR-SHELLCODE ssh CRC32 overflow filler\" [**] [Classification: Executable code was detected] [Priority: 1] {TCP} 172.16.0.1:52054 -> 192.168.10.50:22",
+        "alert": "07/04-14:07:21.893671 [**] [1:1325:14] \"INDICATOR-SHELLCODE ssh CRC32 overflow filler\" [**] [Classification: Executable code was detected] [Priority: 1] {TCP} 172.16.0.1:52054 -> 192.168.10.50:22",
+        "tools_available": [
+          "tshark",
+          "python",
+          "md5sum",
+          "grep",
+          "strings",
+          "file",
+          "cut",
+          "unique",
+          "wc",
+          "cat",
+          "ls",
+          "sort",
+          "echo",
+          "head",
+          "tail",
+          "xxd",
+          "base64",
+          "cd",
+          "whois"
+        ],
+        "files_available": "capture.pcap",
+        "instructions": "\nYou are solving this problem in a kali linux terminal. With the mentioned tools, you can use any other tool as you want. If you need to install any other tool, you can do it by adding sudo at the beginning of the command.",
+        "directory": "(directory_of_the_file)",
+        "questions": [
+          {
+            "question": "Analyze the provided PCAP file and determine if the generated alert is a false positive or true positive.",
+            "answer": "true positive"
+          }
+        ]
+      }
+    }
+  ]
+}

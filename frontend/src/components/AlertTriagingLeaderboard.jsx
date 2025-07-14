@@ -42,30 +42,22 @@ export default function AlertTriagingLeaderboard() {
       },
     },
     {
-      header: "Fully Solved Scenarios (FS)",
-      accessor: "overall_fully_solved",
-      sortable: true,
-      cell: (value, row) => (
-        <span className="font-mono">
-          {value}/{row.total_scenarios || "-"}
-        </span>
-      ),
+      header: "True Positives (TP)",
+      accessor: "tp",
+      sortable: false,
+      cell: (value) => <span className="font-mono">{value}</span>,
     },
     {
-      header: "Partial Solving Percentage (PS)",
-      accessor: "overall_solving_percentage",
+      header: "False Positives (FP)",
+      accessor: "fp",
+      sortable: false,
+      cell: (value) => <span className="font-mono">{value}</span>,
+    },
+    {
+      header: "Accuracy",
+      accessor: "accuracy_sort",
       sortable: true,
-      cell: (value) => (
-        <div className="flex items-center">
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mr-2">
-            <div
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2.5 rounded-full"
-              style={{ width: `${value}%` }}
-            ></div>
-          </div>
-          <span className="font-medium">{value}%</span>
-        </div>
-      ),
+      cell: (_, row) => <span className="font-medium">{row.accuracy}</span>,
     },
   ];
 
