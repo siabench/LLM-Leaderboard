@@ -404,6 +404,7 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
         "accuracy": f"{accuracy}%",
         "accuracy_sort": accuracy,
     })
+    return result 
 
 
 def fetch_model_integrations(): 
