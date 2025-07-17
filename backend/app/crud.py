@@ -233,7 +233,11 @@ WITH
       at_scenario_category,
       COUNT(*) AS total_scenarios,
       COUNT(*) FILTER (WHERE total_qs = passed_qs) AS fully_solved_scenarios,
-      ROUND(AVG(CASE WHEN total_qs > 0 THEN passed_qs::float / total_qs ELSE 0 END) * 100, 2) AS partial_solving_percentage
+      ROUND(CAST(AVG(CASE WHEN total_qs > 0 THEN passed_qs::float / total_qs ELSE 0 END) * 100
+    AS numeric
+  ),
+  2
+  ) AS partial_solving_percentage
     FROM scenario_stats
     GROUP BY model_name, at_scenario_category
   ),
