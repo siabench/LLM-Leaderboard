@@ -403,6 +403,12 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
         "fp": f"{fp_passed}/{fp_total} {fp_pct}%",
         "accuracy": f"{accuracy}%",
         "accuracy_sort": accuracy,
+        "overall_fully_solved": 0,
+    "overall_solving_percentage": 0.0,
+    "filtered_fully_solved": 0,
+    "filtered_solving_percentage": 0.0,
+    "total_filtered_scenarios": 0,
+    "total_scenarios": 0,
     })
     return result 
 
