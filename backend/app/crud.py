@@ -259,11 +259,12 @@ WITH
 SELECT
   *,
   ROUND(
-    (
-      (tp_pct * tp_total + fp_pct * fp_total) /
-      NULLIF((tp_total + fp_total), 0)
-    ), 2
-  ) AS accuracy
+  (
+    (tp_pct * tp_total + fp_pct * fp_total) /
+    NULLIF((tp_total + fp_total), 0)
+  )::numeric,
+  2
+) AS accuracy
 FROM final_summary
 ORDER BY accuracy DESC;
 
