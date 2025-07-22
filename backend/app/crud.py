@@ -250,9 +250,7 @@ WITH
       COALESCE(fp.fully_solved_scenarios, 0) AS fp_passed,
       COALESCE(fp.total_scenarios, 0) AS fp_total,
       COALESCE(fp.partial_solving_percentage, 0) AS fp_pct
-    FROM (
-      SELECT DISTINCT model_name FROM scenario_agg
-    ) m
+    FROM models m
     LEFT JOIN scenario_agg tp ON tp.model_name = m.model_name AND tp.at_scenario_category = 'tp'
     LEFT JOIN scenario_agg fp ON fp.model_name = m.model_name AND fp.at_scenario_category = 'fp'
   )
@@ -335,10 +333,10 @@ def fetch_passed_questions(model_name):
     return results
 
 
-def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
+# def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
 
-    all_entries = fetch_leaderboard(tasks, levels)
-    return [entry for entry in all_entries if entry["model_name"] == latest_model]
+#     all_entries = fetch_leaderboard(tasks, levels)
+#     return [entry for entry in all_entries if entry["model_name"] == latest_model]
 
 
 def fetch_detailed_breakdown():
@@ -394,22 +392,21 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
         model_name,
         tp_passed, tp_total, tp_pct,
         fp_passed, fp_total, fp_pct,
-        accuracy,
-    ) = row
+        accuracy,) = row
 
-    result.append({
-        "model_name": model_name,
-        "tp": f"{tp_passed}/{tp_total} {tp_pct}%",
-        "fp": f"{fp_passed}/{fp_total} {fp_pct}%",
-        "accuracy": f"{accuracy}%",
-        "accuracy_sort": accuracy,
-        "overall_fully_solved": 0,
-    "overall_solving_percentage": 0.0,
-    "filtered_fully_solved": 0,
-    "filtered_solving_percentage": 0.0,
-    "total_filtered_scenarios": 0,
-    "total_scenarios": 0,
-    })
+      result.append({
+          "model_name": model_name,
+          "tp": f"{tp_passed}/{tp_total} {tp_pct}%",
+          "fp": f"{fp_passed}/{fp_total} {fp_pct}%",
+          "accuracy": f"{accuracy}%",
+          "accuracy_sort": accuracy,
+          "overall_fully_solved": 0,
+          "overall_solving_percentage": 0.0,
+          "filtered_fully_solved": 0,
+          "filtered_solving_percentage": 0.0,
+          "total_filtered_scenarios": 0,
+          "total_scenarios": 0,
+      })
     return result 
 
 
