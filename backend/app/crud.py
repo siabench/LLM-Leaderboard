@@ -250,7 +250,9 @@ WITH
       COALESCE(fp.fully_solved_scenarios, 0) AS fp_passed,
       COALESCE(fp.total_scenarios, 0) AS fp_total,
       COALESCE(fp.partial_solving_percentage, 0) AS fp_pct
-    FROM models m
+    FROM (
+      SELECT DISTINCT model_name FROM scenario_agg
+    ) m
     LEFT JOIN scenario_agg tp ON tp.model_name = m.model_name AND tp.at_scenario_category = 'tp'
     LEFT JOIN scenario_agg fp ON fp.model_name = m.model_name AND fp.at_scenario_category = 'fp'
   )
