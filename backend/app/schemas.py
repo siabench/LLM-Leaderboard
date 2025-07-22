@@ -31,6 +31,17 @@ class ModelResult(BaseModel):
     total_filtered_scenarios: int
     total_scenarios: int
     
+    
+class AlertTriagingEntry(BaseModel):
+    model_name:    str
+    tp:            str  
+    fp:            str   
+    accuracy:      str   
+    accuracy_sort: float 
+
+    class Config:
+        extra = "ignore"
+        
 class ModelDetail(BaseModel):
     scenario_name: str
     question_text: str

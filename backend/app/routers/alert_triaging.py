@@ -1,14 +1,14 @@
 from typing import List, Optional
 from fastapi import APIRouter, Query, HTTPException
 from app.crud import fetch_alert_leaderboard  
-from app.schemas import LeaderboardEntry
+from app.schemas import AlertTriagingEntry
 import traceback
 
 router = APIRouter(prefix="/alert-triaging")
 
 @router.get(
     "/leaderboard",
-    response_model=List[LeaderboardEntry],
+    response_model=List[AlertTriagingEntry],
     summary="Alert Triaging Dataset Leaderboard",
 )
 def get_alert_leaderboard(
