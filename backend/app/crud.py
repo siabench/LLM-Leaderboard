@@ -333,10 +333,10 @@ def fetch_passed_questions(model_name):
     return results
 
 
-# def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
+def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):
 
-#     all_entries = fetch_leaderboard(tasks, levels)
-#     return [entry for entry in all_entries if entry["model_name"] == latest_model]
+    all_entries = fetch_leaderboard(tasks, levels)
+    return [entry for entry in all_entries if entry["model_name"] == latest_model]
 
 
 def fetch_detailed_breakdown():
