@@ -8,6 +8,7 @@ import {
   getDetailedResults,
   getLeaderboard,
   getModelPassedQuestions,
+  getLegend,
 } from "../services/api";
 
 export default function Leaderboard() {
@@ -95,32 +96,53 @@ export default function Leaderboard() {
   //     .catch(() => setIsLoading(false));
   // }, [filters]);
 
+  // in your useEffect that builds detailedCols…
+
   useEffect(() => {
     setIsLoading(true);
-    getDetailedResults()
-      .then((detailedRes) => {
+
+    Promise.all([getDetailedResults(), getLegend()])
+      .then(([detailedRes, legendRes]) => {
         setDetailed(detailedRes.data);
-        if (detailedRes.data && detailedRes.data.length) {
-          const keys = Object.keys(detailedRes.data[0].breakdown || {});
-          setDetailedCols([
-            {
-              header: "Model",
-              accessor: "model_name",
-              cell: (value, row) => value,
-            },
-            ...keys.map((key) => ({
-              header: key,
-              accessor: key,
-              cell: (_value, row) =>
-                row.breakdown && row.breakdown[key]
-                  ? `${row.breakdown[key].solved}/${row.breakdown[key].total} (${row.breakdown[key].percentage}%)`
-                  : "-",
+
+        const CATEGORY_CODES = Object.fromEntries(
+          legendRes.data
+            .filter((x) =>
+              [
+                "Network Forensics",
+                "Memory Forensics",
+                "Malware Analysis",
+                "Others",
+              ].includes(x.meaning)
+            )
+            .map(({ meaning, code }) => [meaning, code])
+        );
+        const LEVEL_CODES = Object.fromEntries(
+          legendRes.data
+            .filter((x) => ["Easy", "Medium", "Hard"].includes(x.meaning))
+            .map(({ meaning, code }) => [meaning, code])
+        );
+        const LEVELS = Object.values(LEVEL_CODES);
+
+        const cols = [
+          { header: "Model", accessor: "model_name", cell: (v) => v },
+          ...Object.entries(CATEGORY_CODES).map(([catName, catCode]) => ({
+            header: catName,
+            columns: LEVELS.map((lvl) => ({
+              header: lvl,
+              accessor: `${catCode}-${lvl}`,
+              cell: (_v, row) => {
+                const info = row.breakdown?.[`${catCode}-${lvl}`];
+                return info
+                  ? `${info.solved}/${info.total} (${info.percentage}%)`
+                  : "—";
+              },
             })),
-          ]);
-        }
-        setIsLoading(false);
+          })),
+        ];
+        setDetailedCols(cols);
       })
-      .catch(() => setIsLoading(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
   const leaderboardColumns = [

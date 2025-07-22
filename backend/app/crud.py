@@ -11,7 +11,7 @@ DISPLAYED_MODELS = [
 
 CATEGORY_CODES = {
     "Network Forensics": "NF",
-    "Disk & Memory Forensics": "DMF",
+    "Memory Forensics": "DMF",
     "Malware Analysis": "MA",
     "Others": "MS"
 }
