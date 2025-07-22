@@ -147,7 +147,7 @@ WITH
       CONCAT(
         CASE task_category
           WHEN 'Network Forensics' THEN 'NF'
-          WHEN 'Disk & Memory Forensics' THEN 'DMF'
+          WHEN 'Memory Forensics' THEN 'DMF'
           WHEN 'Malware Analysis' THEN 'MA'
           ELSE 'MS'
         END,
