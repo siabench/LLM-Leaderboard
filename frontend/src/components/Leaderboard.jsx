@@ -442,7 +442,7 @@ export default function Leaderboard() {
                       </svg>
                     </div>
                     <span className="text-xs font-medium text-gray-700">
-                      Level:
+                      Task Difficulty Level:
                     </span>
                   </div>
 
