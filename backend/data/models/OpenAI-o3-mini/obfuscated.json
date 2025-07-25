@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "1",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "45",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "maintools.js",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "VBA",
+    "result": "0"
+  }
+]

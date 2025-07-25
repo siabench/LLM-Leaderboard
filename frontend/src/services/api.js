@@ -25,7 +25,7 @@ export const getDetailedResults = () => API.get("/leaderboard/detailed");
 export const getLegend = () => API.get("/leaderboard/legend");
 export const getAlertTriagingLeaderboard = () =>
   API.get("/alert-triaging/leaderboard");
-export const getModelPassedQuestions = (model_name) =>
+export const getModelDetails = (model_name) =>
   API.get(`/leaderboard/model-details/${encodeURIComponent(model_name)}`);
 export const getModelIntegrations = () => API.get("/leaderboard/integrations");
 

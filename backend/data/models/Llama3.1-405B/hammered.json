@@ -1,0 +1,57 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The attacker did not gain access to the system through the webserver honeypot.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The operating system version of the targeted system is not specified in the provided log files.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The name of the account that was compromised is not specified in the provided log files.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The number of attackers who gained access to the system is not specified in the provided log files.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "No requests were sent to the Apache server.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No rules were added to the firewall.",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "There is no scanning tool downloaded files in the target system.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "There was no login from IP with 219.150.161.20.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "There are no warning messages related to database security.",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "No new accounts have been created on the system.",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "There is no proxy used in the system to run the scans.",
+    "result": "0"
+  }
+]

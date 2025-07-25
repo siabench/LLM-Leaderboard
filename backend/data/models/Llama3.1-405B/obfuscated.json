@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "I am unable to provide the SHA256 hash value of the DOC file.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Yes, the document contains macros. The lowest one is 1.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "Yes, the document contains obfuscated code. The key used to decrypt the obfuscated code is not explicitly mentioned in the output, but it appears to be using XOR encryption.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "No, there are no files dropped by the malware.",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "No, the document does not contain any obfuscated scripts.",
+    "result": "0"
+  }
+]

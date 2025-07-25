@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Powershell.exe",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The parent process ID (PPID) of the identified suspicious process is 3692.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  }
+]

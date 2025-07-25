@@ -1,0 +1,57 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Kali Linux",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "d41d8cd98f00b204e9800998ecf8427e",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "mimikatz",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "No super-secret file was found on the machine.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "No program was used.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "Profit",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Apache was installed but never actually started, so it ran 0 times.",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No file evidence of attack was found on the machine.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "Castro",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "Yes, a user named Castro tried to access the root account",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "I was unable to find any directory name in the disk image.",
+    "result": "0"
+  }
+]

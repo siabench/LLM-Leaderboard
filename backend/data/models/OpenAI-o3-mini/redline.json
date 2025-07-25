@@ -1,0 +1,37 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The suspicious process running on the system is \"oneetx.exe\".",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The child process name is \"roundll32.exe\".",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The suspicious process's memory region is protected with PAGE_EXECUTE_WRITECOPY.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Outline.exe",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "20.22.207.36",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "http://209.11.244.51/p.php?n=",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "\\Device\\HarddiskVolume3\\Windows\\System32\\fontdrvhost.exe",
+    "result": "0"
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "VelvetSweatshop",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "SOCWNEScLLxkLhtJ, Sheet",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "rilaer.com",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "KUdYCRk.exe",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "CSHykdYHv",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "HKCU\\Software\\Microsoft\\Office\\...\\Excel\\Security",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "0001",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "GET.WORKSPACE(2)",
+    "result": "1"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "Windows",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "HTML file (bmjn5ef.html)",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "ethelenecrace.xyz",
+    "result": "1"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "c:\\\\Users\\\\Public\\\\bmjn5ef.html",
+    "result": "1"
+  },
+  {
+    "question_number": "13",
+    "answer_found_by_llm": "rundll32.exe",
+    "result": "1"
+  }
+]

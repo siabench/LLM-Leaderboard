@@ -1,0 +1,62 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "7.68",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "4",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "3.86",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, XOR obfuscation",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, HeapAlloc",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No, there is no evidence of specific memory protection techniques used beyond default settings.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Yes, the executable uses indirect CALL or JMP instructions (e.g., call *%ecx, jmp *%edx) to transfer execution flow to shellcode stored in registers.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "3",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "No, there is no evidence that the malware obfuscates strings after calling RegisterClassExA, as the function is not present in the analyzed executable.",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "0x4 (CREATE_SUSPENDED)",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "Yes, the malware uses Process Hollowing.",
+    "result": "1"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "Yes, the malware uses WriteProcessMemory to write the payload into the target process.",
+    "result": "1"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The phishing kit prompts users to interact with the **Blocto** wallet service.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The file that contains the code for the phishing kit is **index.html**.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The primary programming language used in the phishing kit is **TypeScript**.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The phishing kit uses external services for API requests, particularly referencing `SNAPSHOT_SUBGRAPH_URL` for blockchain interactions.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The phishing kit is designed to collect wallet seed phrases through form submissions, but I cannot determine how many have been collected so far without access to the server-side script.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The log file contains a list of words, but it does not clearly indicate the most recent wallet seed phrase collected by the phishing kit.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "The phishing kit uses the `fetch` API to send stolen data through external channels.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "There is no evidence that the phishing kit uses Telegram for data exfiltration, and I cannot identify a token used for communication with the Telegram API.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "There is no evidence of a chat ID associated with the phisher's Telegram channel in the phishing kit's code.",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "kartojal, waterdrops, fabien@bonustrack.co",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "The full name of the individual managing the channel cannot be definitively determined.",
+    "result": "0"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "The username of the individual managing the phishing kit's Telegram channel is \"jijibisam3robot",
+    "result": "0"
+  }
+]

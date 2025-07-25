@@ -1,0 +1,52 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Yes, there is an indication of port scanning activity.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "10.251.96.4",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "1-1024",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "TCP SYN scan",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Nmap",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  }
+]

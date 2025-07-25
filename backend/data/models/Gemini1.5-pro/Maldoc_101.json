@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "1",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "AutoOpen",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "1",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "=",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "There is no program executed by the obfuscated base64 encoded string.",
+    "result": "1"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Yes, 8",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "Yes, the document contains obfuscated code using XOR decryption. The initial key used is 0x2D.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, the malware drops a file named maintools.js",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, the obfuscated scripting language is JavaScript",
+    "result": "0"
+  }
+]

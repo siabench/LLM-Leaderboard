@@ -1,0 +1,57 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Kali",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "There is no file named 'access.log' in the disk image.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "No super-secret files were found on the employee's machine.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "No program was found to be used by didyouthinkwedmakeiteasy.jpg during execution.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No checklist was found on the employee's machine.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Apache was not found to be running on the employee's machine.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No evidence was found that the employee's machine was used to attack other machines.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "No evidence was found that the employee was taunting a fellow computer expert.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "The user \"root\" attempted to access the root account.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "The last active directory in the filesystem before the disk image was created is scenario/[root]/root/Documents/myfirsthack.",
+    "result": "Round exceed the limit"
+  }
+]

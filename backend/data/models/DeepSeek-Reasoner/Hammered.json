@@ -1,0 +1,57 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Yes, the attacker gained access to the system via the SSH service (sshd).",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The operating system is Kali GNU/Linux Rolling (version 2024.1).",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The compromised account is root.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The number of attackers who gained access is 29.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, 365 requests were sent to the Apache server.",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "Yes, the IP 219.150.161.20 logged in successfully. The earliest timestamp was Apr 19 05:41:44.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "Yes, new accounts were created: packet, fido, dhg, and wind3str0y.",
+    "result": "1"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "Yes, the proxy used was Proxyfire.",
+    "result": "0"
+  }
+]

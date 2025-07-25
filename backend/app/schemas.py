@@ -1,4 +1,4 @@
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Literal
 from pydantic import BaseModel, HttpUrl
 
 class LandingInfo(BaseModel):
@@ -46,7 +46,10 @@ class ModelDetail(BaseModel):
     scenario_name: str
     question_text: str
     correct_answer: str
-    adversarial_tactic: Optional[str] = None
+    model_answer: str
+    response: Literal["pass", "fail"]
+    adversarial_tactic: str
+
 
 class DetailedBreakdown(BaseModel):
     model_name: str

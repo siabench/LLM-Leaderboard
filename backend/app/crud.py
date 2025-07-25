@@ -310,29 +310,49 @@ def fetch_leaderboard(tasks=None, levels=None):
         })
     return result
 
-def fetch_passed_questions(model_name):
+def fetch_model_details(model_name: str):
     query = """
-        SELECT q.question_id, q.scenario_name, q.question, q.answer, q.adversarial_tactic
-        FROM question_metadata q
-        JOIN model_metrics m ON m.question_id = q.question_id
-        JOIN models mod ON mod.model_id = m.model_id
-        WHERE mod.model_name = %s AND m.response = 'pass'
-        ORDER BY q.scenario_name, q.question_id;
+      SELECT
+        q.question_id,
+        q.scenario_name,
+        q.question   AS question_text,
+        q.answer     AS correct_answer,
+        m.model_answer,
+        m.response,
+        q.adversarial_tactic
+      FROM question_metadata q
+      JOIN model_metrics m
+        ON m.question_id = q.question_id
+      JOIN models mod
+        ON mod.model_id = m.model_id
+      WHERE mod.model_name = %s
+      ORDER BY q.scenario_name, q.question_id;
     """
     with get_conn() as conn:
-        with conn.cursor() as cur:
-            cur.execute(query, (model_name,))
-            rows = cur.fetchall()
-    results = []
-    for row in rows:
-        results.append({
-            "scenario_name": row[1],
-            "question_text": row[2],
-            "correct_answer": row[3],
-            "adversarial_tactic": row[4]
-        })
-    print("PASSED QUESTIONS:", results) 
-    return results
+      with conn.cursor() as cur:
+        cur.execute(query, (model_name,))
+        rows = cur.fetchall()
+
+    result = []
+    for (
+      _qid,
+      scenario_name,
+      question_text,
+      correct_answer,
+      model_answer,
+      response,
+      adversarial_tactic,
+    ) in rows:
+      result.append({
+        "scenario_name": scenario_name,
+        "question_text": question_text,
+        "correct_answer": correct_answer,
+        "model_answer": model_answer,
+        "response": response,             
+        "adversarial_tactic": adversarial_tactic or "—"
+      })
+    return result
+
 
 
 def fetch_latest(tasks=None, levels=None, latest_model="GPT-4.0"):

@@ -1,0 +1,62 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "7.676900 bits per byte",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "4",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "4.592712 bits per byte",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, there is a technique used to obfuscate strings, but the specific technique is not identifiable from the current analysis.",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, the API used is likely `HeapAlloc` for memory allocation.",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No explicit memory protection technique was identified from the current analysis.",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Yes, the instruction used is likely an indirect `jmp` instruction.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "193",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "No explicit API was identified for writing the payload into the target process from the current analysis.",
+    "result": "Given up on the question"
+  }
+]

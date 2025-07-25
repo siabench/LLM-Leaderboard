@@ -7,7 +7,7 @@ import {
   // getLatestResults,
   getDetailedResults,
   getLeaderboard,
-  getModelPassedQuestions,
+  getModelDetails,
   getLegend,
 } from "../services/api";
 
@@ -39,7 +39,7 @@ export default function Leaderboard() {
     setSelectedModel(row.model_name);
     setModalLoading(true);
     setShowModal(true);
-    getModelPassedQuestions(row.model_name)
+    getModelDetails(row.model_name)
       .then((res) => {
         setModalData(res.data);
         setModalLoading(false);
@@ -643,14 +643,14 @@ export default function Leaderboard() {
               ×
             </button>
             <h3 className="text-lg font-bold mb-4">
-              Passed Questions for{" "}
+              All Answers for{" "}
               <span className="text-blue-600">{selectedModel}</span>
             </h3>
             {modalLoading ? (
               <div className="text-center p-8 text-gray-500">Loading...</div>
             ) : modalData.length === 0 ? (
               <div className="text-center p-8 text-gray-400">
-                No passed questions.
+                No answers found.
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -663,27 +663,44 @@ export default function Leaderboard() {
                         Correct Answer
                       </th>
                       <th className="py-2 px-4 border-b font-bold">
+                        LLM Answer
+                      </th>
+                      <th className="py-2 px-4 border-b font-bold">
                         Adversarial Tactic
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {modalData.map((q, idx) => (
-                      <tr key={idx}>
-                        <td className="py-2 px-4 border-b">
-                          {q.scenario_name}
-                        </td>
-                        <td className="py-2 px-4 border-b">
-                          {q.question_text}
-                        </td>
-                        <td className="py-2 px-4 border-b">
-                          {q.correct_answer}
-                        </td>
-                        <td className="py-2 px-4 border-b">
-                          {q.adversarial_tactic || "—"}
-                        </td>
-                      </tr>
-                    ))}
+                    {modalData.map((q, idx) => {
+                      const bg =
+                        q.response === "pass" ? "bg-green-50" : "bg-red-50";
+                      const textColor =
+                        q.response === "pass"
+                          ? "text-green-700"
+                          : "text-red-700";
+                      return (
+                        <tr
+                          key={idx}
+                          className={`${bg} hover:bg-opacity-75 transition-colors`}
+                        >
+                          <td className="py-2 px-4 border-b">
+                            {q.scenario_name}
+                          </td>
+                          <td className="py-2 px-4 border-b">
+                            {q.question_text}
+                          </td>
+                          <td className="py-2 px-4 border-b font-mono">
+                            {q.correct_answer}
+                          </td>
+                          <td className={`py-2 px-4 border-b ${textColor}`}>
+                            {q.model_answer}
+                          </td>
+                          <td className="py-2 px-4 border-b">
+                            {q.adversarial_tactic}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

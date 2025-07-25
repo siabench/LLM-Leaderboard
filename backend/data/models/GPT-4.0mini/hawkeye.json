@@ -1,0 +1,107 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The total number of packets present in the capture file is 4003.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The timestamp of the first packet captured in the pcap file is Apr 10, 2019 16:37:07.129730000 EDT.",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The total duration of the network capture is 1 hour, 3 minutes, and 41.561233 seconds.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The most active computer at the link level is identified by the MAC address 00:08:02:1c:47:ae",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The number of unique internal IP addresses observed in the network traffic is 12.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The most active computer at the network level is identified by the IP address 10.4.10.132, with a total of 1576 packets.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "The domain queried in packet 204 by one of the computers in the network is proforma-invoices.com.",
+    "result": "1"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "The operating system of the victim's machine is Windows 7, as indicated by the User-Agent string in the network traffic.",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "The suspicious file downloaded by the victim's computer during the network capture is tkraw_Protected99.exe.",
+    "result": "1"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "d41d8cd98f00b204e9800998ecf8427e",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "13",
+    "answer_found_by_llm": "LiteSpeed",
+    "result": "1"
+  },
+  {
+    "question_number": "14",
+    "answer_found_by_llm": "I was unable to find the public IP address of the victim's computer in the network capture.",
+    "result": "0"
+  },
+  {
+    "question_number": "15",
+    "answer_found_by_llm": "Yes, data is exfiltrated from the victim's computer.",
+    "result": "0"
+  },
+  {
+    "question_number": "16",
+    "answer_found_by_llm": "The email server to which the stolen information is sent is not found.",
+    "result": "0"
+  },
+  {
+    "question_number": "17",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "18",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "19",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "20",
+    "answer_found_by_llm": "The malware variant responsible for exfiltrating the stolen data is not identified in the network traffic.",
+    "result": "0"
+  },
+  {
+    "question_number": "21",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  }
+]

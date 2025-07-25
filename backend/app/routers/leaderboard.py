@@ -1,6 +1,6 @@
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Query, Path
-from app.crud import (fetch_task_options, fetch_level_options, fetch_leaderboard, fetch_latest, fetch_detailed_breakdown, fetch_legend, fetch_model_integrations,fetch_passed_questions)
+from app.crud import (fetch_task_options, fetch_level_options, fetch_leaderboard, fetch_latest, fetch_detailed_breakdown, fetch_legend, fetch_model_integrations,fetch_model_details)
 from app.schemas import LeaderboardEntry, ModelResult, DetailedBreakdown, LegendEntry, ModelIntegration,ModelDetail
 
 router = APIRouter(prefix="/leaderboard")
@@ -50,9 +50,5 @@ def get_integrations():
     return fetch_model_integrations()
     
 @router.get("/model-details/{model_name}", response_model=List[ModelDetail])
-def get_model_passed_questions(model_name: str):
-    try:
-        return fetch_passed_questions(model_name)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
+def get_model_details(model_name: str):
+    return fetch_model_details(model_name)

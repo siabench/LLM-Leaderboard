@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The sender's email address is amazon@zyevantoby.cn.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The intended recipient of the email is saintington73@outlook.com.",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The subject line mentioned in the email is 'Your Account has been locked.'",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The email is impersonating Amazon.",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The email was sent on Wednesday, July 14, 2021, at 01:40:32 (UTC+9).",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The email content is encoded using Base64.",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "There is no URL embedded within the email body to retrieve external content.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "There is no such URLs related to social media profiles within the email content.",
+    "result": "0"
+  }
+]
