@@ -119,9 +119,7 @@ export default function Leaderboard() {
         );
         const LEVEL_CODES = Object.fromEntries(
           legendRes.data
-            .filter((x) =>
-              ["E = Easy", "M = Medium", "H = Hard"].includes(x.meaning)
-            )
+            .filter((x) => ["Easy", "Medium", "Hard"].includes(x.meaning))
             .map(({ meaning, code }) => [meaning, code])
         );
         const LEVELS = Object.values(LEVEL_CODES);
@@ -662,11 +660,12 @@ export default function Leaderboard() {
                       <th className="py-2 px-4 border-b font-bold">Scenario</th>
                       <th className="py-2 px-4 border-b font-bold">Question</th>
                       <th className="py-2 px-4 border-b font-bold">
-                        Correct Answer
-                      </th>
-                      <th className="py-2 px-4 border-b font-bold">
                         LLM Answer
                       </th>
+                      <th className="py-2 px-4 border-b font-bold">
+                        Correct Answer
+                      </th>
+
                       <th className="py-2 px-4 border-b font-bold">
                         Adversarial Tactic
                       </th>
@@ -691,12 +690,13 @@ export default function Leaderboard() {
                           <td className="py-2 px-4 border-b">
                             {q.question_text}
                           </td>
-                          <td className="py-2 px-4 border-b font-mono">
-                            {q.correct_answer}
-                          </td>
                           <td className={`py-2 px-4 border-b ${textColor}`}>
                             {q.model_answer}
                           </td>
+                          <td className="py-2 px-4 border-b font-mono">
+                            {q.correct_answer}
+                          </td>
+
                           <td className="py-2 px-4 border-b">
                             {q.adversarial_tactic}
                           </td>
@@ -825,7 +825,7 @@ export default function Leaderboard() {
 
                         <div>
                           <div className="font-medium text-sm text-gray-700 mb-2">
-                            Difficulty Levels
+                            Task Difficulty Levels
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {levelOptions.map((option, idx) => (

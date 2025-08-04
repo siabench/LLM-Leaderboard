@@ -156,63 +156,88 @@ export default function Table({
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full border-collapse">
         <thead className="bg-gray-50">
           {hasNested ? (
             headerRows.map((row, ri) => (
               <tr key={ri}>
-                {row.map((cell, ci) => (
-                  <th
-                    key={ci}
-                    colSpan={cell.colSpan}
-                    rowSpan={cell.rowSpan}
-                    className={`px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider ${
-                      cell.sortable ? "cursor-pointer hover:bg-gray-100" : ""
-                    }`}
-                    onClick={() =>
-                      cell.sortable && onSort && onSort(cell.accessor)
-                    }
-                  >
-                    <div className="flex items-center justify-center">
-                      {cell.header}
-                      {cell.sortable && getSortIcon(cell.accessor)}
-                    </div>
-                  </th>
-                ))}
+                {row.map((cell, ci) => {
+                  // Add right border to all cells except last in row
+                  const isLastInGroup = ci === row.length - 1;
+                  const isMainCategory = cell.colSpan > 1;
+
+                  return (
+                    <th
+                      key={ci}
+                      colSpan={cell.colSpan}
+                      rowSpan={cell.rowSpan}
+                      className={`px-2 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider 
+                        ${
+                          cell.sortable
+                            ? "cursor-pointer hover:bg-gray-100"
+                            : ""
+                        }
+                        ${isMainCategory ? "bg-gray-100" : ""}
+                        ${!isLastInGroup ? "border-r border-gray-200" : ""}
+                        ${ri === 0 ? "border-b border-gray-200" : ""}
+                      `}
+                      onClick={() =>
+                        cell.sortable && onSort && onSort(cell.accessor)
+                      }
+                    >
+                      <div className="flex items-center justify-center">
+                        {cell.header}
+                        {cell.sortable && getSortIcon(cell.accessor)}
+                      </div>
+                    </th>
+                  );
+                })}
               </tr>
             ))
           ) : (
             <tr>
-              {columns.map((col, i) => (
-                <th
-                  key={i}
-                  className={`px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider ${
-                    col.sortable ? "cursor-pointer hover:bg-gray-100" : ""
-                  }`}
-                  onClick={() => col.sortable && onSort(col.accessor)}
-                >
-                  <div className="flex items-center justify-center">
-                    {col.header}
-                    {col.sortable && getSortIcon(col.accessor)}
-                  </div>
-                </th>
-              ))}
+              {columns.map((col, i) => {
+                const isLast = i === columns.length - 1;
+
+                return (
+                  <th
+                    key={i}
+                    className={`px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider 
+                      ${col.sortable ? "cursor-pointer hover:bg-gray-100" : ""}
+                      ${!isLast ? "border-r border-gray-200" : ""}
+                    `}
+                    onClick={() => col.sortable && onSort(col.accessor)}
+                  >
+                    <div className="flex items-center justify-center">
+                      {col.header}
+                      {col.sortable && getSortIcon(col.accessor)}
+                    </div>
+                  </th>
+                );
+              })}
             </tr>
           )}
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {sortedData.map((row, ri) => (
-            <tr key={ri} className="hover:bg-blue-50 transition-colors">
-              {(hasNested ? flatCols : columns).map((col, ci) => (
-                <td
-                  key={ci}
-                  className="px-3 py-3.5 whitespace-nowrap text-sm text-center"
-                >
-                  {col.cell
-                    ? col.cell(row[col.accessor], row)
-                    : row[col.accessor]}
-                </td>
-              ))}
+            <tr key={ri} className="hover:bg-blue-50/50 transition-colors">
+              {(hasNested ? flatCols : columns).map((col, ci) => {
+                const isLast =
+                  ci === (hasNested ? flatCols : columns).length - 1;
+
+                return (
+                  <td
+                    key={ci}
+                    className={`px-2 py-3 whitespace-nowrap text-sm text-center
+                      ${!isLast ? "border-r border-gray-200" : ""}
+                    `}
+                  >
+                    {col.cell
+                      ? col.cell(row[col.accessor], row)
+                      : row[col.accessor]}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
