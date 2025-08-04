@@ -119,7 +119,9 @@ export default function Leaderboard() {
         );
         const LEVEL_CODES = Object.fromEntries(
           legendRes.data
-            .filter((x) => ["Easy", "Medium", "Hard"].includes(x.meaning))
+            .filter((x) =>
+              ["E = Easy", "M = Medium", "H = Hard"].includes(x.meaning)
+            )
             .map(({ meaning, code }) => [meaning, code])
         );
         const LEVELS = Object.values(LEVEL_CODES);
