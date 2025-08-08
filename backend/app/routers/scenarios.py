@@ -5,7 +5,8 @@ from app.crud import fetch_scenarios, fetch_scenario_questions
 
 router = APIRouter(prefix="/scenarios", tags=["scenarios"])
 
-@router.get("/", response_model=List[ScenarioSummary], summary="List scenarios")
+
+@router.get("", response_model=List[ScenarioSummary])
 def list_scenarios():
     return fetch_scenarios()
 

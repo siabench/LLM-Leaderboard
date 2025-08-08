@@ -33,6 +33,12 @@ app.include_router(footer_router)
 app.include_router(scenarios_router)
 app.include_router(info_router)
 
+for r in app.routes:
+    try:
+        print(r.path, list(getattr(r, "methods", [])))
+    except Exception:
+        pass
+
 app.router.redirect_slashes = False
 
 
