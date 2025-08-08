@@ -91,17 +91,14 @@ class FooterInfo(BaseModel):
     links: List[FooterLink]
     copyright: str
     
-from typing import List
-from pydantic import BaseModel
 
 class ScenarioSummary(BaseModel):
     scenario_name: str
-    task_categories: List[str]
+    categories: List[str]
     levels: List[str]
     question_count: int
 
 class ScenarioQuestion(BaseModel):
-    question_id: int
     question: str
     task_category: str
     question_level: str

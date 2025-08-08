@@ -431,6 +431,53 @@ def fetch_alert_leaderboard(tasks=None, levels=None):
       })
     return result 
 
+def fetch_scenarios():
+    query = """
+      SELECT
+        scenario_name,
+        array_agg(DISTINCT task_category) AS categories,
+        array_agg(DISTINCT question_level) AS levels,
+        COUNT(*) AS question_count
+      FROM question_metadata
+      GROUP BY scenario_name
+      ORDER BY scenario_name;
+    """
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query)
+            rows = cur.fetchall()
+
+    result = []
+    for scenario_name, categories, levels, qcount in rows:
+        result.append({
+            "scenario_name": scenario_name,
+            "categories": sorted([c for c in (categories or []) if c]),
+            "levels": sorted([l for l in (levels or []) if l]),
+            "question_count": int(qcount or 0),
+        })
+    return result
+
+
+def fetch_scenario_questions(scenario_name: str):
+    query = """
+      SELECT question, task_category, question_level
+      FROM question_metadata
+      WHERE scenario_name = %s
+      ORDER BY question_level, task_category, question;
+    """
+    with get_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query, (scenario_name,))
+            rows = cur.fetchall()
+
+    return [
+        {
+            "question": q,
+            "task_category": cat,
+            "question_level": lvl,
+        }
+        for (q, cat, lvl) in rows
+    ]
 
 def fetch_model_integrations(): 
     return [
