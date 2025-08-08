@@ -6,6 +6,7 @@ import AlertTriagingLeaderboard from "./components/AlertTriagingLeaderboard";
 import Footer from "./components/Footer";
 import Info from "./components/Info";
 import MotionBackground from "./components/MotionBackground";
+import ScenariosTree from "./components/ScenariosTree";
 
 export default function App() {
   return (
@@ -25,6 +26,14 @@ export default function App() {
         <section className="snap-start min-h-screen w-screen flex justify-center items-center bg-gray-50">
           <div className="w-full max-w-5xl h-full overflow-y-auto">
             <AlertTriagingLeaderboard />
+          </div>
+        </section>
+        <section
+          id="scenarios"
+          className="snap-start min-h-screen w-screen flex justify-center items-center bg-white"
+        >
+          <div className="w-full max-w-5xl h-full overflow-y-auto">
+            <ScenariosTree />
           </div>
         </section>
         <section className="snap-start min-h-screen w-screen flex justify-center items-center bg-white">

@@ -28,5 +28,8 @@ export const getAlertTriagingLeaderboard = () =>
 export const getModelDetails = (model_name) =>
   API.get(`/leaderboard/model-details/${encodeURIComponent(model_name)}`);
 export const getModelIntegrations = () => API.get("/leaderboard/integrations");
+export const getScenarios = () => API.get("/scenarios");
+export const getScenarioQuestions = (name) =>
+  API.get(`/scenarios/${encodeURIComponent(name)}/questions`);
 
 export default API;
