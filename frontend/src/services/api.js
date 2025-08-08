@@ -28,8 +28,17 @@ export const getAlertTriagingLeaderboard = () =>
 export const getModelDetails = (model_name) =>
   API.get(`/leaderboard/model-details/${encodeURIComponent(model_name)}`);
 export const getModelIntegrations = () => API.get("/leaderboard/integrations");
-export const getScenarios = () => API.get("/scenarios");
-export const getScenarioQuestions = (name) =>
-  API.get(`/scenarios/${encodeURIComponent(name)}/questions`);
+export const getScenarios = () =>
+  API.get("/scenarios").then((r) => {
+    const items = Array.isArray(r.data)
+      ? r.data
+      : r.data?.scenarios ?? r.data?.items ?? [];
+    return { data: items };
+  });
 
+export const getScenarioQuestions = (name) =>
+  API.get(`/scenarios/${encodeURIComponent(name)}/questions`).then((r) => {
+    const items = Array.isArray(r.data) ? r.data : r.data?.questions ?? [];
+    return { data: items };
+  });
 export default API;

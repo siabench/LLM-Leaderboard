@@ -11,8 +11,7 @@ export default function ScenariosTree() {
     setLoading(true);
     getScenarios()
       .then((res) => {
-        const list = Array.isArray(res.data) ? res.data : res.data?.items ?? [];
-        setScenarios(list);
+        setScenarios(Array.isArray(res.data) ? res.data : res.data ?? []);
       })
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -39,12 +38,15 @@ export default function ScenariosTree() {
   return (
     <div className="p-4">
       <div className="font-semibold mb-2">Scenarios</div>
-      {(scenarios ?? []).map((s) => {
+      {(Array.isArray(scenarios) ? scenarios : []).map((s) => {
         const name = s.scenario_name ?? s.name;
         const cat = s.task_category ?? s.category ?? "—";
-        const lvl = s.question_level ?? s.level ?? s.levels?.join(", ") ?? "—";
+        const lvl =
+          s?.question_level ??
+          s?.level ??
+          (Array.isArray(s?.levels) ? s.levels.join(", ") : "—");
         const isOpen = !!expanded[name];
-        const qs = questions[name] ?? [];
+        const qs = Array.isArray(questions[name]) ? questions[name] : [];
         return (
           <div key={name} className="border rounded mb-2">
             <button
@@ -65,7 +67,7 @@ export default function ScenariosTree() {
                   </div>
                 ) : (
                   <ul className="list-disc pl-5">
-                    {(qs ?? []).map((q, i) => (
+                    {qs.map((q, i) => (
                       <li key={q.question_id ?? i} className="text-sm">
                         {q.question ?? q.text ?? "(missing question text)"}
                       </li>
