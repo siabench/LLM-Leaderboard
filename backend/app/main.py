@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from mangum import Mangum
+# from mangum import Mangum
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.routing import Mount
 from app.routers.landing import router as landing_router
