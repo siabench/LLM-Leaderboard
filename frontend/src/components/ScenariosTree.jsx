@@ -47,7 +47,6 @@ export default function ScenariosTree() {
 
   const clearFilters = () => setFilters({ category: [], level: [] });
 
-  // Extract unique categories and levels
   const categories = [
     ...new Set(
       scenarios.map((s) => s.task_category || s.category).filter(Boolean)
@@ -59,7 +58,6 @@ export default function ScenariosTree() {
     ),
   ];
 
-  // Filter scenarios
   const filteredScenarios = scenarios.filter((s) => {
     const cat = s.task_category || s.category;
     const lvl = s.question_level || s.level;
@@ -338,144 +336,166 @@ export default function ScenariosTree() {
                 )}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {filteredScenarios.map((s) => {
-                  const name = s.scenario_name ?? s.name;
-                  const cat = s.task_category ?? s.category ?? "—";
-                  const lvl =
-                    s?.question_level ??
-                    s?.level ??
-                    (Array.isArray(s?.levels) ? s.levels.join(", ") : "—");
-                  const isOpen = !!expanded[name];
-                  const qs = Array.isArray(questions[name])
-                    ? questions[name]
-                    : [];
-
-                  return (
-                    <motion.div
-                      key={name}
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                    >
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+                  {["Easy", "Medium", "Hard"].map((level) => (
+                    <div key={level} className="text-center">
                       <div
-                        className={`px-4 py-3 bg-gradient-to-r ${
-                          lvl === "Easy"
-                            ? "from-green-50 to-green-100"
-                            : lvl === "Medium"
-                            ? "from-yellow-50 to-yellow-100"
-                            : lvl === "Hard"
-                            ? "from-red-50 to-red-100"
-                            : "from-gray-50 to-gray-100"
-                        } cursor-pointer`}
-                        onClick={() => toggleScenario(name)}
+                        className={`py-2 rounded-t-lg font-medium text-sm ${
+                          level === "Easy"
+                            ? "bg-green-100 text-green-800"
+                            : level === "Medium"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-red-100 text-red-800"
+                        }`}
                       >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <span className="font-medium text-gray-800">
-                              {name}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
-                              {cat}
-                            </span>
-                            <span
-                              className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
-                                lvl === "Easy"
-                                  ? "bg-green-100 text-green-800"
-                                  : lvl === "Medium"
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : lvl === "Hard"
-                                  ? "bg-red-100 text-red-800"
-                                  : "bg-gray-100 text-gray-800"
-                              }`}
-                            >
-                              {lvl}
-                            </span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`h-5 w-5 text-gray-400 transition-transform ${
-                                isOpen ? "transform rotate-180" : ""
-                              }`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                              />
-                            </svg>
-                          </div>
-                        </div>
+                        {level} Scenarios
                       </div>
+                    </div>
+                  ))}
+                </div>
 
-                      <AnimatePresence>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-4 py-3 bg-white border-t border-gray-200">
-                              {!questions[name] ? (
-                                <div className="flex justify-center py-4">
-                                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
-                                </div>
-                              ) : qs.length === 0 ? (
-                                <div className="text-center py-4 text-sm text-gray-500">
-                                  No questions found for this scenario.
-                                </div>
-                              ) : (
-                                <div>
-                                  <div className="text-sm font-medium text-gray-700 mb-2">
-                                    Questions:
-                                  </div>
-                                  <ul className="space-y-2">
-                                    {qs.map((q, i) => (
-                                      <li
-                                        key={q.question_id ?? i}
-                                        className="bg-gray-50 rounded-md p-3 text-sm"
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {["Easy", "Medium", "Hard"].map((level) => {
+                    const levelScenarios = filteredScenarios.filter((s) => {
+                      const scenarioLevel = s?.question_level ?? s?.level ?? "";
+                      return scenarioLevel === level;
+                    });
+
+                    return (
+                      <div key={level} className="flex flex-col space-y-4">
+                        {levelScenarios.length === 0 ? (
+                          <div className="border border-dashed border-gray-200 rounded-lg p-6 text-center text-sm text-gray-400 h-32 flex items-center justify-center">
+                            No {level.toLowerCase()} scenarios available
+                          </div>
+                        ) : (
+                          levelScenarios.map((s) => {
+                            const name = s.scenario_name ?? s.name;
+                            const cat = s.task_category ?? s.category ?? "—";
+                            const lvl = s?.question_level ?? s?.level ?? "";
+                            const isOpen = !!expanded[name];
+                            const qs = Array.isArray(questions[name])
+                              ? questions[name]
+                              : [];
+
+                            return (
+                              <motion.div
+                                key={name}
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                              >
+                                <div
+                                  className={`px-4 py-3 bg-gradient-to-r ${
+                                    lvl === "Easy"
+                                      ? "from-green-50 to-green-100"
+                                      : lvl === "Medium"
+                                      ? "from-yellow-50 to-yellow-100"
+                                      : lvl === "Hard"
+                                      ? "from-red-50 to-red-100"
+                                      : "from-gray-50 to-gray-100"
+                                  } cursor-pointer`}
+                                  onClick={() => toggleScenario(name)}
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                      <span className="font-medium text-gray-800">
+                                        {name}
+                                      </span>
+                                    </div>
+
+                                    <div className="flex items-center gap-2">
+                                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                                        {cat}
+                                      </span>
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className={`h-5 w-5 text-gray-400 transition-transform ${
+                                          isOpen ? "transform rotate-180" : ""
+                                        }`}
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
                                       >
-                                        <div className="flex">
-                                          <span className="flex-shrink-0 text-blue-600 mr-2">
-                                            Q{i + 1}:
-                                          </span>
-                                          <span className="text-gray-700">
-                                            {q.question ??
-                                              q.text ??
-                                              "(missing question text)"}
-                                          </span>
-                                        </div>
-                                        {q.correct_answer && (
-                                          <div className="mt-2 pt-2 border-t border-gray-200">
-                                            <span className="text-xs font-medium text-gray-500">
-                                              Expected Answer:{" "}
-                                            </span>
-                                            <span className="text-xs font-mono bg-green-50 text-green-800 px-1.5 py-0.5 rounded border border-green-100">
-                                              {q.correct_answer}
-                                            </span>
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth={2}
+                                          d="M19 9l-7 7-7-7"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <AnimatePresence>
+                                  {isOpen && (
+                                    <motion.div
+                                      initial={{ height: 0, opacity: 0 }}
+                                      animate={{ height: "auto", opacity: 1 }}
+                                      exit={{ height: 0, opacity: 0 }}
+                                      transition={{ duration: 0.2 }}
+                                      className="overflow-hidden"
+                                    >
+                                      <div className="px-4 py-3 bg-white border-t border-gray-200">
+                                        {!questions[name] ? (
+                                          <div className="flex justify-center py-4">
+                                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+                                          </div>
+                                        ) : qs.length === 0 ? (
+                                          <div className="text-center py-4 text-sm text-gray-500">
+                                            No questions found for this
+                                            scenario.
+                                          </div>
+                                        ) : (
+                                          <div>
+                                            <div className="text-sm font-medium text-gray-700 mb-2">
+                                              Questions:
+                                            </div>
+                                            <ul className="space-y-2">
+                                              {qs.map((q, i) => (
+                                                <li
+                                                  key={q.question_id ?? i}
+                                                  className="bg-gray-50 rounded-md p-3 text-sm"
+                                                >
+                                                  <div className="flex">
+                                                    <span className="flex-shrink-0 text-blue-600 mr-2">
+                                                      Q{i + 1}:
+                                                    </span>
+                                                    <span className="text-gray-700">
+                                                      {q.question ??
+                                                        q.text ??
+                                                        "(missing question text)"}
+                                                    </span>
+                                                  </div>
+                                                  {q.correct_answer && (
+                                                    <div className="mt-2 pt-2 border-t border-gray-200">
+                                                      <span className="text-xs font-medium text-gray-500">
+                                                        Expected Answer:{" "}
+                                                      </span>
+                                                      <span className="text-xs font-mono bg-green-50 text-green-800 px-1.5 py-0.5 rounded border border-green-100">
+                                                        {q.correct_answer}
+                                                      </span>
+                                                    </div>
+                                                  )}
+                                                </li>
+                                              ))}
+                                            </ul>
                                           </div>
                                         )}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              )}
-                            </div>
-                          </motion.div>
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </motion.div>
+                            );
+                          })
                         )}
-                      </AnimatePresence>
-                    </motion.div>
-                  );
-                })}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>

@@ -18,7 +18,7 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT") or "5432"
 DB_NAME = os.getenv("DB_NAME")
 
-LOCAL_PATH   = "../data/Evaluation_Result.csv"   # CSV with 2 header rows
+LOCAL_PATH   = "../data/Evaluation_Result.csv"  
 CLEANED_PATH = "../data/responses_only.csv"
 
 DISPLAYED_MODELS = [
@@ -33,7 +33,6 @@ engine = create_engine(
     future=True,
 )
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
 def arbiter_indexes():
     """Create indexes we know we need; safe to run every time."""
     stmts = [
@@ -58,12 +57,10 @@ def extract_question_number(q: str) -> str:
     m = _qnum_re.match(q)
     if m:
         return m.group(1).lower()
-    # Fallback: try a plain number like '1.1' at start
     m2 = re.match(r"^\s*(\d+(?:\.\d+)*)", q)
     if m2:
         return f"s{m2.group(1)}"
-    return q.strip()  # last resort: use the whole question string
-
+    return q.strip() 
 def reflect_table(conn, name: str) -> Table:
     md = MetaData()
     return Table(name, md, autoload_with=conn)
@@ -73,21 +70,17 @@ def df_keep_table_columns(df: pd.DataFrame, table: Table) -> pd.DataFrame:
     keep = [c for c in df.columns if c in table_cols]
     return df[keep].copy()
 
-# ── ETL: read & clean to a 'wide' dataframe ───────────────────────────────────
 def read_and_clean() -> pd.DataFrame:
     df_raw = pd.read_csv(LOCAL_PATH, header=[0, 1], dtype=str, keep_default_na=False)
 
-    # meta columns (by second-level header name)
     meta_cols = [c for c in df_raw.columns if c[1].strip().lower() in META_KEEP]
 
-    # model columns present → (model, 'Response')
     model_cols = {}
     for model in DISPLAYED_MODELS:
         cols = [c for c in df_raw.columns if c[0] == model and c[1].strip().lower() == "response"]
         if cols:
             model_cols[model] = cols
 
-    # build long
     rows = []
     for _, row in df_raw.iterrows():
         meta = {c[1].strip(): row[c] for c in meta_cols}
@@ -106,10 +99,8 @@ def read_and_clean() -> pd.DataFrame:
     df_long.columns = [str(c).strip().lower() for c in df_long.columns]
     df_long = df_long.replace("", np.nan).dropna(subset=["question", "response"]).drop_duplicates()
 
-    # derive question_number *before* pivot so it survives deduping
     df_long["question_number"] = df_long["question"].apply(extract_question_number)
 
-    # pivot to wide
     wide = df_long.pivot_table(
         index=["question", "question_number", "scenario_name", "question_level", "task_category"],
         columns="model_name",
@@ -120,18 +111,15 @@ def read_and_clean() -> pd.DataFrame:
     wide.columns.name = None
     wide.columns = [c if isinstance(c, str) else c[1] for c in wide.columns]
 
-    # order: meta + models
     meta_order = ["question", "question_number", "scenario_name", "question_level", "task_category"]
     ordered = meta_order + [m for m in DISPLAYED_MODELS if m in wide.columns]
     wide = wide[[c for c in ordered if c in wide.columns]]
 
-    # write cleaned
     Path(CLEANED_PATH).parent.mkdir(parents=True, exist_ok=True)
     wide.to_csv(CLEANED_PATH, index=False)
     print(f"✅ Wrote {wide.shape[0]} cleaned rows to {CLEANED_PATH}")
     return wide
 
-# ── UPSERTs ───────────────────────────────────────────────────────────────────
 def upsert_models(conn, models: list[str]):
     tbl = reflect_table(conn, "models")
     values = [{"model_name": m} for m in models]
@@ -150,12 +138,10 @@ def upsert_questions(conn, questions_df: pd.DataFrame):
         return
     tbl = reflect_table(conn, "question_metadata")
 
-    # Make sure we include question_number; derive again in case caller forgot
     if "question_number" not in questions_df.columns:
         questions_df = questions_df.copy()
         questions_df["question_number"] = questions_df["question"].apply(extract_question_number)
 
-    # Keep only columns that actually exist in the DB table
     payload = df_keep_table_columns(questions_df, tbl).to_dict(orient="records")
     if not payload:
         return
@@ -177,23 +163,18 @@ def upsert_metrics(conn, metrics_df: pd.DataFrame):
     )
     conn.execute(stmt)
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 def main():
     arbiter_indexes()
 
-    # 1) Read & clean
     wide = read_and_clean()
 
-    # 2) UPSERT models
     with engine.begin() as conn:
         upsert_models(conn, DISPLAYED_MODELS)
 
-    # 3) UPSERT questions (includes question_number)
     questions_df = wide[["question", "question_number", "scenario_name", "question_level", "task_category"]].drop_duplicates()
     with engine.begin() as conn:
         upsert_questions(conn, questions_df)
 
-    # 4) Metrics: melt, map to IDs, upsert
     df_long = wide.melt(
         id_vars=["question", "question_number", "scenario_name", "question_level", "task_category"],
         value_vars=[m for m in DISPLAYED_MODELS if m in wide.columns],
@@ -219,7 +200,7 @@ def main():
     missing_q = df_join["question_id"].isna().sum()
     missing_m = df_join["model_id"].isna().sum()
     if missing_q or missing_m:
-        print(f"⚠️  Missing question_id rows: {missing_q}, missing model_id rows: {missing_m}")
+        print(f"Missing question_id rows: {missing_q}, missing model_id rows: {missing_m}")
 
     metrics_df = df_join.loc[
         df_join["question_id"].notna() & df_join["model_id"].notna(),
@@ -229,7 +210,7 @@ def main():
     with engine.begin() as conn:
         upsert_metrics(conn, metrics_df)
 
-    print("✅ Upsert complete.")
+    print("Upsert complete.")
     print(f"   models attempted: {len(DISPLAYED_MODELS)}")
     print(f"   questions upserted: {questions_df.shape[0]}")
     print(f"   model_metrics upserted: {metrics_df.shape[0]}")
