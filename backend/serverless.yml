@@ -1,0 +1,37 @@
+service: siabench-api
+frameworkVersion: "4"
+
+provider:
+  name: aws
+  region: ca-central-1
+  profile: siabench
+  runtime: python3.11
+  memorySize: 512
+  timeout: 15
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+
+functions:
+  api:
+    handler: app.main.handler
+    url:
+      cors:
+        allowedOrigins:
+          - https://https://siabench.github.io
+          - http://localhost:3000
+        allowedHeaders:
+          - Content-Type
+          - Authorization
+        allowedMethods:
+          - "*"
+        allowCredentials: true
+    reservedConcurrency: 2
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    slim: true
+    strip: true
+    dockerizePip: true

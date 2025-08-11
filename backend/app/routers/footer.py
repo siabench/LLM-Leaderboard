@@ -25,7 +25,7 @@ def get_footer():
                 url=""
             )
         ],
-        ethics="https://github.com/llmslayer/SIABench/blob/main/Ethics.md",
+        ethics="https://github.com/llmslayer/SIABench/blob/main/ETHICS.md",
         links=[
             FooterLink(text="Privacy Policy", url="#"),
             FooterLink(text="Terms of Service", url="#"),

@@ -521,7 +521,7 @@ def fetch_model_integrations():
         {
             "model_name": "DeepSeek-Reasoner",
             "provider":   "DeepSeek",
-            "api":        "DeepSeek API",
+            "api":        "Fireworks API",
             "api_url":    "https://fireworks.ai/models"
         },
         {

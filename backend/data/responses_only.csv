@@ -1,194 +1,230 @@
-question,scenario_name,question_level,task_category,Llama3.1-8B,Llama3.1-70B,Llama3.1-405B,GPT-4.0,GPT-4.0mini,Gemini1.5-pro,DeepSeek-Reasoner,OpenAI-o3-mini,Claude-3.5
-s1.1 (hawkeye),hawkeye,Medium,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
-s1.2,hawkeye,Medium,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
-s1.3,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
-s1.4,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,fail,pass,pass,pass
-s1.5,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,pass,fail,fail
-s1.6,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
-s1.7,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,fail,fail,pass,pass,pass
-s1.8,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
-s1.9,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,pass,pass,pass,pass
-s1.10,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s1.11,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,pass,pass,pass,pass,pass
-s1.12,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,fail
-s1.13,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,pass,pass,fail,pass,pass
-s1.14,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,pass,fail,fail
-s1.15,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,pass,pass
-s1.16,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,pass,fail,pass,fail,pass
-s1.17,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
-s1.18,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
-s1.19,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s1.20,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,pass,fail,pass
-s1.21,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s2.1 (btlo_port scanning),btlo_port_scanning,Easy,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
-s2.2,btlo_port_scanning,Easy,Network Forensics,fail,fail,pass,pass,fail,pass,pass,pass,pass
-s2.3,btlo_port_scanning,Easy,Network Forensics,fail,fail,pass,pass,fail,pass,pass,pass,pass
-s2.4,btlo_port_scanning,Easy,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
-s2.5,btlo_port_scanning,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s2.6,btlo_port_scanning,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s2.7,btlo_port_scanning,Easy,Network Forensics,fail,pass,fail,pass,fail,pass,pass,fail,pass
-s2.8,btlo_port_scanning,Easy,Network Forensics,fail,pass,fail,pass,fail,pass,pass,pass,pass
-s2.9,btlo_port_scanning,Easy,Network Forensics,fail,pass,fail,fail,fail,pass,pass,pass,pass
-s2.10,btlo_port_scanning,Easy,Network Forensics,fail,fail,fail,fail,fail,pass,pass,pass,pass
-s3.1 (ulysses ),ulysses,Medium,Disk & Memory Forensics,fail,Pass,fail,pass,pass,fail,pass,pass,pass
-s3.2,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,pass,pass,pass,pass,pass,pass
-s3.3,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,fail,pass,pass
-s3.4,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,pass
-s3.5,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,fail,pass,fail,pass,fail,fail
-s3.6,ulysses,Medium,Disk & Memory Forensics,fail,fail,pass,pass,fail,fail,pass,pass,pass
-s3.7,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,fail,pass,fail,pass,fail,pass
-s3.8,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
-s3.9,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,pass,pass,fail,pass,fail,pass
-s3.10,ulysses,Medium,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,fail
-s4.1(thm_profile),thm_profile,Medium,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,pass,fail,fail
-s4.2,thm_profile,Medium,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,fail
-s4.3,thm_profile,Medium,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s4.4,thm_profile,Medium,Disk & Memory Forensics,fail,fail,fail,pass,pass,pass,pass,fail,pass
-s4.5,thm_profile,Medium,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,pass,fail,pass
-s4.6,thm_profile,Medium,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s5.1 (Maldoc_101),maldoc,Medium,Malware Analysis,fail,fail,fail,pass,pass,fail,fail,fail,pass
-s5.2,maldoc,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s5.3,maldoc,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s5.4,maldoc,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s5.5,maldoc,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,pass,fail
-s6.1 (Get_PDF),Get_PDF,Medium,Network Forensics,fail,pass,fail,pass,pass,fail,pass,pass,pass
-s6.2,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s6.3,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s6.4,Get_PDF,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s6.5,Get_PDF,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,fail
-s6.6,Get_PDF,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s6.7,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s6.8,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s9.1 (Ramnit),Ramnit,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,fail
-s9.2,Ramnit,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,fail
-s9.3,Ramnit,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,pass
-s9.4,Ramnit,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,pass,pass,fail,pass
-s9.5,Ramnit,Easy,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s9.6,Ramnit,Easy,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s10.1 (Grab_the_Fisher),phisher,Easy,Others,fail,fail,fail,fail,fail,pass,pass,pass,pass
-s10.2,phisher,Easy,Others,fail,fail,fail,pass,fail,pass,fail,fail,pass
-s10.3,phisher,Easy,Others,fail,fail,fail,fail,fail,pass,fail,fail,pass
-s10.4,phisher,Easy,Others,fail,fail,pass,pass,fail,pass,pass,fail,pass
-s10.5,phisher,Easy,Others,fail,fail,pass,pass,fail,fail,pass,fail,pass
-s10.6,phisher,Easy,Others,fail,pass,pass,pass,fail,fail,pass,pass,pass
-s10.7,phisher,Easy,Others,fail,fail,fail,pass,fail,pass,pass,fail,pass
-s10.8,phisher,Easy,Others,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s10.9,phisher,Easy,Others,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s10.10,phisher,Easy,Others,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s10.11,phisher,Easy,Others,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s10.12,phisher,Easy,Others,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s13.1 (Webstrike),Webstrike,Easy,Network Forensics,fail,fail,fail,pass,pass,pass,fail,pass,pass
-s13.2,Webstrike,Easy,Network Forensics,fail,fail,fail,pass,pass,pass,fail,pass,pass
-s13.3,Webstrike,Easy,Network Forensics,fail,fail,fail,fail,fail,pass,fail,pass,pass
-s13.4,Webstrike,Easy,Network Forensics,fail,fail,pass,pass,pass,pass,fail,pass,pass
-s13.5,Webstrike,Easy,Network Forensics,fail,fail,pass,fail,fail,fail,fail,pass,pass
-s13.6,Webstrike,Easy,Network Forensics,fail,fail,pass,pass,fail,pass,fail,fail,pass
-s13.7,Webstrike,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s14.1 (XLM_Macro),XLM_Macro,Medium,Malware Analysis,fail,fail,pass,pass,pass,fail,pass,pass,pass
-s14.2,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,pass,fail,pass,pass,fail,pass
-s14.3,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s14.4,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,fail,fail,fail,fail,fail,fail
-s14.5,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,pass,fail,pass,pass,fail,pass
-s14.6,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s14.7,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,pass,pass
-s14.8,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s14.9,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,pass,fail,pass,fail,pass
-s14.10,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s14.11,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s14.12,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s14.13,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s15.1 (Bluesky),Bluesky,Medium,Network Forensics,fail,pass,pass,pass,pass,pass,pass,fail,pass
-s15.2,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s15.3,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s15.4,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s15.5,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s15.6,Bluesky,Medium,Network Forensics,fail,fail,fail,pass,fail,pass,fail,fail,pass
-s15.7,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,pass,pass,pass,pass
-s15.8,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
-s15.9,Bluesky,Medium,Network Forensics,fail,fail,fail,pass,pass,pass,fail,fail,pass
-s15.10,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,pass,fail,pass,pass
-s15.11,Bluesky,Medium,Network Forensics,fail,pass,fail,fail,fail,pass,pass,pass,pass
-s15.12,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s15.13,Bluesky,Medium,Network Forensics,fail,pass,fail,pass,fail,pass,pass,fail,pass
-s16.1 (Tomcat),tomcat,Easy,Network Forensics,pass,pass,,pass,fail,fail,pass,fail,pass
-s16.2,tomcat,Easy,Network Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s16.3,tomcat,Easy,Network Forensics,fail,fail,fail,pass,pass,pass,pass,pass,pass
-s16.4,tomcat,Easy,Network Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
-s16.5,tomcat,Easy,Network Forensics,pass,fail,fail,pass,pass,pass,pass,pass,pass
-s16.6,tomcat,Easy,Network Forensics,fail,fail,pass,fail,fail,pass,pass,pass,pass
-s16.7,tomcat,Easy,Network Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
-s16.8,tomcat,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,fail
-s11.1 (btlo_Wordpress),wordpress,Easy,Others,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s11.2,wordpress,Easy,Others,fail,fail,fail,pass,pass,pass,fail,pass,fail
-s11.3,wordpress,Easy,Others,fail,fail,fail,pass,pass,pass,fail,pass,pass
-s11.4,wordpress,Easy,Others,fail,pass,pass,pass,pass,pass,fail,pass,pass
-s11.5,wordpress,Easy,Others,fail,pass,pass,pass,pass,pass,fail,pass,pass
-s12.1 (btlo_RansomwareScript),ransom_script,Easy,Malware Analysis,pass,fail,pass,pass,pass,pass,pass,pass,pass
-s12.2,ransom_script,Easy,Malware Analysis,fail,fail,pass,pass,pass,pass,pass,pass,pass
-s12.3,ransom_script,Easy,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,pass,pass
-s12.4,ransom_script,Easy,Malware Analysis,fail,fail,fail,pass,pass,fail,pass,fail,fail
-s12.5,ransom_script,Easy,Malware Analysis,pass,pass,pass,pass,pass,pass,pass,fail,fail
-s12.6,ransom_script,Easy,Malware Analysis,pass,pass,pass,pass,fail,pass,pass,pass,pass
-s7.1 (Btlo_phishing_email),phishing,Easy,Others,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s7.2,phishing,Easy,Others,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s7.3,phishing,Easy,Others,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s7.4,phishing,Easy,Others,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s7.5,phishing,Easy,Others,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s7.6,phishing,Easy,Others,fail,pass,pass,pass,pass,pass,pass,pass,pass
-s7.7,phishing,Easy,Others,fail,fail,fail,pass,fail,pass,fail,fail,fail
-s7.8,phishing,Easy,Others,fail,fail,fail,fail,fail,pass,fail,fail,fail
-s8.1 (btlo_classical_injection),injection,Easy,Malware Analysis,fail,pass,pass,pass,pass,pass,pass,pass,pass
-s8.2,injection,Easy,Malware Analysis,fail,fail,fail,pass,pass,pass,fail,fail,pass
-s8.3,injection,Easy,Malware Analysis,fail,fail,fail,pass,pass,pass,fail,pass,pass
-s8.4,injection,Easy,Malware Analysis,fail,fail,fail,pass,pass,pass,pass,fail,pass
-s8.5,injection,Easy,Malware Analysis,fail,fail,fail,pass,pass,pass,fail,pass,pass
-s17.1 (nuke_the_broswer),nuke,Hard,Network Forensics,fail,wrong answer,fail,pass,fail,fail,fail,fail,fail
-s17.2,nuke,Hard,Network Forensics,fail,wrong answer,fail,pass,fail,fail,pass,fail,pass
-s17.3,nuke,Hard,Network Forensics,fail,wrong answer,fail,pass,pass,fail,fail,fail,fail
-s17.4,nuke,Hard,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
-s17.5,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
-s17.6,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s17.7,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,pass,fail,pass,pass
-s17.8,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
-s17.9,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s17.10,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
-s18.1 (Reveal),reveal,Easy,Disk & Memory Forensics,fail,fail,pass,pass,pass,pass,fail,fail,pass
-s18.2,reveal,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s18.3,reveal,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s18.4,reveal,Easy,Disk & Memory Forensics,fail,fail,pass,pass,fail,fail,pass,fail,pass
-s18.5,reveal,Easy,Disk & Memory Forensics,fail,pass,pass,pass,fail,fail,pass,pass,pass
-s19.1 (Redline),redline,Easy,Disk & Memory Forensics,fail,fail,fail,pass,pass,fail,fail,fail,pass
-s19.2,redline,Easy,Disk & Memory Forensics,fail,fail,fail,pass,pass,fail,pass,fail,pass
-s19.3,redline,Easy,Disk & Memory Forensics,fail,fail,fail,fail,pass,fail,fail,fail,pass
-s19.4,redline,Easy,Disk & Memory Forensics,fail,fail,fail,fail,fail,pass,pass,fail,fail
-s19.5,redline,Easy,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s19.6,redline,Easy,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s19.7,redline,Easy,Disk & Memory Forensics,fail,fail,fail,fail,fail,pass,pass,fail,pass
-s20.1 (Team Spy),teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,pass,fail,fail,pass
-s20.2,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
-s20.3,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.4,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.5,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
-s20.6,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.7,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.8,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s20.9,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.10,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.11,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s20.12,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s20.13,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
-s20.14,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
-s20.15,teamspy,Hard,Disk & Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
-s21.1 (Ransomed),ransomed,Hard,Malware Analysis,pass,pass,pass,pass,pass,pass,pass,pass,pass
-s21.2,ransomed,Hard,Malware Analysis,fail,pass,pass,pass,pass,pass,pass,pass,pass
-s21.3,ransomed,Hard,Malware Analysis,fail,fail,pass,pass,fail,pass,pass,pass,pass
-s21.4,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.5,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.6,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.7,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.8,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.9,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.10,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.11,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
-s21.12,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,pass,pass,fail
-s21.13,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+question,question_number,scenario_name,question_level,task_category,Llama3.1-8B,Llama3.1-70B,Llama3.1-405B,GPT-4.0,GPT-4.0mini,Gemini1.5-pro,DeepSeek-Reasoner,OpenAI-o3-mini,Claude-3.5
+s1.1 (hawkeye),s1.1,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s1.10,s1.10,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s1.11,s1.11,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,pass,pass,pass,pass,pass
+s1.12,s1.12,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,fail
+s1.13,s1.13,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,pass,pass,fail,pass,pass
+s1.14,s1.14,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,pass,fail,fail
+s1.15,s1.15,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,pass,pass
+s1.16,s1.16,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,pass,fail,pass,fail,pass
+s1.17,s1.17,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
+s1.18,s1.18,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
+s1.19,s1.19,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s1.2,s1.2,hawkeye,Medium,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s1.20,s1.20,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,pass,fail,pass
+s1.21,s1.21,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s1.3,s1.3,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s1.4,s1.4,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,fail,pass,pass,pass
+s1.5,s1.5,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,pass,fail,fail
+s1.6,s1.6,hawkeye,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
+s1.7,s1.7,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,fail,fail,pass,pass,pass
+s1.8,s1.8,hawkeye,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s1.9,s1.9,hawkeye,Medium,Network Forensics,fail,fail,fail,pass,fail,pass,pass,pass,pass
+s10.1 (Grab_the_Fisher),s10.1,phisher,Easy,Miscellaneous,fail,fail,fail,fail,fail,pass,pass,pass,pass
+s10.10,s10.10,phisher,Easy,Miscellaneous,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s10.11,s10.11,phisher,Easy,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s10.12,s10.12,phisher,Easy,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s10.2,s10.2,phisher,Easy,Miscellaneous,fail,fail,fail,pass,fail,pass,fail,fail,pass
+s10.3,s10.3,phisher,Easy,Miscellaneous,fail,fail,fail,fail,fail,pass,fail,fail,fail
+s10.4,s10.4,phisher,Easy,Miscellaneous,fail,fail,pass,pass,fail,pass,pass,fail,pass
+s10.5,s10.5,phisher,Easy,Miscellaneous,fail,fail,pass,pass,fail,fail,pass,fail,pass
+s10.6,s10.6,phisher,Easy,Miscellaneous,fail,pass,pass,pass,fail,fail,pass,pass,pass
+s10.7,s10.7,phisher,Easy,Miscellaneous,fail,fail,fail,pass,fail,pass,pass,fail,pass
+s10.8,s10.8,phisher,Easy,Miscellaneous,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s10.9,s10.9,phisher,Easy,Miscellaneous,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s11.1 (btlo_Wordpress),s11.1,wordpress,Easy,Miscellaneous,pass,pass,pass,pass,pass,pass,fail,pass,pass
+s11.2,s11.2,wordpress,Easy,Miscellaneous,fail,fail,fail,pass,pass,pass,pass,pass,pass
+s11.3,s11.3,wordpress,Easy,Miscellaneous,fail,fail,fail,pass,pass,pass,pass,pass,pass
+s11.4,s11.4,wordpress,Easy,Miscellaneous,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s11.5,s11.5,wordpress,Easy,Miscellaneous,fail,pass,pass,pass,pass,pass,fail,pass,pass
+s12.1 (btlo_RansomwareScript),s12.1,ransom_script,Easy,Malware Analysis,pass,fail,pass,pass,pass,pass,pass,pass,pass
+s12.2,s12.2,ransom_script,Easy,Malware Analysis,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s12.3,s12.3,ransom_script,Easy,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,pass,pass
+s12.4,s12.4,ransom_script,Easy,Malware Analysis,fail,fail,fail,pass,pass,fail,pass,fail,pass
+s12.5,s12.5,ransom_script,Easy,Malware Analysis,pass,pass,pass,pass,pass,pass,pass,fail,pass
+s12.6,s12.6,ransom_script,Easy,Malware Analysis,pass,pass,pass,pass,fail,pass,pass,pass,pass
+s13.1 (PsExec),s13.1,PsExec,Easy,Network Forensics,fail,fail,fail,pass,pass,pass,fail,pass,fail
+s13.2,s13.2,PsExec,Easy,Network Forensics,fail,fail,fail,pass,pass,pass,fail,pass,pass
+s13.3,s13.3,PsExec,Easy,Network Forensics,fail,fail,fail,fail,fail,pass,fail,pass,pass
+s13.4,s13.4,PsExec,Easy,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s13.5,s13.5,PsExec,Easy,Network Forensics,fail,fail,pass,fail,fail,fail,pass,pass,pass
+s13.6,s13.6,PsExec,Easy,Network Forensics,fail,fail,pass,pass,fail,pass,pass,fail,pass
+s13.7,s13.7,PsExec,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s14.1 (XLM_Macro),s14.1,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,pass,pass,fail,pass,pass,pass
+s14.10,s14.10,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s14.11,s14.11,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s14.12,s14.12,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,fail,fail
+s14.13,s14.13,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s14.2,s14.2,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,pass,fail,pass,pass,fail,pass
+s14.3,s14.3,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s14.4,s14.4,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,fail,fail,fail,fail,fail,fail
+s14.5,s14.5,XLM_Macro,Medium,Malware Analysis,fail,fail,pass,pass,fail,pass,pass,fail,pass
+s14.6,s14.6,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s14.7,s14.7,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,fail,pass,pass
+s14.8,s14.8,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s14.9,s14.9,XLM_Macro,Medium,Malware Analysis,fail,fail,fail,pass,pass,fail,pass,fail,pass
+s15.1 (Bluesky),s15.1,Bluesky,Medium,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s15.10,s15.10,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,pass,fail,pass,pass
+s15.11,s15.11,Bluesky,Medium,Network Forensics,fail,pass,fail,fail,fail,pass,pass,pass,pass
+s15.12,s15.12,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s15.13,s15.13,Bluesky,Medium,Network Forensics,fail,pass,fail,pass,fail,pass,pass,fail,pass
+s15.2,s15.2,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s15.3,s15.3,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s15.4,s15.4,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s15.5,s15.5,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s15.6,s15.6,Bluesky,Medium,Network Forensics,fail,fail,fail,pass,fail,pass,fail,fail,pass
+s15.7,s15.7,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,pass,pass,pass,pass
+s15.8,s15.8,Bluesky,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,pass
+s15.9,s15.9,Bluesky,Medium,Network Forensics,fail,fail,fail,pass,pass,pass,fail,fail,pass
+s16.1 (Tomcat),s16.1,tomcat,Easy,Network Forensics,pass,pass,,pass,fail,fail,pass,fail,pass
+s16.2,s16.2,tomcat,Easy,Network Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s16.3,s16.3,tomcat,Easy,Network Forensics,fail,fail,fail,pass,pass,pass,pass,pass,pass
+s16.4,s16.4,tomcat,Easy,Network Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
+s16.5,s16.5,tomcat,Easy,Network Forensics,pass,fail,fail,pass,pass,pass,pass,pass,pass
+s16.6,s16.6,tomcat,Easy,Network Forensics,fail,fail,pass,fail,fail,pass,pass,pass,pass
+s16.7,s16.7,tomcat,Easy,Network Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
+s16.8,s16.8,tomcat,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,fail
+s17.1 (nuke_the_broswer),s17.1,nuke,Hard,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,fail
+s17.10,s17.10,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
+s17.2,s17.2,nuke,Hard,Network Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s17.3,s17.3,nuke,Hard,Network Forensics,fail,fail,fail,pass,pass,fail,fail,fail,fail
+s17.4,s17.4,nuke,Hard,Network Forensics,fail,fail,pass,pass,pass,pass,fail,pass,pass
+s17.5,s17.5,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,pass,pass,pass
+s17.6,s17.6,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s17.7,s17.7,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,pass,fail,pass,fail
+s17.8,s17.8,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s17.9,s17.9,nuke,Hard,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s18.1 (Reveal),s18.1,reveal,Easy,Memory Forensics,fail,fail,pass,pass,pass,pass,pass,fail,pass
+s18.2,s18.2,reveal,Easy,Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s18.3,s18.3,reveal,Easy,Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s18.4,s18.4,reveal,Easy,Memory Forensics,fail,fail,pass,pass,fail,fail,pass,fail,pass
+s18.5,s18.5,reveal,Easy,Memory Forensics,fail,pass,pass,pass,fail,fail,fail,pass,pass
+s19.1 (Redline),s19.1,redline,Easy,Memory Forensics,fail,fail,fail,pass,pass,fail,pass,pass,pass
+s19.2,s19.2,redline,Easy,Memory Forensics,fail,fail,fail,pass,pass,fail,pass,pass,pass
+s19.3,s19.3,redline,Easy,Memory Forensics,fail,fail,fail,fail,pass,fail,fail,fail,pass
+s19.4,s19.4,redline,Easy,Memory Forensics,fail,fail,fail,fail,fail,pass,pass,pass,fail
+s19.5,s19.5,redline,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s19.6,s19.6,redline,Easy,Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s19.7,s19.7,redline,Easy,Memory Forensics,fail,fail,fail,fail,fail,pass,pass,fail,pass
+s2.1 (btlo_port scanning),s2.1,btlo_port_scanning,Easy,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s2.10,s2.10,btlo_port_scanning,Easy,Network Forensics,fail,fail,fail,fail,fail,pass,pass,pass,pass
+s2.2,s2.2,btlo_port_scanning,Easy,Network Forensics,fail,fail,pass,pass,fail,pass,pass,pass,pass
+s2.3,s2.3,btlo_port_scanning,Easy,Network Forensics,fail,fail,pass,pass,fail,pass,pass,pass,pass
+s2.4,s2.4,btlo_port_scanning,Easy,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s2.5,s2.5,btlo_port_scanning,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s2.6,s2.6,btlo_port_scanning,Easy,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s2.7,s2.7,btlo_port_scanning,Easy,Network Forensics,fail,pass,fail,pass,fail,pass,pass,fail,pass
+s2.8,s2.8,btlo_port_scanning,Easy,Network Forensics,fail,pass,fail,pass,fail,pass,pass,pass,pass
+s2.9,s2.9,btlo_port_scanning,Easy,Network Forensics,fail,pass,fail,fail,fail,pass,pass,pass,pass
+s20.1 (Team Spy),s20.1,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,pass,fail,fail,pass
+s20.10,s20.10,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s20.11,s20.11,teamspy,Hard,Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s20.12,s20.12,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s20.13,s20.13,teamspy,Hard,Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s20.14,s20.14,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s20.15,s20.15,teamspy,Hard,Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s20.2,s20.2,teamspy,Hard,Memory Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
+s20.3,s20.3,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s20.4,s20.4,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s20.5,s20.5,teamspy,Hard,Memory Forensics,fail,fail,fail,pass,fail,fail,pass,pass,pass
+s20.6,s20.6,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s20.7,s20.7,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s20.8,s20.8,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s20.9,s20.9,teamspy,Hard,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.1 (Ransomed),s21.1,ransomed,Hard,Malware Analysis,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s21.10,s21.10,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.11,s21.11,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,pass,pass,fail
+s21.12,s21.12,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,pass,fail,fail
+s21.2,s21.2,ransomed,Hard,Malware Analysis,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s21.3,s21.3,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.4,s21.4,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.5,s21.5,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.6,s21.6,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.7,s21.7,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.8,s21.8,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s21.9,s21.9,ransomed,Hard,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s22.1 (Hammered),s22.1,hammered,Medium,Miscellaneous,pass,pass,fail,pass,pass,pass,pass,pass,pass
+s22.10,s22.10,hammered,Medium,Miscellaneous,fail,fail,fail,pass,pass,pass,pass,fail,pass
+s22.11,s22.11,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s22.2,s22.2,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s22.3,s22.3,hammered,Medium,Miscellaneous,fail,fail,fail,pass,pass,pass,pass,fail,pass
+s22.4,s22.4,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s22.5,s22.5,hammered,Medium,Miscellaneous,fail,fail,fail,pass,pass,pass,pass,pass,pass
+s22.6,s22.6,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,pass,pass
+s22.7,s22.7,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,pass,fail,pass,pass
+s22.8,s22.8,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s22.9,s22.9,hammered,Medium,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s23.1 (Insider),s23.1,insider,Easy,Memory Forensics,pass,pass,pass,pass,pass,,pass,pass,pass
+s23.10,s23.10,insider,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s23.11,s23.11,insider,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,pass,fail,pass
+s23.2,s23.2,insider,Easy,Memory Forensics,fail,pass,pass,pass,pass,pass,fail,pass,pass
+s23.3,s23.3,insider,Easy,Memory Forensics,fail,pass,pass,fail,pass,fail,pass,pass,pass
+s23.4,s23.4,insider,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s23.5,s23.5,insider,Easy,Memory Forensics,fail,fail,pass,pass,fail,fail,fail,fail,fail
+s23.6,s23.6,insider,Easy,Memory Forensics,fail,fail,fail,pass,fail,pass,pass,pass,pass
+s23.7,s23.7,insider,Easy,Memory Forensics,fail,pass,fail,fail,pass,fail,fail,pass,pass
+s23.8,s23.8,insider,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s23.9,s23.9,insider,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s24.1 (obfuscated),s24.1,obfuscated,Medium,Malware Analysis,fail,pass,fail,pass,pass,pass,pass,pass,pass
+s24.2,s24.2,obfuscated,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,pass,fail,pass
+s24.3,s24.3,obfuscated,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,pass,fail,pass
+s24.4,s24.4,obfuscated,Medium,Malware Analysis,fail,fail,fail,pass,fail,pass,pass,pass,pass
+s24.5,s24.5,obfuscated,Medium,Malware Analysis,fail,fail,fail,pass,fail,pass,fail,fail,pass
+s25.1 (packetmaze),s25.1,packetmaze,Medium,Network Forensics,fail,pass,pass,fail,pass,pass,pass,pass,pass
+s25.10,s25.10,packetmaze,Medium,Network Forensics,fail,,fail,fail,fail,fail,fail,fail,fail
+s25.2,s25.2,packetmaze,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s25.3,s25.3,packetmaze,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s25.4,s25.4,packetmaze,Medium,Network Forensics,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s25.5,s25.5,packetmaze,Medium,Network Forensics,fail,fail,pass,pass,pass,pass,pass,pass,pass
+s25.6,s25.6,packetmaze,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s25.7,s25.7,packetmaze,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s25.8,s25.8,packetmaze,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,pass,fail
+s25.9,s25.9,packetmaze,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s3.1 (ulysses ),s3.1,ulysses,Medium,Memory Forensics,fail,Pass,fail,pass,pass,fail,pass,pass,pass
+s3.10,s3.10,ulysses,Medium,Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,fail
+s3.2,s3.2,ulysses,Medium,Memory Forensics,fail,fail,fail,pass,fail,pass,pass,pass,pass
+s3.3,s3.3,ulysses,Medium,Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,pass
+s3.4,s3.4,ulysses,Medium,Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,pass
+s3.5,s3.5,ulysses,Medium,Memory Forensics,fail,fail,fail,fail,fail,fail,pass,fail,fail
+s3.6,s3.6,ulysses,Medium,Memory Forensics,fail,fail,pass,pass,fail,fail,pass,pass,pass
+s3.7,s3.7,ulysses,Medium,Memory Forensics,fail,fail,fail,fail,pass,fail,pass,fail,pass
+s3.8,s3.8,ulysses,Medium,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s3.9,s3.9,ulysses,Medium,Memory Forensics,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s4.1(thm_profile),s4.1,thm_profile,Medium,Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,fail
+s4.2,s4.2,thm_profile,Medium,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s4.3,s4.3,thm_profile,Medium,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s4.4,s4.4,thm_profile,Medium,Memory Forensics,fail,fail,fail,pass,pass,pass,pass,fail,pass
+s4.5,s4.5,thm_profile,Medium,Memory Forensics,fail,fail,fail,fail,fail,pass,fail,fail,pass
+s4.6,s4.6,thm_profile,Medium,Memory Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s5.1 (Maldoc_101),s5.1,maldoc,Medium,Malware Analysis,fail,fail,fail,pass,pass,fail,fail,fail,pass
+s5.2,s5.2,maldoc,Medium,Malware Analysis,fail,fail,fail,pass,fail,fail,pass,fail,pass
+s5.3,s5.3,maldoc,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s5.4,s5.4,maldoc,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s5.5,s5.5,maldoc,Medium,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,pass,fail
+s6.1 (Get_PDF),s6.1,Get_PDF,Medium,Network Forensics,fail,pass,fail,pass,pass,fail,pass,pass,pass
+s6.2,s6.2,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s6.3,s6.3,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s6.4,s6.4,Get_PDF,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s6.5,s6.5,Get_PDF,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,fail
+s6.6,s6.6,Get_PDF,Medium,Network Forensics,fail,fail,fail,pass,fail,fail,fail,fail,pass
+s6.7,s6.7,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s6.8,s6.8,Get_PDF,Medium,Network Forensics,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s7.1 (Btlo_phishing_email),s7.1,phishing,Easy,Miscellaneous,pass,pass,pass,pass,pass,pass,pass,pass,pass
+s7.2,s7.2,phishing,Easy,Miscellaneous,pass,pass,pass,pass,pass,pass,pass,pass,pass
+s7.3,s7.3,phishing,Easy,Miscellaneous,pass,pass,pass,pass,pass,pass,pass,pass,pass
+s7.4,s7.4,phishing,Easy,Miscellaneous,pass,pass,pass,pass,pass,pass,pass,pass,pass
+s7.5,s7.5,phishing,Easy,Miscellaneous,pass,pass,pass,pass,pass,pass,pass,pass,pass
+s7.6,s7.6,phishing,Easy,Miscellaneous,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s7.7,s7.7,phishing,Easy,Miscellaneous,fail,fail,fail,pass,fail,fail,fail,fail,fail
+s7.8,s7.8,phishing,Easy,Miscellaneous,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s8.1 (btlo_classical_injection),s8.1,injection,Easy,Malware Analysis,fail,pass,pass,pass,pass,pass,pass,pass,pass
+s8.2,s8.2,injection,Easy,Malware Analysis,fail,fail,fail,pass,pass,pass,fail,fail,pass
+s8.3,s8.3,injection,Easy,Malware Analysis,fail,fail,fail,fail,fail,fail,fail,fail,fail
+s8.4,s8.4,injection,Easy,Malware Analysis,fail,fail,fail,pass,pass,pass,pass,fail,pass
+s8.5,s8.5,injection,Easy,Malware Analysis,fail,fail,fail,fail,pass,pass,fail,pass,fail
+s9.1 (Ramnit),s9.1,Ramnit,Easy,Memory Forensics,fail,fail,fail,pass,pass,pass,pass,pass,fail
+s9.2,s9.2,Ramnit,Easy,Memory Forensics,fail,fail,fail,pass,fail,pass,fail,fail,fail
+s9.3,s9.3,Ramnit,Easy,Memory Forensics,fail,fail,fail,pass,pass,pass,pass,fail,pass
+s9.4,s9.4,Ramnit,Easy,Memory Forensics,fail,fail,fail,pass,fail,pass,pass,fail,pass
+s9.5,s9.5,Ramnit,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass
+s9.6,s9.6,Ramnit,Easy,Memory Forensics,fail,fail,fail,fail,fail,fail,fail,fail,pass

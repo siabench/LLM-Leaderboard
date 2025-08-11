@@ -1,146 +1,238 @@
-import pandas as pd
-import numpy as np
-import psycopg2
+# load_data.py
 import os
+import re
 from pathlib import Path
+
+import numpy as np
+import pandas as pd
 from dotenv import load_dotenv
-import requests
-from sqlalchemy import create_engine
-import time
+from sqlalchemy import create_engine, MetaData, Table
+from sqlalchemy.dialects.postgresql import insert
 
+# ── Config ────────────────────────────────────────────────────────────────────
 load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")
-
 
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT") or "5432"
 DB_NAME = os.getenv("DB_NAME")
-LOCAL_PATH = "../data/Evaluation-Result(in).csv"  
+
+LOCAL_PATH   = "../data/Evaluation_Result.csv"   # CSV with 2 header rows
 CLEANED_PATH = "../data/responses_only.csv"
 
 DISPLAYED_MODELS = [
     "Llama3.1-8B", "Llama3.1-70B", "Llama3.1-405B",
     "GPT-4.0", "GPT-4.0mini", "Gemini1.5-pro",
-    "DeepSeek-Reasoner", "OpenAI-o3-mini", "Claude-3.5"
+    "DeepSeek-Reasoner", "OpenAI-o3-mini", "Claude-3.5",
 ]
+META_KEEP = ["question", "scenario_name", "question_level", "task_category"]
 
+engine = create_engine(
+    f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
+    future=True,
+)
 
-COLUMNS_TO_DROP = ["Tactic_Category", "no_of_times", "POF", "Steps"]
+# ── Helpers ───────────────────────────────────────────────────────────────────
+def arbiter_indexes():
+    """Create indexes we know we need; safe to run every time."""
+    stmts = [
+        "CREATE UNIQUE INDEX IF NOT EXISTS uq_models_model_name ON models (model_name)",
+        "CREATE UNIQUE INDEX IF NOT EXISTS uq_model_metrics ON model_metrics (question_id, model_id)",
+    ]
+    with engine.begin() as conn:
+        for s in stmts:
+            conn.exec_driver_sql(s)
 
-engine = create_engine(f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
+_qnum_re = re.compile(r"^\s*([sS]\d+(?:\.\d+)*)")
 
-# while True:
-#     try:
-        # 1. Download the file
-        # r = requests.get(EXCEL_URL)
-        # with open(LOCAL_PATH, "wb") as f:
-        #     f.write(r.content)
+def extract_question_number(q: str) -> str:
+    """
+    Extract a compact question number like 's1.1' from:
+      's1.1 (hawkeye)' → 's1.1'
+      's10.3'         → 's10.3'
+    Fallback to the original string if no match.
+    """
+    if not isinstance(q, str):
+        return ""
+    m = _qnum_re.match(q)
+    if m:
+        return m.group(1).lower()
+    # Fallback: try a plain number like '1.1' at start
+    m2 = re.match(r"^\s*(\d+(?:\.\d+)*)", q)
+    if m2:
+        return f"s{m2.group(1)}"
+    return q.strip()  # last resort: use the whole question string
 
-        # 1. Read multi-index header
-df_raw = pd.read_csv(LOCAL_PATH, header=[0,1], dtype=str, keep_default_na=False)
-print("Building rows from df_raw with columns:", df_raw.columns.tolist())
-# Meta columns: select by 2nd-level header only
-meta_keep = ["question", "scenario_name", "question_level", "task_category"]
-meta_cols = [col for col in df_raw.columns if col[1].strip().lower() in meta_keep]
-print("Meta columns:", meta_cols)
+def reflect_table(conn, name: str) -> Table:
+    md = MetaData()
+    return Table(name, md, autoload_with=conn)
 
+def df_keep_table_columns(df: pd.DataFrame, table: Table) -> pd.DataFrame:
+    table_cols = set(table.columns.keys())
+    keep = [c for c in df.columns if c in table_cols]
+    return df[keep].copy()
 
+# ── ETL: read & clean to a 'wide' dataframe ───────────────────────────────────
+def read_and_clean() -> pd.DataFrame:
+    df_raw = pd.read_csv(LOCAL_PATH, header=[0, 1], dtype=str, keep_default_na=False)
 
+    # meta columns (by second-level header name)
+    meta_cols = [c for c in df_raw.columns if c[1].strip().lower() in META_KEEP]
 
-# 3. Get model columns
-model_cols = {}
-for model in DISPLAYED_MODELS:
-    cols = [col for col in df_raw.columns if col[0] == model and col[1].strip().lower() == "response"]
-    if cols:
-        model_cols[model] = cols
+    # model columns present → (model, 'Response')
+    model_cols = {}
+    for model in DISPLAYED_MODELS:
+        cols = [c for c in df_raw.columns if c[0] == model and c[1].strip().lower() == "response"]
+        if cols:
+            model_cols[model] = cols
 
-
-# 4. Build a long dataframe: one row per (meta info + model + response columns)
-rows = []
-print("Building rows from df_raw with columns:", df_raw.columns.tolist())
-print("Meta columns:", meta_cols)
-print("Model columns:", model_cols)
-for idx, row in df_raw.iterrows():
-    meta = {col[1].strip(): row[col] for col in meta_cols}
-    print("Meta for row", idx, ":", meta)
-    if all((str(v).strip() == "" for v in meta.values())):
-        continue
-    for model, cols in model_cols.items():
-        resp_val = row[cols[0]]
-        if str(resp_val).strip() == "":
-            print(f"Model: {model}, Response: '{resp_val}'")
+    # build long
+    rows = []
+    for _, row in df_raw.iterrows():
+        meta = {c[1].strip(): row[c] for c in meta_cols}
+        if all(str(v).strip() == "" for v in meta.values()):
             continue
-        d = {**meta, "model_name": model, "response": resp_val,"_orig_idx": idx}
-        rows.append(d)
-df_long = pd.DataFrame(rows)
-df_long.columns = [
-    '_'.join(map(str, col)).strip().lower() if isinstance(col, tuple) else str(col).strip().lower()
-    for col in df_long.columns
-]
+        for model, cols in model_cols.items():
+            resp = row[cols[0]]
+            if str(resp).strip() == "":
+                continue
+            rows.append({**meta, "model_name": model, "response": resp})
 
+    if not rows:
+        raise RuntimeError("No data rows found—check the input file and headers.")
 
-# Drop duplicates and rows with empty question or response
-print("df_long columns:", df_long.columns.tolist())
-df_long = df_long.replace('', np.nan).dropna(subset=["question", "response"])
-df_long = df_long.drop_duplicates()
+    df_long = pd.DataFrame(rows)
+    df_long.columns = [str(c).strip().lower() for c in df_long.columns]
+    df_long = df_long.replace("", np.nan).dropna(subset=["question", "response"]).drop_duplicates()
 
-# Pivot to wide format: index = meta cols, columns = model_name, values = response
-wide = df_long.pivot_table(
-    index=["_orig_idx","question", "scenario_name", "question_level", "task_category"],
-    columns="model_name",
-    values="response",
-    aggfunc="first"  # in case there are duplicates
-).reset_index()
+    # derive question_number *before* pivot so it survives deduping
+    df_long["question_number"] = df_long["question"].apply(extract_question_number)
 
-wide = wide.sort_values("_orig_idx").reset_index(drop=True)
-wide = wide.drop(columns=["_orig_idx"])
+    # pivot to wide
+    wide = df_long.pivot_table(
+        index=["question", "question_number", "scenario_name", "question_level", "task_category"],
+        columns="model_name",
+        values="response",
+        aggfunc="first",
+    ).reset_index()
 
-# Flatten MultiIndex columns if needed
-wide.columns.name = None
-wide.columns = [col if isinstance(col, str) else col[1] for col in wide.columns]
+    wide.columns.name = None
+    wide.columns = [c if isinstance(c, str) else c[1] for c in wide.columns]
 
-# Reorder columns: meta first, then models
-ordered = meta_keep + [model for model in DISPLAYED_MODELS if model in wide.columns]
-wide = wide[[col for col in ordered if col in wide.columns]]
+    # order: meta + models
+    meta_order = ["question", "question_number", "scenario_name", "question_level", "task_category"]
+    ordered = meta_order + [m for m in DISPLAYED_MODELS if m in wide.columns]
+    wide = wide[[c for c in ordered if c in wide.columns]]
 
+    # write cleaned
+    Path(CLEANED_PATH).parent.mkdir(parents=True, exist_ok=True)
+    wide.to_csv(CLEANED_PATH, index=False)
+    print(f"✅ Wrote {wide.shape[0]} cleaned rows to {CLEANED_PATH}")
+    return wide
 
-    # 8. Save cleaned data to CSV
-wide.to_csv(CLEANED_PATH, index=False)
-print(f"Wrote {wide.shape[0]} cleaned rows to {CLEANED_PATH}")
+# ── UPSERTs ───────────────────────────────────────────────────────────────────
+def upsert_models(conn, models: list[str]):
+    tbl = reflect_table(conn, "models")
+    values = [{"model_name": m} for m in models]
+    if not values:
+        return
+    stmt = insert(tbl).values(values).on_conflict_do_nothing(index_elements=["model_name"])
+    conn.execute(stmt)
 
-# INSERT 1: Save models to `models` table
-models_df = pd.DataFrame({'model_name': DISPLAYED_MODELS})
-models_df.drop_duplicates().to_sql('models', engine, if_exists='append', index=False)
-print(f"Loaded models: {models_df.shape[0]} rows into models table.")
+def upsert_questions(conn, questions_df: pd.DataFrame):
+    """
+    Insert into question_metadata, including question_number (NOT NULL).
+    We do DO NOTHING on any conflict, *without* naming a specific index
+    so it works with your existing unique constraint (whatever it is).
+    """
+    if questions_df.empty:
+        return
+    tbl = reflect_table(conn, "question_metadata")
 
-# INSERT 2: Save questions to `question_metadata` table
-questions_df = wide[['question', 'scenario_name', 'question_level', 'task_category']].drop_duplicates()
-questions_df.to_sql('question_metadata', engine, if_exists='append', index=False)
-print(f"Loaded questions: {questions_df.shape[0]} rows into question_metadata table.")
+    # Make sure we include question_number; derive again in case caller forgot
+    if "question_number" not in questions_df.columns:
+        questions_df = questions_df.copy()
+        questions_df["question_number"] = questions_df["question"].apply(extract_question_number)
 
+    # Keep only columns that actually exist in the DB table
+    payload = df_keep_table_columns(questions_df, tbl).to_dict(orient="records")
+    if not payload:
+        return
 
-# A. Melt to long format (already done!)
-df_long = wide.melt(
-    id_vars=['question', 'scenario_name', 'question_level', 'task_category'],
-    value_vars=[model for model in DISPLAYED_MODELS if model in wide.columns],
-    var_name='model_name',
-    value_name='response'
-).dropna(subset=['response'])
-# B. Map to IDs
-questions_db = pd.read_sql("SELECT * FROM question_metadata", engine)
-models_db = pd.read_sql("SELECT * FROM models", engine)
-df_long = df_long.merge(questions_db, on=['question', 'scenario_name', 'question_level', 'task_category'], how='left')
-df_long = df_long.merge(models_db, on='model_name', how='left')
-print(f"Loaded {wide.shape[0]} cleaned rows into model_responses")
-# C. Prepare for model_metrics table
-model_metrics_df = df_long[['question_id', 'model_id', 'response']]
-# D. Insert into DB
-model_metrics_df.to_sql('model_metrics', engine, if_exists='append', index=False)
-print(f"Loaded {model_metrics_df.shape[0]} rows into model_metrics")
-# print(f"Loaded {df.shape[0]} cleaned rows into model_metrics")
+    stmt = insert(tbl).values(payload).on_conflict_do_nothing()
+    conn.execute(stmt)
 
-# except Exception as e:
-#     print(f"Error: {e}")
+def upsert_metrics(conn, metrics_df: pd.DataFrame):
+    """UPSERT model_metrics on (question_id, model_id), update response on conflict."""
+    if metrics_df.empty:
+        return
+    tbl = reflect_table(conn, "model_metrics")
+    payload = df_keep_table_columns(metrics_df, tbl).to_dict(orient="records")
+    if not payload:
+        return
+    stmt = insert(tbl).values(payload).on_conflict_do_update(
+        index_elements=["question_id", "model_id"],
+        set_={"response": stmt.excluded.response},
+    )
+    conn.execute(stmt)
 
-# time.sleep(1)
+# ── Main ──────────────────────────────────────────────────────────────────────
+def main():
+    arbiter_indexes()
+
+    # 1) Read & clean
+    wide = read_and_clean()
+
+    # 2) UPSERT models
+    with engine.begin() as conn:
+        upsert_models(conn, DISPLAYED_MODELS)
+
+    # 3) UPSERT questions (includes question_number)
+    questions_df = wide[["question", "question_number", "scenario_name", "question_level", "task_category"]].drop_duplicates()
+    with engine.begin() as conn:
+        upsert_questions(conn, questions_df)
+
+    # 4) Metrics: melt, map to IDs, upsert
+    df_long = wide.melt(
+        id_vars=["question", "question_number", "scenario_name", "question_level", "task_category"],
+        value_vars=[m for m in DISPLAYED_MODELS if m in wide.columns],
+        var_name="model_name",
+        value_name="response",
+    ).dropna(subset=["response"])
+
+    questions_db = pd.read_sql(
+        "SELECT question_id, question, question_number, scenario_name, question_level, task_category FROM question_metadata",
+        engine,
+    )
+    models_db = pd.read_sql("SELECT model_id, model_name FROM models", engine)
+
+    df_join = (
+        df_long.merge(
+            questions_db,
+            on=["question", "question_number", "scenario_name", "question_level", "task_category"],
+            how="left",
+        )
+        .merge(models_db, on="model_name", how="left")
+    )
+
+    missing_q = df_join["question_id"].isna().sum()
+    missing_m = df_join["model_id"].isna().sum()
+    if missing_q or missing_m:
+        print(f"⚠️  Missing question_id rows: {missing_q}, missing model_id rows: {missing_m}")
+
+    metrics_df = df_join.loc[
+        df_join["question_id"].notna() & df_join["model_id"].notna(),
+        ["question_id", "model_id", "response"],
+    ].drop_duplicates()
+
+    with engine.begin() as conn:
+        upsert_metrics(conn, metrics_df)
+
+    print("✅ Upsert complete.")
+    print(f"   models attempted: {len(DISPLAYED_MODELS)}")
+    print(f"   questions upserted: {questions_df.shape[0]}")
+    print(f"   model_metrics upserted: {metrics_df.shape[0]}")
+
+if __name__ == "__main__":
+    main()

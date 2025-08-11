@@ -1,0 +1,291 @@
+{
+  "/Users/selimaammar/Desktop/llm-leaderboard/backend/serverless.yml": {
+    "versionFramework": "4.18.0",
+    "servicePath": "/Users/selimaammar/Desktop/llm-leaderboard/backend/serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "siabench-api",
+      "frameworkVersion": "4",
+      "provider": {
+        "name": "aws",
+        "region": "ca-central-1",
+        "runtime": "python3.11",
+        "memorySize": 512,
+        "timeout": 15,
+        "environment": {
+          "DATABASE_URL": "postgresql://postgres.sixlslldigjegtlzznoq:LLMProject0@aws-0-ca-central-1.pooler.supabase.com:6543/postgres"
+        },
+        "stage": "prod",
+        "versionFunctions": true,
+        "compiledCloudFormationTemplate": {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Description": "The AWS CloudFormation template for this Serverless application",
+          "Resources": {
+            "ApiLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/siabench-api-prod-api"
+              }
+            },
+            "IamRoleLambdaExecution": {
+              "Type": "AWS::IAM::Role",
+              "Properties": {
+                "AssumeRolePolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Principal": {
+                        "Service": [
+                          "lambda.amazonaws.com"
+                        ]
+                      },
+                      "Action": [
+                        "sts:AssumeRole"
+                      ]
+                    }
+                  ]
+                },
+                "Policies": [
+                  {
+                    "PolicyName": {
+                      "Fn::Join": [
+                        "-",
+                        [
+                          "siabench-api",
+                          "prod",
+                          "lambda"
+                        ]
+                      ]
+                    },
+                    "PolicyDocument": {
+                      "Version": "2012-10-17",
+                      "Statement": [
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:CreateLogStream",
+                            "logs:CreateLogGroup",
+                            "logs:TagResource"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/siabench-api-prod*:*"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:PutLogEvents"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/siabench-api-prod*:*:*"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "Path": "/",
+                "RoleName": {
+                  "Fn::Join": [
+                    "-",
+                    [
+                      "siabench-api",
+                      "prod",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      "lambdaRole"
+                    ]
+                  ]
+                }
+              }
+            }
+          },
+          "Outputs": {
+            "ServerlessDeploymentBucketName": {
+              "Value": "serverless-framework-deployments-ca-central-1-5fd84937-aa3b"
+            }
+          }
+        }
+      },
+      "functions": {
+        "api": {
+          "handler": "app.main.handler",
+          "url": {
+            "cors": {
+              "allowedOrigins": [
+                "https://https://siabench.github.io",
+                "http://localhost:3000"
+              ],
+              "allowedHeaders": [
+                "Content-Type",
+                "Authorization"
+              ],
+              "allowedMethods": [
+                "*"
+              ],
+              "allowCredentials": "<REDACTED>"
+            }
+          },
+          "reservedConcurrency": 2,
+          "events": [],
+          "name": "siabench-api-prod-api"
+        }
+      },
+      "plugins": [
+        "serverless-python-requirements"
+      ],
+      "custom": {
+        "pythonRequirements": {
+          "slim": true,
+          "strip": true,
+          "dockerizePip": true
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "region": "ca-central-1",
+      "runtime": "python3.11",
+      "memorySize": 512,
+      "timeout": 15,
+      "environment": {
+        "DATABASE_URL": "postgresql://postgres.sixlslldigjegtlzznoq:LLMProject0@aws-0-ca-central-1.pooler.supabase.com:6543/postgres"
+      },
+      "stage": "prod",
+      "versionFunctions": true,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ApiLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/siabench-api-prod-api"
+            }
+          },
+          "IamRoleLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "siabench-api",
+                        "prod",
+                        "lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream",
+                          "logs:CreateLogGroup",
+                          "logs:TagResource"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/siabench-api-prod*:*"
+                          }
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/siabench-api-prod*:*:*"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Path": "/",
+              "RoleName": {
+                "Fn::Join": [
+                  "-",
+                  [
+                    "siabench-api",
+                    "prod",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    "lambdaRole"
+                  ]
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "serverless-framework-deployments-ca-central-1-5fd84937-aa3b"
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "error": {
+      "message": "spawn docker ENOENT",
+      "stack": "Error: spawn docker ENOENT\n    at ChildProcess._handle.onexit (node:internal/child_process:286:19)\n    at onErrorNT (node:internal/child_process:484:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+      "code": "ENOENT"
+    },
+    "serviceRawFile": "service: siabench-api\nframeworkVersion: \"4\"\n\nprovider:\n  name: aws\n  region: ca-central-1\n  runtime: python3.11\n  memorySize: 512\n  timeout: 15\n  environment:\n    DATABASE_URL: ${env:DATABASE_URL}\n\nfunctions:\n  api:\n    handler: app.main.handler\n    url:\n      cors:\n        allowedOrigins:\n          - https://https://siabench.github.io\n          - http://localhost:3000\n        allowedHeaders:\n          - Content-Type\n          - Authorization\n        allowedMethods:\n          - \"*\"\n        allowCredentials: true\n    reservedConcurrency: 2\n\nplugins:\n  - serverless-python-requirements\n\ncustom:\n  pythonRequirements:\n    slim: true\n    strip: true\n    dockerizePip: true\n",
+    "command": [
+      "deploy"
+    ],
+    "options": {
+      "stage": "prod",
+      "aws-profile": "siabench"
+    },
+    "orgId": "ba59c7d0-570d-45e7-9d78-ef8ed5cd533c",
+    "orgName": "siabench",
+    "userId": "QkpM8y53rFzsPd7ZxQ",
+    "userName": "siabench",
+    "serviceProviderAwsAccountId": "161242379610",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
