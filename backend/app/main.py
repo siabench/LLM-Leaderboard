@@ -41,5 +41,5 @@ for r in app.routes:
         pass
 
 app.router.redirect_slashes = False
-handler = Mangum(app) 
+# handler = Mangum(app) 
 
