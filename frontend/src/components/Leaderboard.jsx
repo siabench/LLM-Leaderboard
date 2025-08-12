@@ -631,7 +631,7 @@ export default function Leaderboard() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white rounded-xl shadow-lg p-8 w-full max-w-3xl relative overflow-auto"
+            className="bg-white rounded-xl shadow-lg p-8 w-full max-w-6xl relative overflow-auto"
             style={{ maxHeight: "90vh" }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -654,19 +654,19 @@ export default function Leaderboard() {
               </div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="min-w-full text-left text-sm">
+                <table className="w-full text-left text-sm table-fixed">
                   <thead>
                     <tr>
-                      <th className="py-2 px-4 border-b font-bold">Scenario</th>
-                      <th className="py-2 px-4 border-b font-bold">Question</th>
-                      <th className="py-2 px-4 border-b font-bold">
+                      <th className="py-1 px-2 border-b font-bold w-[35%]">
+                        Question
+                      </th>
+                      <th className="py-1 px-2 border-b font-bold w-[25%]">
                         LLM Answer
                       </th>
-                      <th className="py-2 px-4 border-b font-bold">
+                      <th className="py-1 px-2 border-b font-bold w-[20%]">
                         Correct Answer
                       </th>
-
-                      <th className="py-2 px-4 border-b font-bold">
+                      <th className="py-1 px-2 border-b font-bold w-[20%]">
                         Adversarial Tactic
                       </th>
                     </tr>
@@ -679,26 +679,56 @@ export default function Leaderboard() {
                         q.response === "pass"
                           ? "text-green-700"
                           : "text-red-700";
+
+                      const getDifficultyColor = (scenario) => {
+                        if (scenario.toLowerCase().includes("easy"))
+                          return "bg-green-100 text-green-800";
+                        if (scenario.toLowerCase().includes("medium"))
+                          return "bg-yellow-100 text-yellow-800";
+                        if (scenario.toLowerCase().includes("hard"))
+                          return "bg-red-100 text-red-800";
+                        return "bg-blue-100 text-blue-800"; // Default
+                      };
+
                       return (
                         <tr
                           key={idx}
                           className={`${bg} hover:bg-opacity-75 transition-colors`}
                         >
-                          <td className="py-2 px-4 border-b">
-                            {q.scenario_name}
+                          <td className="py-1 px-2 border-b align-top">
+                            <div className="flex flex-col gap-1">
+                              <div className="flex flex-wrap gap-1 mb-1">
+                                <span
+                                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getDifficultyColor(
+                                    q.scenario_name
+                                  )}`}
+                                >
+                                  {q.scenario_name}
+                                </span>
+                              </div>
+                              <div className="break-words">
+                                {q.question_text}
+                              </div>
+                            </div>
                           </td>
-                          <td className="py-2 px-4 border-b">
-                            {q.question_text}
+                          <td
+                            className={`py-1 px-2 border-b ${textColor} align-top`}
+                          >
+                            <div className="break-words">{q.model_answer}</div>
                           </td>
-                          <td className={`py-2 px-4 border-b ${textColor}`}>
-                            {q.model_answer}
+                          <td className="py-1 px-2 border-b font-mono align-top">
+                            <div className="break-words">
+                              {q.correct_answer || (
+                                <span className="text-gray-400 italic">
+                                  Not available
+                                </span>
+                              )}
+                            </div>
                           </td>
-                          <td className="py-2 px-4 border-b font-mono">
-                            {q.correct_answer}
-                          </td>
-
-                          <td className="py-2 px-4 border-b">
-                            {q.adversarial_tactic}
+                          <td className="py-1 px-2 border-b align-top">
+                            <div className="break-words">
+                              {q.adversarial_tactic}
+                            </div>
                           </td>
                         </tr>
                       );

@@ -349,7 +349,7 @@ export default function ScenariosTree() {
                             : "bg-red-100 text-red-800"
                         }`}
                       >
-                        {level} Scenarios
+                        {level}
                       </div>
                     </div>
                   ))}
