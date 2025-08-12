@@ -396,7 +396,7 @@ export default function ScenariosTree() {
                         ) : (
                           levelScenarios.map((s) => {
                             const name = s.scenario_name ?? s.name;
-                            const cat = s.task_category ?? s.category ?? "—";
+                            // const cat = s.task_category ?? s.category ?? "—";
                             const lvl = s?.question_level ?? s?.level ?? "";
                             const isOpen = !!expanded[name];
                             const qs = Array.isArray(questions[name])
