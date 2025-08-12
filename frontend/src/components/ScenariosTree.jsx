@@ -14,9 +14,12 @@ export default function ScenariosTree() {
     setLoading(true);
     getScenarios()
       .then((res) => {
+        console.log("API Response:", res.data); // Add this line
         setScenarios(Array.isArray(res.data) ? res.data : res.data ?? []);
       })
-      .catch(console.error)
+      .catch((error) => {
+        console.error("Failed to load scenarios:", error);
+      })
       .finally(() => setLoading(false));
   }, []);
 
