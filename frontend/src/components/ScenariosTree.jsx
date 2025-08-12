@@ -14,7 +14,7 @@ export default function ScenariosTree() {
     setLoading(true);
     getScenarios()
       .then((res) => {
-        console.log("API Response:", res.data); // Add this line
+        console.log("API Response:", res.data);
         setScenarios(Array.isArray(res.data) ? res.data : res.data ?? []);
       })
       .catch((error) => {
@@ -98,8 +98,8 @@ export default function ScenariosTree() {
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-          <div className="flex items-center justify-between p-6 border-b border-gray-100">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+          <div className="flex items-center justify-between p-6 border-b border-gray-100 ">
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
                 <svg
@@ -361,8 +361,30 @@ export default function ScenariosTree() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {["Easy", "Medium", "Hard"].map((level) => {
                     const levelScenarios = filteredScenarios.filter((s) => {
-                      const scenarioLevel = s?.question_level ?? s?.level ?? "";
-                      return scenarioLevel === level;
+                      const scenarioLevel = (
+                        s?.question_level ??
+                        s?.level ??
+                        ""
+                      ).trim();
+
+                      console.log(
+                        "Scenario:",
+                        s.scenario_name,
+                        "Level:",
+                        scenarioLevel,
+                        "Expecting:",
+                        level
+                      );
+
+                      if (Array.isArray(s.levels)) {
+                        return s.levels.some(
+                          (l) => l.trim().toLowerCase() === level.toLowerCase()
+                        );
+                      }
+
+                      return (
+                        scenarioLevel.toLowerCase() === level.toLowerCase()
+                      );
                     });
 
                     return (
@@ -390,7 +412,7 @@ export default function ScenariosTree() {
                                 className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                               >
                                 <div
-                                  className={`px-4 py-3 bg-gradient-to-r ${
+                                  className={`px-3 py-3 bg-gradient-to-r text-sm ${
                                     lvl === "Easy"
                                       ? "from-green-50 to-green-100"
                                       : lvl === "Medium"
@@ -409,9 +431,6 @@ export default function ScenariosTree() {
                                     </div>
 
                                     <div className="flex items-center gap-2">
-                                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
-                                        {cat}
-                                      </span>
                                       <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className={`h-5 w-5 text-gray-400 transition-transform ${
