@@ -18,7 +18,7 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT") or "5432"
 DB_NAME = os.getenv("DB_NAME")
 
-LOCAL_PATH   = "../data/Evaluation_Result.csv"  
+LOCAL_PATH   = "../data/Test.csv"  
 CLEANED_PATH = "../data/responses_only.csv"
 
 DISPLAYED_MODELS = [

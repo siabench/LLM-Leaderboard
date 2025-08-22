@@ -642,10 +642,76 @@ export default function Leaderboard() {
             >
               ×
             </button>
-            <h3 className="text-lg font-bold mb-4">
+            <h3 className="text-lg font-bold mb-2">
               All Answers for{" "}
               <span className="text-blue-600">{selectedModel}</span>
             </h3>
+
+            {/* Add disclaimer here */}
+            <div className="text-xs text-gray-600 bg-blue-50 border border-blue-100 rounded-md p-2 mb-4">
+              <details className="group">
+                <summary className="flex items-center cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5 text-blue-500 mr-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="font-medium">
+                    Methodology & Evaluation Details
+                  </span>
+                  <svg
+                    className="w-3 h-3 ml-1.5 text-gray-500 group-open:rotate-180 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div className="mt-2 pl-5 text-gray-600 space-y-1">
+                  <p>
+                    <span className="font-medium">Input prompt:</span> "System
+                    Prompt: You are a highly skilled cybersecurity professional
+                    and security incident analyst. Your primary objective is to
+                    assist the user in solving tasks related to cyber incident
+                    analysis and to answer a range of investigative questions.
+                    You will be presented with one question at a time related to
+                    an incident scenario. To find out the answers, you may
+                    utilize available tools by executing the necessary commands.
+                    If you need any more tools, you can install them and use
+                    those as well....{" "}
+                    {`{ReAct
+                    Format Prompt}`}
+                  </p>
+                  <p>
+                    User Prompt: The scenario:Scenario_description. Tools
+                    available and usage instruction: tools_available and
+                    instruction. Files available: files_available. Directory of
+                    the files: directory. The question is: question_asked"
+                  </p>
+                  <p>
+                    <span className="font-medium">Answers:</span> The
+                    correctness of question is evaluated by a Judge LLM and also
+                    manual evaluation. More details, can be found in the paper.
+                  </p>
+                </div>
+              </details>
+            </div>
+
             {modalLoading ? (
               <div className="text-center p-8 text-gray-500">Loading...</div>
             ) : modalData.length === 0 ? (
