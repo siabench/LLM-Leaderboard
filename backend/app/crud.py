@@ -139,7 +139,7 @@ WITH
       cq.code,
       cq.scenario_name,
       COUNT(cq.question_id) AS num_questions,
-      COUNT(mm.metrics_id) FILTER (WHERE mm.response = 'pass') AS num_passed
+      COUNT(mm.metrics_id) FILTER (WHERE lower(trim(mm.response))='pass') AS num_passed
     FROM code_qs cq
       CROSS JOIN models m
       LEFT JOIN model_metrics mm
