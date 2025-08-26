@@ -4,7 +4,6 @@ import psycopg2
 from pathlib import Path
 from dotenv import load_dotenv
 
-# load your .env from project root
 load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")
 
 DB_USER = os.getenv("DB_USER")
@@ -23,10 +22,8 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
-# --- rest of your loader unchanged ---
 from psycopg2 import sql
 
-# get mapping of model_name -> model_id
 cur.execute("SELECT model_name, model_id FROM models")
 model_id_map = {name: mid for name, mid in cur.fetchall()}
 
@@ -40,9 +37,8 @@ for model_dir in base.iterdir():
         print(f"⚠️  Unknown model folder: {model_name}")
         continue
 
-    # preload question_metadata for each scenario
     for json_file in model_dir.glob("*.json"):
-        scenario = json_file.stem  # e.g. "Hawkeye"
+        scenario = json_file.stem  
         with open(json_file) as f:
             answers = json.load(f)
 
@@ -50,7 +46,7 @@ for model_dir in base.iterdir():
             "SELECT question_id, split_part(question_number, '.', 2) AS qnum FROM question_metadata WHERE scenario_name = %s",
             (scenario,),
         )
-        rows = cur.fetchall()  # [(qid, "1"), (qid2, "2"), ...]
+        rows = cur.fetchall() 
 
         for entry in answers:
             qnum = entry["question_number"]

@@ -1,6 +1,7 @@
 # load_data.py
 import os
 import re
+import unicodedata
 from pathlib import Path
 
 import numpy as np
@@ -18,8 +19,8 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT") or "5432"
 DB_NAME = os.getenv("DB_NAME")
 
-LOCAL_PATH   = "../data/Test.csv"  
-CLEANED_PATH = "../data/responses_only.csv"
+LOCAL_PATH   = "../data/Test.csv"            # input CSV (multi-index headers)
+CLEANED_PATH = "../data/responses_only.csv"  # wide, deduped export we write
 
 DISPLAYED_MODELS = [
     "Llama3.1-8B", "Llama3.1-70B", "Llama3.1-405B",
@@ -33,6 +34,7 @@ engine = create_engine(
     future=True,
 )
 
+# ── Helpers ───────────────────────────────────────────────────────────────────
 def arbiter_indexes():
     """Create indexes we know we need; safe to run every time."""
     stmts = [
@@ -43,15 +45,25 @@ def arbiter_indexes():
         for s in stmts:
             conn.exec_driver_sql(s)
 
+def _norm_unicode(s: str) -> str:
+    return unicodedata.normalize("NFC", s)
+
+def _collapse_ws(s: str) -> str:
+    return " ".join(s.split())
+
+def normalize_key(s: str) -> str:
+    if s is None:
+        return ""
+    s = str(s)
+    s = _norm_unicode(s)
+    s = s.strip()
+    s = _collapse_ws(s)
+    s = s.lower()
+    return s
+
 _qnum_re = re.compile(r"^\s*([sS]\d+(?:\.\d+)*)")
 
 def extract_question_number(q: str) -> str:
-    """
-    Extract a compact question number like 's1.1' from:
-      's1.1 (hawkeye)' → 's1.1'
-      's10.3'         → 's10.3'
-    Fallback to the original string if no match.
-    """
     if not isinstance(q, str):
         return ""
     m = _qnum_re.match(q)
@@ -60,7 +72,8 @@ def extract_question_number(q: str) -> str:
     m2 = re.match(r"^\s*(\d+(?:\.\d+)*)", q)
     if m2:
         return f"s{m2.group(1)}"
-    return q.strip() 
+    return q.strip()
+
 def reflect_table(conn, name: str) -> Table:
     md = MetaData()
     return Table(name, md, autoload_with=conn)
@@ -70,7 +83,8 @@ def df_keep_table_columns(df: pd.DataFrame, table: Table) -> pd.DataFrame:
     keep = [c for c in df.columns if c in table_cols]
     return df[keep].copy()
 
-def read_and_clean() -> pd.DataFrame:
+# ── ETL ───────────────────────────────────────────────────────────────────────
+def read_and_clean() -> tuple[pd.DataFrame, pd.DataFrame]:
     df_raw = pd.read_csv(LOCAL_PATH, header=[0, 1], dtype=str, keep_default_na=False)
 
     meta_cols = [c for c in df_raw.columns if c[1].strip().lower() in META_KEEP]
@@ -101,6 +115,10 @@ def read_and_clean() -> pd.DataFrame:
 
     df_long["question_number"] = df_long["question"].apply(extract_question_number)
 
+    # Canonical join keys
+    df_long["qn_key"] = df_long["question_number"].apply(normalize_key)
+    df_long["q_key"]  = df_long["question"].apply(normalize_key)
+
     wide = df_long.pivot_table(
         index=["question", "question_number", "scenario_name", "question_level", "task_category"],
         columns="model_name",
@@ -118,7 +136,7 @@ def read_and_clean() -> pd.DataFrame:
     Path(CLEANED_PATH).parent.mkdir(parents=True, exist_ok=True)
     wide.to_csv(CLEANED_PATH, index=False)
     print(f"✅ Wrote {wide.shape[0]} cleaned rows to {CLEANED_PATH}")
-    return wide
+    return df_long, wide
 
 def upsert_models(conn, models: list[str]):
     tbl = reflect_table(conn, "models")
@@ -130,19 +148,21 @@ def upsert_models(conn, models: list[str]):
 
 def upsert_questions(conn, questions_df: pd.DataFrame):
     """
-    Insert into question_metadata, including question_number (NOT NULL).
-    We do DO NOTHING on any conflict, *without* naming a specific index
-    so it works with your existing unique constraint (whatever it is).
+    Insert into question_metadata, including normalized key columns if present.
+    We DO NOTHING on conflict to respect the existing unique constraint.
     """
     if questions_df.empty:
         return
     tbl = reflect_table(conn, "question_metadata")
 
-    if "question_number" not in questions_df.columns:
-        questions_df = questions_df.copy()
-        questions_df["question_number"] = questions_df["question"].apply(extract_question_number)
+    qdf = questions_df.copy()
+    if "question_number" not in qdf.columns:
+        qdf["question_number"] = qdf["question"].apply(extract_question_number)
 
-    payload = df_keep_table_columns(questions_df, tbl).to_dict(orient="records")
+    qdf["qn_key"] = qdf["question_number"].apply(normalize_key)
+    qdf["q_key"]  = qdf["question"].apply(normalize_key)
+
+    payload = df_keep_table_columns(qdf, tbl).to_dict(orient="records")
     if not payload:
         return
 
@@ -157,16 +177,19 @@ def upsert_metrics(conn, metrics_df: pd.DataFrame):
     payload = df_keep_table_columns(metrics_df, tbl).to_dict(orient="records")
     if not payload:
         return
-    stmt = insert(tbl).values(payload).on_conflict_do_update(
+    # IMPORTANT: build insert first, then reference ins.excluded
+    ins = insert(tbl)
+    stmt = ins.values(payload).on_conflict_do_update(
         index_elements=["question_id", "model_id"],
-        set_={"response": stmt.excluded.response},
+        set_={"response": ins.excluded.response},
     )
     conn.execute(stmt)
 
+# ── Main ──────────────────────────────────────────────────────────────────────
 def main():
     arbiter_indexes()
 
-    wide = read_and_clean()
+    df_long, wide = read_and_clean()
 
     with engine.begin() as conn:
         upsert_models(conn, DISPLAYED_MODELS)
@@ -175,45 +198,72 @@ def main():
     with engine.begin() as conn:
         upsert_questions(conn, questions_df)
 
-    df_long = wide.melt(
+    long_for_metrics = wide.melt(
         id_vars=["question", "question_number", "scenario_name", "question_level", "task_category"],
         value_vars=[m for m in DISPLAYED_MODELS if m in wide.columns],
         var_name="model_name",
         value_name="response",
     ).dropna(subset=["response"])
 
+    long_for_metrics["qn_key"] = long_for_metrics["question_number"].apply(normalize_key)
+
     questions_db = pd.read_sql(
-        "SELECT question_id, question, question_number, scenario_name, question_level, task_category FROM question_metadata",
+        "SELECT question_id, question, question_number FROM question_metadata",
         engine,
     )
+    questions_db["qn_key"] = questions_db["question_number"].apply(normalize_key)
+
     models_db = pd.read_sql("SELECT model_id, model_name FROM models", engine)
 
+    # Join ONLY on normalized question_number
     df_join = (
-        df_long.merge(
-            questions_db,
-            on=["question", "question_number", "scenario_name", "question_level", "task_category"],
+        long_for_metrics.merge(
+            questions_db[["question_id", "qn_key"]],
+            on="qn_key",
             how="left",
         )
         .merge(models_db, on="model_name", how="left")
     )
 
-    missing_q = df_join["question_id"].isna().sum()
-    missing_m = df_join["model_id"].isna().sum()
+    missing_q = int(df_join["question_id"].isna().sum())
+    missing_m = int(df_join["model_id"].isna().sum())
     if missing_q or missing_m:
-        print(f"Missing question_id rows: {missing_q}, missing model_id rows: {missing_m}")
+        print(f"⚠️  Missing question_id rows: {missing_q}, missing model_id rows: {missing_m}")
+        src_keys = set(df_join["qn_key"].unique())
+        db_keys  = set(questions_db["qn_key"].unique())
+        missing_keys = list(sorted(src_keys - db_keys))[:10]
+        if missing_keys:
+            print("Example qn_key(s) present in CSV but not in DB (first 10):", missing_keys)
 
-    metrics_df = df_join.loc[
-        df_join["question_id"].notna() & df_join["model_id"].notna(),
-        ["question_id", "model_id", "response"],
-    ].drop_duplicates()
+    metrics_df = (
+        df_join.loc[
+            df_join["question_id"].notna() & df_join["model_id"].notna(),
+            ["question_id", "model_id", "response"],
+        ]
+        .drop_duplicates()
+    )
 
     with engine.begin() as conn:
         upsert_metrics(conn, metrics_df)
 
     print("Upsert complete.")
     print(f"   models attempted: {len(DISPLAYED_MODELS)}")
-    print(f"   questions upserted: {questions_df.shape[0]}")
+    print(f"   questions upserted (unique in file): {questions_df.shape[0]}")
     print(f"   model_metrics upserted: {metrics_df.shape[0]}")
+
+    qcount = pd.read_sql("SELECT COUNT(*) AS n FROM question_metadata", engine)["n"].iloc[0]
+    print("Questions in wide:", wide.shape[0])
+    print("Questions in DB:", qcount)
+
+    merged = long_for_metrics.merge(
+        questions_db[["question_id", "qn_key"]],
+        on="qn_key",
+        how="left"
+    )
+    print(merged.isna().sum())
+    missing = merged[merged["question_id"].isna()]
+    if not missing.empty:
+        print(missing[["question", "question_number"]].head(20))
 
 if __name__ == "__main__":
     main()
