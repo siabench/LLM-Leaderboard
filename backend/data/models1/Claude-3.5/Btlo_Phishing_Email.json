@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The sender's email address is amazon@zyevantoby.cn, which appears to be masquerading as Amazon but using a suspicious Chinese domain (.cn).",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The intended recipient of the email was saintington73@outlook.com",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The subject line of the email is \"Your Account has been locked",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The email is impersonating Amazon. This is evident from the use of Amazon branding, Amazon Support Team signature, Amazon copyright notice, and the attempt to use \"Amazn\" in the sender name. However, the fraudulent nature is clear from the non-Amazon domain (zyevantoby.cn) being used.",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The email was sent on Wednesday, July 14, 2021 at 01:40:32 +0900 (UTC+9 timezone)",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "Yes, the email uses Base64 encoding scheme, as indicated by the \"Content-Transfer-Encoding: base64\" header and the presence of Base64 encoded content blocks in both the plain text and HTML parts of the email.",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "No, there are no URLs embedded within the email body for retrieving external content such as images or logos.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No social media profile URLs were found within the email content. Therefore, there are no associated usernames to analyze.",
+    "result": "0"
+  }
+]

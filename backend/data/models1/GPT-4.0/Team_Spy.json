@@ -1,0 +1,77 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "1920",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "54.174.131.235",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "karenmiles@t-online.de",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "188.172.251.2",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "There is no such function name in the memory dump.",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "Important_ECORP_Lawsuit_Washington_Leak.rtf",
+    "result": "1"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "13",
+    "answer_found_by_llm": "52.90.110.169",
+    "result": "1"
+  },
+  {
+    "question_number": "14",
+    "answer_found_by_llm": "scott.knowles@e-corp.biz",
+    "result": "0"
+  },
+  {
+    "question_number": "15",
+    "answer_found_by_llm": "linuxav.deb",
+    "result": "1"
+  }
+]

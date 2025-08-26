@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "amazon@zyevantoby.cn",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "saintington73@outlook.com",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "Your Account has been locked.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Amazon is being impersonated",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Wed, 14 Jul 2021 01:40:32 +0900",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "base64 encoding has been used.",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "No URL was embedded within the email body.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No social media profile URLs were found in the email content.",
+    "result": "0"
+  }
+]

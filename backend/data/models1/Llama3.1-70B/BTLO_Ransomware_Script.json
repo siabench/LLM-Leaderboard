@@ -1,0 +1,37 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "No suspicious IP address was identified in the provided data.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "No, the script does not include any package management commands.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "No email address was found in the /etc/motd file.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": ".com",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "185.141.25.168",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "encrypt_grep_files, encrypt_home, encrypt_root, encrypt_db, encrypt_ssh, docker_stop_and_encrypt",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "http://185.141.25.168/api.php, https://api.telegram.org/bot, http://185.141.25.168/telegram_bot/supermicro_bt, http://185.141.25.168/bash.sh, http://185.141.25.168/check_attack/0.txt",
+    "result": "1"
+  }
+]

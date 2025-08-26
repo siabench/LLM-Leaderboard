@@ -1,0 +1,107 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "4003",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Apr 10, 2019 16:37:07.129730000 EDT",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "3821.6 seconds",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "00:08:02:1c:47:ae",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "3",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "10.4.10.132",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "10.4.10.4",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "proforma-invoices.com",
+    "result": "1"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "217.182.138.150",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "Windows",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "tkraw_Protected99.exe",
+    "result": "1"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "b586d5d8fd3e68b7a965715f1e4a2f0a",
+    "result": "0"
+  },
+  {
+    "question_number": "13",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "14",
+    "answer_found_by_llm": "173.66.146.112.",
+    "result": "1"
+  },
+  {
+    "question_number": "15",
+    "answer_found_by_llm": "No such evidence found",
+    "result": "0"
+  },
+  {
+    "question_number": "16",
+    "answer_found_by_llm": "United States",
+    "result": "1"
+  },
+  {
+    "question_number": "17",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "18",
+    "answer_found_by_llm": "sales.del@macwinlogistics.in",
+    "result": "1"
+  },
+  {
+    "question_number": "19",
+    "answer_found_by_llm": "Salesdel@123",
+    "result": "0"
+  },
+  {
+    "question_number": "20",
+    "answer_found_by_llm": "HawkEye Reborn v9",
+    "result": "1"
+  },
+  {
+    "question_number": "21",
+    "answer_found_by_llm": "Username: roman.mcguire@outlook.com, Password: BofA@Secure2023",
+    "result": "0"
+  }
+]

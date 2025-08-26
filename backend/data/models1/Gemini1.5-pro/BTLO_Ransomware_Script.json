@@ -1,0 +1,32 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "185.141.25.168",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The script uses apt-get and yum to install openssl, curl, and wget. It attempts to delete logs using the command `rm -rf /var/log/yum*`.",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "There is no email address or contact information in the message written to /etc/motd within the script.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": ".CRYPT8",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "encrypt_grep_files, encrypt_home, encrypt_root, encrypt_db, encrypt_ssh",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "http://185.141.25.168/check_attack/0.txt",
+    "result": "1"
+  }
+]

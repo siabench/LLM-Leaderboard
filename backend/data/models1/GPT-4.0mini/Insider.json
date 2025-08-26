@@ -1,0 +1,57 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The Linux distribution used on the employee's machine is Kali GNU/Linux 2017.1 (kali-rolling).",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The file named 'access.log' was found in two locations: 1) /var/log/nginx/access.log and 2) /var/log/apache2/access.log. The MD5 hash for both files is d41d8cd98f00b204e9800998ecf8427e.",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The credential dumping tool identified on the employee's machine is mimikatz.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Apache was not running on the employee's machine.",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "The last active directory in the filesystem before the disk image was created is /home/jajo/Desktop/jajo/python_venv/LLM_CODES_Dataset/Files/Inside/Scenario/Inside/Scenario/folder/files/work/scenario/[root]/var/log/stunnel4.",
+    "result": "0"
+  }
+]

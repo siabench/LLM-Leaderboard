@@ -1,0 +1,32 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The root password present in the memory dump is \"user\".",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Yes, the file 'users.db' was accessed. The timestamp is 2024-02-20 15:34.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "",
+    "result": "Round Exceeds the Limit"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "10.0.2.72:1337",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "I was unable to find any cron job file in the memory dump.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No such path found",
+    "result": "0"
+  }
+]

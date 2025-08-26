@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The highest stream containing macros is Stream 16: `Macros/VBA/roubhaol`.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "`Document_Open`.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "There are no streams in the document that contain base64 encoded strings.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The document contains an obfuscated base64 encoded string, and the padding value used is the '=' character.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "",
+    "result": "There is no program executed by the obfuscated base64 encoded string."
+  }
+]

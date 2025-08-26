@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The highest stream containing macros is stream 36.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "AutoOpen",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "29",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, an obfuscating padded string is used – the value is “”.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, the obfuscated Base64 string decodes to and executes PowerShell.",
+    "result": "1"
+  }
+]

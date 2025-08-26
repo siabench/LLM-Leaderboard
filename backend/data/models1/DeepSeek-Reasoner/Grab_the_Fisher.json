@@ -1,0 +1,62 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Yes, the wallet used is MetaMask.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Yes, the file is index.html.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The primary programming language is JavaScript/TypeScript.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, the services are Sypex Geo (api.sypexgeo.net) and Telegram (api.telegram.org).",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, 3 seed phrases were previously collected.",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The most recent seed phrase collected is: father also recycle embody balance concert mechanic believe owner pair muffin hockey",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Yes, the phishing kit uses Telegram's API (https://api.telegram.org) for credential dumping.",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "Yes, the chat ID is 5442785564.",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "Yes, references include: email fabien@bonustrack.co, Twitter handles @jedwatson, @jossmackison, @keystonejs, GitHub users JedWatson, kartojal, waterdrops, and a project team mentioned in CODE_OF_CONDUCT.md.",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  }
+]

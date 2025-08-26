@@ -1,0 +1,52 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "209.85.227.106",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "HTTP",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "/fg/load.php?e=1",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "299",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "osCommerce",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "I was unable to find any obfuscated JavaScript at 'shop.honeynet.sg/catalog'. The analysis did not yield any results for the 'click' parameter.",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "click=3feb5a6b2f",
+    "result": "1"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "3.4.5-20060117-1",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "URLDownloadToFileA",
+    "result": "1"
+  }
+]

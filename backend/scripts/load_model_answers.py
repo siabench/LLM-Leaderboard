@@ -27,7 +27,7 @@ from psycopg2 import sql
 cur.execute("SELECT model_name, model_id FROM models")
 model_id_map = {name: mid for name, mid in cur.fetchall()}
 
-base = Path(__file__).parent.parent /"data" / "models"
+base = Path(__file__).parent.parent /"data" / "models1"
 for model_dir in base.iterdir():
     if not model_dir.is_dir():
         continue

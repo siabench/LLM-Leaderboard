@@ -1,0 +1,57 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The attacker gained access to the system via SSH.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Linux version 2.6.24-26-server.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The attacker gained access to the system using the SSH protocol (ssh2).",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "2.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "No requests were sent to the Apache server.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "No rules were added to the firewall.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "There is no scanning tool downloaded files in the target system.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "There was a login attempt from the IP address 219.150.161.20, and the timestamp of the login attempt is Apr 19 05:32:50.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "There are warning messages related to database security, specifically related to a client not properly closing a database table.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "No new accounts have been created on the system.",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "There is no proxy used in the system to run the scans.",
+    "result": "Round exceed the limit"
+  }
+]

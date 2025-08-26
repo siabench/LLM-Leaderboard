@@ -1,0 +1,52 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The highest IP address among the targeted systems is 209.85.227.106.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The protocol primarily used for communication during the suspected attack is TCP.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The URL used to serve suspicious executable files to connected hosts appears to be sploitme.com.cn.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The packet number where a redirect occurs to a localized version of Google’s French homepage is 299.",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The packet number indicating that 'show.php' will avoid infecting the same host twice is 57.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "I was unable to find click parameter values.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  }
+]

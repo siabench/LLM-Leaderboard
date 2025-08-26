@@ -1,0 +1,52 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Yes, a password was successfully used to authenticate to the FTP server. The password is \"AfricaCTF2021",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "No IPv6 address could be identified for the DNS server queried by host 192.168.1.26.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The domain name being looked up in DNS query packet number 15174 was \"www.7-zip.org",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, there were UDP packets sent from 192.168.1.26 to 24.39.217.246. The total number of UDP packets sent was 10.",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Yes, the MAC address of the potentially compromised internal system is c8:09:a8:57:47:93",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The server certificate public key provided in the TLS handshake for session ID 'da4a0000342e4b73459d7360b4bea971cc303ac18d29b99067e46d16cc07f4ff' is: c6230af3c310611c92bf9aa59b8d89b419fe3c26a171280ccf6be384cc085dcbd1d20f2cb8004d8f2514221c384e694215d01443295ac5062e238084afc81755c5e189585f310164dadcfad5f5956257bbffec22de79d7acd99b6535fbb7a1672eb4e666df3e520a89b13777bd4b610144562b6f711273bbe22cda33dace2bbc353e26bae4c8a24b806b0fd7734804964b736005ae8cd6df1ff548856c182b6c705cfe1462603f6e1383995f9ac10b69439d38acee8b3dcbeb42d19bc92b21a2438653cf93d48ffc669f3356a15f876c6bcd031cb5413579fec75d4df56e1723c04fccb4505a2b1962723073e0624478da51e909cbf5e7e4aa414b15df25302d",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "No TLS 1.3 client random values were found for connections to protonmail.com in the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "Yes, the MAC address of the FTP server is registered in Germany.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "No, there were no non-standard folders created on the FTP server on April 20th.",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "",
+    "result": "Given up on the question"
+  }
+]

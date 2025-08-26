@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 # from mangum import Mangum
+import os, psycopg2
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.routing import Mount
 from app.routers.landing import router as landing_router
@@ -13,7 +14,29 @@ app = FastAPI(
     title="SIA Leaderboard API",
     debug=True, 
 )
-
+@app.get("/__diag")
+def diag():
+    try:
+        with psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require") as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT current_database(), current_user, inet_server_addr()::text, inet_server_port()")
+                dbname, dbuser, host, port = cur.fetchone()
+                cur.execute("SELECT COUNT(*) FROM question_metadata")
+                q_count = cur.fetchone()[0]
+                cur.execute("SELECT COUNT(*) FROM model_metrics")
+                m_count = cur.fetchone()[0]
+        return {
+            "db": dbname,
+            "user": dbuser,
+            "host": host,
+            "port": port,
+            "question_metadata_count": q_count,
+            "model_metrics_count": m_count,
+        }
+    except Exception as e:
+        return Response(str(e), status_code=500)
+    
+    
 app.add_middleware(
     CORSMiddleware,
     allow_origins = [
@@ -24,6 +47,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.middleware("http")
+async def no_store_headers(request: Request, call_next):
+    response: Response = await call_next(request)
+    if response.headers.get("content-type", "").startswith("application/json"):
+        response.headers["Cache-Control"] = "no-store"
+    return response
 
 app.router.redirect_slashes = False
 

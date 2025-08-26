@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "6",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Yes, http://malicious.example.com/payload.js",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "Yes, http://malicious.example.com/exploit.pdf",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, 6d1d372b8a7a0f3e0f3e3e3e3e3e3e3",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "12",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "Yes, 3",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Yes, 12",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "Yes, http://malicious.example.com/exploit.exe",
+    "result": "0"
+  }
+]

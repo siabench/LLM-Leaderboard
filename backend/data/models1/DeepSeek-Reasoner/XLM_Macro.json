@@ -1,0 +1,67 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The document is password-protected. The password is VelvetSweatshop.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The sheet name starting with 'S' is SOCWNEScLLxkLhtJp.",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The domain used for communication or downloading secondary payloads is rilaer.com.",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The potential malware filename is KUdYCRk.exe.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The very hidden sheet in sample2.bin is named CSHykdYHvi.",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The registry key related to security settings is HKCU\\Software\\Microsoft\\Office\\Excel\\Security.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "No registry values indicating a virtual environment were observed in sample2.bin.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "The function used to retrieve system-related information for anti-analysis is GET.WORKSPACE.",
+    "result": "1"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "The document references the \"Windows\" operating environment in its comparisons.",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "The payload retrieved is an executable file (type: .exe).",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "The network location is rilaer.com (main domain: rilaer, top-level domain: com).",
+    "result": "0"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "The filename used for saving the downloaded payload is KUdYCRk.exe.",
+    "result": "0"
+  },
+  {
+    "question_number": "13",
+    "answer_found_by_llm": "The executable name invoked to execute downloaded content is KUdYCRk.exe.",
+    "result": "0"
+  }
+]

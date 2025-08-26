@@ -1,0 +1,27 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The SHA256 hash value of the DOC file is ff2c8cadaa0fd8da6138cce6fce37e001f53a5d9ceccd67945b15ae273f4d751.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "The document contains macros, and the lowest macro number is associated with the AutoOpen subroutine.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "The document contains obfuscated code, and the key used to decrypt the obfuscated code is THQNfU76nlSbtJ5nX8LY6.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The document contains code that could potentially drop or manipulate files, specifically referencing the file OBKHLrC3vEDjVL.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The document contains obfuscated scripts, and the scripting language used in the obfuscated code is VBScript.",
+    "result": "0"
+  }
+]

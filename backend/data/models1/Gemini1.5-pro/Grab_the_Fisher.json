@@ -1,0 +1,62 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Metamask",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "metamask/metamask.php",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "PHP",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "api.sypexgeo.net",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "0",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "None",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "Telegram",
+    "result": "1"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "The provided metamask.php file does not contain a Telegram bot token.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "The provided metamask.php file does not contain a Telegram chat ID.",
+    "result": "0"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "None",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "I could not find any Telegram tokens or chat IDs within the phishing kit, so I cannot identify the individual managing the Telegram channel.",
+    "result": "0"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "I could not find any Telegram tokens or chat IDs within the phishing kit, so I cannot determine the username of the individual managing the Telegram channel.",
+    "result": "0"
+  }
+]

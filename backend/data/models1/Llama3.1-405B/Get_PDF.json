@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "There are 3 unique URL paths involved in the network traffic of the captured pcap file.",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "There is no JavaScript code found in the captured network traffic.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "No JavaScript code found in the pcap file, therefore no additional URLs.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "No PDF file found in the network traffic.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "3",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "0",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "No JavaScript code found in the PDF file.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No known exploits related to CVE-2010-0188 found in the PDF file.",
+    "result": "0"
+  }
+]

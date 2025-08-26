@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "14.0.0.120",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Guangzhou",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "8080",
+    "result": "1"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Gobuster",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "/manager",
+    "result": "1"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "admin:tomcat",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "JXQOZY.war",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "The attacker established persistence by deploying a malicious WAR file (JXQOZY.war) containing a JSP web shell (rzpmxxmm.jsp) through the Tomcat manager interface",
+    "result": "0"
+  }
+]

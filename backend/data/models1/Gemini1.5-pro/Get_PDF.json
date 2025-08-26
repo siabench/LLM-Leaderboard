@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "5",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "No",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "f0cc619007affd7b04ea115607637981",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  }
+]

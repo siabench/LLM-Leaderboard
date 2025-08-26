@@ -1,0 +1,52 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "Yes, there is an indication of port scanning activity based on the network traffic patterns in the captured PCAP file.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "10.251.96.4 and 10.251.96.5",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "21-443",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "TCP Connect Scan",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "Nmap",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "dbfunctions.php",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "myphoto.png, dbfunction.php, function.php",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "cmd",
+    "result": "1"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "Reverse shell",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "4444",
+    "result": "0"
+  }
+]
