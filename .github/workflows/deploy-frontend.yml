@@ -29,6 +29,8 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+        env:
+          REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
         working-directory: ./frontend
 
       - name: Deploy to GitHub Pages

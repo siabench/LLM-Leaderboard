@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Request, Response
 # from mangum import Mangum
 import os, psycopg2
 from fastapi.middleware.cors import CORSMiddleware
@@ -47,12 +47,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 @app.middleware("http")
 async def no_store_headers(request: Request, call_next):
-    response: Response = await call_next(request)
-    if response.headers.get("content-type", "").startswith("application/json"):
-        response.headers["Cache-Control"] = "no-store"
-    return response
+    resp: Response = await call_next(request)
+    if resp.headers.get("content-type", "").startswith("application/json"):
+        resp.headers["Cache-Control"] = "no-store"
+    return resp
 
 app.router.redirect_slashes = False
 

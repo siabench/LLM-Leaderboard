@@ -48,7 +48,7 @@ WITH
       m.model_name,
       aq.scenario_name,
       COUNT(aq.question_id) AS num_questions,
-      COUNT(mm.metrics_id) FILTER (WHERE mm.response = 'pass') AS num_passed
+      COUNT(mm.metrics_id) FILTER (WHERE lower(trim(mm.response))='pass') AS num_passed
     FROM all_qs aq
       CROSS JOIN models m
       LEFT JOIN model_metrics mm
@@ -59,18 +59,8 @@ WITH
   all_scenario_stats AS (
     SELECT
       model_name,
-      AVG(
-        CASE
-          WHEN num_questions > 0 THEN num_passed::float / num_questions
-          ELSE 0
-        END
-      ) AS overall_solving_percentage,
-      SUM(
-        CASE
-          WHEN num_questions > 0 AND num_passed = num_questions THEN 1
-          ELSE 0
-        END
-      ) AS overall_fully_solved
+      AVG(CASE WHEN num_questions > 0 THEN num_passed::float / num_questions ELSE 0 END) AS overall_solving_percentage,
+      SUM(CASE WHEN num_questions > 0 AND num_passed = num_questions THEN 1 ELSE 0 END) AS overall_fully_solved
     FROM all_per_scenario
     GROUP BY model_name
   ),
@@ -79,7 +69,7 @@ WITH
       m.model_name,
       fq.scenario_name,
       COUNT(fq.question_id) AS num_questions,
-      COUNT(mm.metrics_id) FILTER (WHERE mm.response = 'pass') AS num_passed
+      COUNT(mm.metrics_id) FILTER (WHERE lower(trim(mm.response))='pass') AS num_passed
     FROM filtered_qs fq
       CROSS JOIN models m
       LEFT JOIN model_metrics mm
@@ -90,18 +80,8 @@ WITH
   filtered_scenario_stats AS (
     SELECT
       model_name,
-      AVG(
-        CASE
-          WHEN num_questions > 0 THEN num_passed::float / num_questions
-          ELSE 0
-        END
-      ) AS filtered_solving_percentage,
-      SUM(
-        CASE
-          WHEN num_questions > 0 AND num_passed = num_questions THEN 1
-          ELSE 0
-        END
-      ) AS filtered_fully_solved
+      AVG(CASE WHEN num_questions > 0 THEN num_passed::float / num_questions ELSE 0 END) AS filtered_solving_percentage,
+      SUM(CASE WHEN num_questions > 0 AND num_passed = num_questions THEN 1 ELSE 0 END) AS filtered_fully_solved
     FROM filtered_per_scenario
     GROUP BY model_name
   ),
@@ -116,24 +96,16 @@ WITH
 SELECT
   m.model_name,
   COALESCE(ass.overall_fully_solved, 0) AS overall_fully_solved,
-  COALESCE(
-    ROUND(CAST(100.0 * ass.overall_solving_percentage AS numeric), 2),
-    0
-  ) AS overall_solving_percentage,
+  COALESCE(ROUND(CAST(100.0 * ass.overall_solving_percentage AS numeric), 2), 0) AS overall_solving_percentage,
   COALESCE(fss.filtered_fully_solved, 0) AS filtered_fully_solved,
-  COALESCE(
-    ROUND(CAST(100.0 * fss.filtered_solving_percentage AS numeric), 2),
-    0
-  ) AS filtered_solving_percentage,
-  fsct.total_filtered_scenarios      AS total_filtered_scenarios,
-  asct.total_scenarios               AS total_scenarios
+  COALESCE(ROUND(CAST(100.0 * fss.filtered_solving_percentage AS numeric), 2), 0) AS filtered_solving_percentage,
+  fsct.total_filtered_scenarios AS total_filtered_scenarios,
+  asct.total_scenarios          AS total_scenarios
 FROM models m
-LEFT JOIN all_scenario_stats ass
-  ON ass.model_name = m.model_name
-LEFT JOIN filtered_scenario_stats fss
-  ON fss.model_name = m.model_name
+LEFT JOIN all_scenario_stats ass ON ass.model_name = m.model_name
+LEFT JOIN filtered_scenario_stats fss ON fss.model_name = m.model_name
 LEFT JOIN filtered_scenarios_ct fsct ON TRUE
-LEFT JOIN all_scenarios_ct       asct ON TRUE
+LEFT JOIN all_scenarios_ct asct ON TRUE
 ORDER BY overall_solving_percentage DESC;
 """
 

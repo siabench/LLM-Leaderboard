@@ -1,8 +1,22 @@
 import axios from "axios";
 import qs from "qs";
 
-const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+const fallbackProdURL = "https://<your-render-service>.onrender.com";
+const baseURL =
+  process.env.REACT_APP_API_BASE_URL ||
+  (process.env.NODE_ENV === "production"
+    ? fallbackProdURL
+    : "http://localhost:8000");
+
 const API = axios.create({ baseURL });
+console.log("[API] baseURL =", baseURL);
+
+API.interceptors.request.use((config) => {
+  const ts = Date.now().toString();
+  config.params = config.params ? { ...config.params, _t: ts } : { _t: ts };
+  config.headers = { ...config.headers, "Cache-Control": "no-cache" };
+  return config;
+});
 
 export const getLanding = () => API.get("/");
 export const getInfoData = () => API.get("/info");
