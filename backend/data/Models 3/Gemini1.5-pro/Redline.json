@@ -1,0 +1,37 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "tun2socks.exe",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "No child process found.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Outline.exe",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "38.121.43.65",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "",
+    "result": "Given up on this question"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "\\Users\\Tammam\\AppData\\Local\\Temp\\c3912af058\\oneetx.exe",
+    "result": "1"
+  }
+]

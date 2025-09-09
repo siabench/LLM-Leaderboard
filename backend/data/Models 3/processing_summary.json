@@ -1,0 +1,2256 @@
+{
+  "total_files_processed": 225,
+  "total_entries_cleaned": 562,
+  "file_details": [
+    {
+      "file": "Claude-3.5-Sonnet\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 1,
+        "result_0": 3,
+        "result_1": 9,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 9,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 1,
+        "result_0": 3,
+        "result_1": 4,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 9,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 8,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 3,
+        "result_0": 1,
+        "result_1": 17,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 1,
+        "result_0": 3,
+        "result_1": 6,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 1,
+        "result_0": 5,
+        "result_1": 4,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 10,
+        "result_0": 0,
+        "result_1": 2,
+        "other_results": 10
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 8,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 7,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 8,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Claude-3.5-Sonnet\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 10,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 1,
+        "result_0": 8,
+        "result_1": 4,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 8,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 3,
+        "result_0": 3,
+        "result_1": 6,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 3,
+        "result_0": 4,
+        "result_1": 4,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 2,
+        "result_0": 6,
+        "result_1": 13,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 2,
+        "result_0": 5,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 2,
+        "result_0": 5,
+        "result_1": 3,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 2,
+        "result_0": 1,
+        "result_1": 3,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 0,
+        "result_0": 8,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 0,
+        "result_0": 11,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 1,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 7,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 2,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "DeepSeek-Reasoner\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 7,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 1,
+        "result_0": 1,
+        "result_1": 8,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 4,
+        "result_0": 4,
+        "result_1": 0,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 10,
+        "result_0": 4,
+        "result_1": 7,
+        "other_results": 10
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 9,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 4,
+        "result_0": 4,
+        "result_1": 2,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 2,
+        "result_0": 0,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 7,
+        "result_0": 3,
+        "result_1": 2,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 2,
+        "result_0": 3,
+        "result_1": 2,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 2,
+        "result_0": 2,
+        "result_1": 1,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Team_Spy.json",
+      "stats": {
+        "total_entries": 17,
+        "cleaned_entries": 15,
+        "result_0": 1,
+        "result_1": 1,
+        "other_results": 15
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 4,
+        "result_0": 0,
+        "result_1": 2,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 1,
+        "result_0": 4,
+        "result_1": 3,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 4,
+        "result_0": 3,
+        "result_1": 3,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Gemini-1.5-pro\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 9,
+        "result_0": 2,
+        "result_1": 2,
+        "other_results": 9
+      }
+    },
+    {
+      "file": "GPT-4o\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 9,
+        "result_0": 0,
+        "result_1": 4,
+        "other_results": 9
+      }
+    },
+    {
+      "file": "GPT-4o\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 1,
+        "result_0": 0,
+        "result_1": 7,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "GPT-4o\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 1,
+        "result_0": 3,
+        "result_1": 6,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "GPT-4o\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 2,
+        "result_0": 2,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "GPT-4o\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 2,
+        "result_0": 2,
+        "result_1": 8,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "GPT-4o\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 4,
+        "result_0": 3,
+        "result_1": 4,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "GPT-4o\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 5,
+        "result_0": 3,
+        "result_1": 13,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "GPT-4o\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 4,
+        "result_0": 3,
+        "result_1": 4,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "GPT-4o\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 3,
+        "result_0": 0,
+        "result_1": 2,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "GPT-4o\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 7,
+        "result_0": 0,
+        "result_1": 4,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "GPT-4o\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 6,
+        "result_0": 1,
+        "result_1": 3,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "GPT-4o\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 2,
+        "result_0": 0,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "GPT-4o\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 3,
+        "result_0": 7,
+        "result_1": 2,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "GPT-4o\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 6,
+        "result_0": 4,
+        "result_1": 5,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "GPT-4o\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 3,
+        "result_0": 0,
+        "result_1": 3,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "GPT-4o\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 2,
+        "result_0": 0,
+        "result_1": 6,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "GPT-4o\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 7,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 10,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 11,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 1,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 3,
+        "result_0": 5,
+        "result_1": 2,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 0,
+        "result_0": 12,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 2,
+        "result_0": 5,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 7,
+        "result_0": 6,
+        "result_1": 8,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 6,
+        "result_0": 1,
+        "result_1": 4,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 1,
+        "result_0": 3,
+        "result_1": 1,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 4,
+        "result_0": 4,
+        "result_1": 2,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 5,
+        "result_0": 1,
+        "result_1": 4,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 7,
+        "result_0": 3,
+        "result_1": 2,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 4,
+        "result_0": 0,
+        "result_1": 3,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 3,
+        "result_0": 1,
+        "result_1": 1,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 13,
+        "result_0": 2,
+        "result_1": 0,
+        "other_results": 13
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 2,
+        "result_0": 6,
+        "result_1": 2,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "GPT-4o-mini\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 11,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 10,
+        "result_0": 2,
+        "result_1": 1,
+        "other_results": 10
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 4,
+        "result_0": 0,
+        "result_1": 1,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 2,
+        "result_0": 0,
+        "result_1": 6,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 1,
+        "result_0": 1,
+        "result_1": 4,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 8,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 0,
+        "result_0": 9,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 10,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 13,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 13
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 2,
+        "result_0": 5,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 3,
+        "result_0": 2,
+        "result_1": 0,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 7,
+        "result_0": 2,
+        "result_1": 1,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 6,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 6,
+        "result_0": 4,
+        "result_1": 2,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 4,
+        "result_0": 3,
+        "result_1": 0,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 10,
+        "result_0": 5,
+        "result_1": 0,
+        "other_results": 10
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 1,
+        "result_0": 6,
+        "result_1": 1,
+        "other_results": 1
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 4,
+        "result_0": 5,
+        "result_1": 1,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-405B\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 6,
+        "result_0": 3,
+        "result_1": 4,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 10,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 4,
+        "result_0": 0,
+        "result_1": 1,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 2,
+        "result_0": 0,
+        "result_1": 6,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 5,
+        "result_0": 2,
+        "result_1": 1,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 4,
+        "result_0": 7,
+        "result_1": 1,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 10,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 19,
+        "result_0": 1,
+        "result_1": 1,
+        "other_results": 19
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 4,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 7,
+        "result_0": 3,
+        "result_1": 0,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 8,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 6,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 4,
+        "result_0": 2,
+        "result_1": 0,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 7,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 6,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 14,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 14
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 5,
+        "result_0": 2,
+        "result_1": 1,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 9,
+        "result_0": 0,
+        "result_1": 1,
+        "other_results": 9
+      }
+    },
+    {
+      "file": "Llama-3.1-70B\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 3,
+        "result_0": 10,
+        "result_1": 0,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 13,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 13
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 5,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 9,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 9
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 3,
+        "result_0": 1,
+        "result_1": 1,
+        "other_results": 3
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 8,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 8
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 12,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 12
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 5,
+        "result_0": 5,
+        "result_1": 1,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 19,
+        "result_0": 2,
+        "result_1": 0,
+        "other_results": 19
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 5,
+        "result_0": 5,
+        "result_1": 1,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 4,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 4
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 9,
+        "result_0": 1,
+        "result_1": 0,
+        "other_results": 9
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 6,
+        "result_0": 4,
+        "result_1": 0,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 7,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 6,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 6
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Ransomed.json",
+      "stats": {
+        "total_entries": 12,
+        "cleaned_entries": 8,
+        "result_0": 4,
+        "result_1": 0,
+        "other_results": 8
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 7,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 7
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 5,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 5
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 15,
+        "result_0": 0,
+        "result_1": 0,
+        "other_results": 15
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 8,
+        "result_0": 2,
+        "result_1": 0,
+        "other_results": 8
+      }
+    },
+    {
+      "file": "Llama-3.1-8B\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 14,
+        "cleaned_entries": 11,
+        "result_0": 3,
+        "result_1": 0,
+        "other_results": 11
+      }
+    },
+    {
+      "file": "o3-mini\\BlueSky.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 8,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Btlo_Classical_Injection.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Btlo_Phishing_Email.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Btlo_port_scanning.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 7,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\BTLO_Ransomware_Script.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Compromised_Wordpress.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 0,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Get_PDF.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Grab_the_Fisher.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 11,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Hammered.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 4,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Hawkeye.json",
+      "stats": {
+        "total_entries": 21,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 14,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Insider.json",
+      "stats": {
+        "total_entries": 11,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Maldoc_101.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Nuke_The_Browser.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 2,
+        "result_0": 4,
+        "result_1": 4,
+        "other_results": 2
+      }
+    },
+    {
+      "file": "o3-mini\\Obfuscated.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 3,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\PacketMaze.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Ps_Exec.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 5,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Ramnit.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 5,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Ransomed.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 10,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Redline.json",
+      "stats": {
+        "total_entries": 7,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Reveal.json",
+      "stats": {
+        "total_entries": 5,
+        "cleaned_entries": 0,
+        "result_0": 4,
+        "result_1": 1,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Team_Spy.json",
+      "stats": {
+        "total_entries": 15,
+        "cleaned_entries": 0,
+        "result_0": 13,
+        "result_1": 2,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\THM_Profile.json",
+      "stats": {
+        "total_entries": 6,
+        "cleaned_entries": 0,
+        "result_0": 6,
+        "result_1": 0,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Tomcat.json",
+      "stats": {
+        "total_entries": 8,
+        "cleaned_entries": 0,
+        "result_0": 2,
+        "result_1": 6,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\Ulysses.json",
+      "stats": {
+        "total_entries": 10,
+        "cleaned_entries": 0,
+        "result_0": 7,
+        "result_1": 3,
+        "other_results": 0
+      }
+    },
+    {
+      "file": "o3-mini\\XLM_Macro.json",
+      "stats": {
+        "total_entries": 13,
+        "cleaned_entries": 0,
+        "result_0": 11,
+        "result_1": 2,
+        "other_results": 0
+      }
+    }
+  ]
+}

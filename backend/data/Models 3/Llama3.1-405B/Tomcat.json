@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "10.0.0.112",
+    "result": "0"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "Unknown",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "51985",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "Yes, but the tool used is unknown.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "/admin, /admin-console",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "admin:admin, tomcat:tomcat, admin:admin, admin:s3cr3t, tomcat:s3cr3t, admin:tomcat",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "",
+    "result": "Round exceed the limit"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "No, there is no evidence of the attacker attempting to establish persistence on the compromised server in the network traffic.",
+    "result": "0"
+  }
+]

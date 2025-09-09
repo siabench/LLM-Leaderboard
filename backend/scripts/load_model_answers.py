@@ -24,10 +24,16 @@ cur = conn.cursor()
 
 from psycopg2 import sql
 
+cur.execute("""
+    CREATE UNIQUE INDEX IF NOT EXISTS uq_model_metrics_model_question
+    ON model_metrics (model_id, question_id);
+""")
+conn.commit()
+
 cur.execute("SELECT model_name, model_id FROM models")
 model_id_map = {name: mid for name, mid in cur.fetchall()}
 
-base = Path(__file__).parent.parent /"data" / "models1"
+base = Path(__file__).parent.parent / "data" / "Models 3"
 for model_dir in base.iterdir():
     if not model_dir.is_dir():
         continue
@@ -38,33 +44,46 @@ for model_dir in base.iterdir():
         continue
 
     for json_file in model_dir.glob("*.json"):
-        scenario = json_file.stem  
-        with open(json_file) as f:
+        scenario = json_file.stem
+        with open(json_file, encoding="utf-8") as f:
             answers = json.load(f)
 
         cur.execute(
-            "SELECT question_id, split_part(question_number, '.', 2) AS qnum FROM question_metadata WHERE scenario_name = %s",
+            """
+            SELECT question_id, split_part(question_number, '.', 2) AS qnum
+            FROM question_metadata
+            WHERE scenario_name = %s
+            """,
             (scenario,),
         )
-        rows = cur.fetchall() 
+        rows = cur.fetchall()
+        qnum_to_qid = {str(num): qid for (qid, num) in rows}
 
         for entry in answers:
-            qnum = entry["question_number"]
-            match = next((qid for qid, num in rows if num == qnum), None)
+            qnum = str(entry.get("question_number", "")).strip()
+            match = qnum_to_qid.get(qnum)
             if match is None:
                 print(f"  ❌ No metadata for {scenario} q#{qnum}")
                 continue
 
-            response = "pass" if entry["result"] == "1" else "fail"
-            model_answer = entry["answer_found_by_llm"]
+            raw_result = str(entry.get("result", "")).strip().lower()
+            response = "pass" if raw_result in {"1", "pass", "true", "yes"} else "fail"
 
+            model_answer_raw = entry.get("answer_found_by_llm", "")
+            model_answer = (
+                model_answer_raw.strip()
+                if isinstance(model_answer_raw, str) and model_answer_raw.strip() != ""
+                else str(entry.get("result", "")).strip()  # fall back to result
+            )
+            if model_answer == "":
+                model_answer = None  
             cur.execute(
                 """
                 INSERT INTO model_metrics (model_id, question_id, response, model_answer)
                 VALUES (%s, %s, %s, %s)
                 ON CONFLICT (model_id, question_id) DO UPDATE
-                  SET response = EXCLUDED.response,
-                      model_answer = EXCLUDED.model_answer;
+                   SET response = EXCLUDED.response,
+                       model_answer = EXCLUDED.model_answer;
                 """,
                 (model_id, match, response, model_answer),
             )

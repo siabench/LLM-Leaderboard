@@ -1,0 +1,67 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "The evidence of port scanning in the network traffic indicates that the IP address responsible for the scanning activity is 87.96.21.84.",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "There is no evidence of any specific user account targeted for unauthorized access in the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "There is no evidence of a correct password discovered by the attacker in the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "The attacker enabled PowerShell scripts, such as Invoke-SMBExec.ps1, to facilitate lateral movement and control over the target host.",
+    "result": "0"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "The attacker injected the Command and Control (C2) into PowerShell processes to gain administrative privileges.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "The attacker downloaded the file javaw.exe from the URL /javaw.exe.",
+    "result": "0"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "The attacker likely checked user privileges using the script /checking.ps1, but the specific group or SID is not identifiable from the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "8",
+    "answer_found_by_llm": "The attacker likely attempted to modify registry keys related to Windows Defender functionalities using PowerShell scripts, but the specific keys are not identifiable from the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "9",
+    "answer_found_by_llm": "The attacker downloaded the file /del.ps1 as a second file.",
+    "result": "1"
+  },
+  {
+    "question_number": "10",
+    "answer_found_by_llm": "There is no evidence of maintaining persistence on the system through scheduled tasks in the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "11",
+    "answer_found_by_llm": "No, there is no evidence of credential dumping by the attacker in the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "12",
+    "answer_found_by_llm": "There is no name of the saved file containing the dumped credentials in the capture file.",
+    "result": "0"
+  },
+  {
+    "question_number": "13",
+    "answer_found_by_llm": "No, there is no evidence of a file that contains a list of discovered hosts on the network in the capture file.",
+    "result": "0"
+  }
+]

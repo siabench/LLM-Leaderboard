@@ -1,0 +1,37 @@
+[
+  {
+    "question_number": "1",
+    "answer_found_by_llm": "10.0.0.130",
+    "result": "1"
+  },
+  {
+    "question_number": "2",
+    "answer_found_by_llm": "SALES-PC",
+    "result": "1"
+  },
+  {
+    "question_number": "3",
+    "answer_found_by_llm": "No such user name was found. ",
+    "result": "0"
+  },
+  {
+    "question_number": "4",
+    "answer_found_by_llm": "PSEXESVC.exe",
+    "result": "1"
+  },
+  {
+    "question_number": "5",
+    "answer_found_by_llm": "I was unable to find any network share that might be used by PsExec to install any service on the target machine.",
+    "result": "0"
+  },
+  {
+    "question_number": "6",
+    "answer_found_by_llm": "IPC$",
+    "result": "1"
+  },
+  {
+    "question_number": "7",
+    "answer_found_by_llm": "I was unable to find any second machine targeted by the suspicious user.",
+    "result": "0"
+  }
+]
